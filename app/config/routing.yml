@@ -1,10 +1,10 @@
 # General links
-gbe_user:
-    resource: "@GBEUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 gbe_presentation:
     resource: "@GBEPresentationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+gbe_user:
+    resource: "@GBEUserBundle/Resources/config/routing.yml"
     prefix:   /user
 
 # swyca_welcome_trans:

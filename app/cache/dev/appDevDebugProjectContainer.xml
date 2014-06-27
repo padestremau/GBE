@@ -25,7 +25,6 @@
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
-      <parameter key="CoreSphereConsoleBundle">CoreSphere\ConsoleBundle\CoreSphereConsoleBundle</parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
@@ -571,8 +570,8 @@
     <parameter key="jms_di_extra.disable_grep">false</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
     <parameter key="jms_di_extra.cache_warmer.controller_file_blacklist" type="collection"/>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/Applications/MAMP/htdocs/GBE/Site/app/cache/dev/jms_diextra/doctrine/EntityManager_53ad1e64859be.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager53ad1e64859be_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/Applications/MAMP/htdocs/GBE/Site/app/cache/dev/jms_diextra/doctrine/EntityManager_53ad233a82599.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager53ad233a82599_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="fos_user.backend_type_orm">true</parameter>
     <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
     <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
@@ -672,10 +671,6 @@
       <parameter key="data_collector.doctrine" type="collection">
         <parameter>db</parameter>
         <parameter>DoctrineBundle:Collector:db</parameter>
-      </parameter>
-      <parameter key="coresphere_console.toolbar" type="collection">
-        <parameter>coresphere_console</parameter>
-        <parameter>CoreSphereConsoleBundle:Toolbar:toolbar</parameter>
       </parameter>
     </parameter>
     <parameter key="console.command.ids" type="collection"/>
@@ -1998,30 +1993,6 @@
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
-      <call method="addResource">
-        <argument>yml</argument>
-        <argument>/Applications/MAMP/htdocs/GBE/Site/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.de.yml</argument>
-        <argument>de</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>yml</argument>
-        <argument>/Applications/MAMP/htdocs/GBE/Site/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.en.yml</argument>
-        <argument>en</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>yml</argument>
-        <argument>/Applications/MAMP/htdocs/GBE/Site/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.fr.yml</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>yml</argument>
-        <argument>/Applications/MAMP/htdocs/GBE/Site/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.ru.yml</argument>
-        <argument>ru</argument>
-        <argument>messages</argument>
-      </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
@@ -2839,9 +2810,6 @@
           </service>
         </argument>
       </call>
-      <call method="add">
-        <argument type="service" id="coresphere_console.toolbar"/>
-      </call>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
       <tag name="kernel.event_subscriber"/>
@@ -2982,7 +2950,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>53ad1e646e113</argument>
+            <argument>53ad233a49851</argument>
           </service>
         </argument>
       </argument>
@@ -3511,7 +3479,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>53ad1e646e113</argument>
+            <argument>53ad233a49851</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -4129,8 +4097,8 @@
       <argument type="collection"/>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager53ad1e64859be_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/Applications/MAMP/htdocs/GBE/Site/app/cache/dev/jms_diextra/doctrine/EntityManager_53ad1e64859be.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager53ad233a82599_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/Applications/MAMP/htdocs/GBE/Site/app/cache/dev/jms_diextra/doctrine/EntityManager_53ad233a82599.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -4555,10 +4523,6 @@
           <argument>db</argument>
           <argument>DoctrineBundle:Collector:db</argument>
         </argument>
-        <argument key="coresphere_console.toolbar" type="collection">
-          <argument>coresphere_console</argument>
-          <argument>CoreSphereConsoleBundle:Toolbar:toolbar</argument>
-        </argument>
       </argument>
       <argument>bottom</argument>
     </service>
@@ -4582,9 +4546,6 @@
     </service>
     <service id="sensio_distribution.webconfigurator" class="Sensio\Bundle\DistributionBundle\Configurator\Configurator">
       <argument>/Applications/MAMP/htdocs/GBE/Site/app</argument>
-    </service>
-    <service id="coresphere_console.toolbar" class="CoreSphere\ConsoleBundle\DataCollector\DataCollector">
-      <tag name="data_collector" template="CoreSphereConsoleBundle:Toolbar:toolbar" id="coresphere_console"/>
     </service>
     <service id="monolog.logger.request" class="Symfony\Bridge\Monolog\Logger">
       <argument>request</argument>
@@ -4839,10 +4800,6 @@
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/GBE/Site/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views</argument>
         <argument>SensioDistribution</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Applications/MAMP/htdocs/GBE/Site/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/views</argument>
-        <argument>CoreSphereConsole</argument>
       </call>
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/GBE/Site/app/Resources/views</argument>

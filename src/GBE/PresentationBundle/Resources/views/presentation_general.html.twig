@@ -1,0 +1,14 @@
+{# src/Swyca/WelcomeBundle/Resources/index.html.twig #}
+
+{% extends "::index.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  {% block swyca_welcome_body %}
+  {% endblock swyca_welcome_body %}  
+  
+{% endblock body %}
