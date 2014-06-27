@@ -1,0 +1,204 @@
+/* Style Inscription */
+
+#formulaire_inscription
+{
+	width: 460px;
+	margin: auto;
+}
+
+#formulaire_inscription label
+{
+	width : 250px;
+	font-size: 15px;
+	text-align: left;
+	float: left;
+	display: block;
+	margin-bottom: 8px;
+}
+
+#creer_profil
+{	
+	margin-left: 55%;
+}
+
+#formulaire_inscription  form_align
+{	float: right;
+	display: block;
+}
+
+#formulaire_inscription div
+{	margin-bottom: 30px;
+}
+
+
+#section_inscrit input
+{	float: right;
+	width: 160px;
+}
+
+#section_inscrit label
+{	float: left;
+	margin-left: 100px;
+	width: 160px;
+}
+
+#section_inscrit
+{	width : 450px;
+}
+
+
+
+#creer_page_collecte
+{	margin-top: 10px;
+}
+
+#creer_page_collecte a
+{	color: #93be3d;
+	font-size: 20px;
+	background-color: white;
+	padding: 5px;
+	margin-left: 170px;
+	border: 1px solid #505050;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px 1px grey;
+
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+}
+
+#creer_page_collecte a:hover
+{	color:  white;
+	text-decoration: none;
+	font-size: 20px;
+	background-color: #93be3d;
+	padding: 5px;
+	margin-left: 170px;
+	border: 1px solid #505050;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px 1px grey;
+
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+}
+
+#creer_page_collecte_equipe
+{	margin-top: 10px;
+}
+
+#creer_page_collecte_equipe a
+{	color: #93be3d;
+	font-size: 20px;
+	background-color: white;
+	padding: 5px;
+	margin-left: 170px;
+	border: 1px solid #505050;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px 1px grey;
+
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+}
+
+#creer_page_collecte_equipe a:hover
+{	color:  white;
+	text-decoration: none;
+	font-size: 20px;
+	background-color: #93be3d;
+	padding: 5px;
+	margin-left: 170px;
+	border: 1px solid #505050;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px 1px grey;
+
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+}
+
+
+
+
+
+
+.bouton_validation
+{
+	font-size: 20px;
+	background-color: white;
+	padding: 5px;
+	margin-left: 170px;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px 1px grey;
+
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+}
+
+.bouton_validation:hover
+{
+	text-decoration: none;
+	font-size: 20px;
+
+	padding: 5px;
+	margin-left: 170px;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px 1px grey;
+
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+}
+
+#bt_val_oui
+{
+	color: #93be3d;
+	border: 1px solid #505050;
+}
+
+#bt_val_oui:hover
+{
+	color:  white;
+	background-color: #93be3d;
+}
+
+#bt_val_non
+{
+	color: #e12c2c;
+	border: 1px solid #630000;
+}
+
+#bt_val_non:hover
+{
+	color:  white;
+	background-color: #e12c2c;
+}
+
+
+/* Connexion */
+
+#bien_connecte
+{	margin-left : 20px;
+}
+
+#logo_parcours
+{	width : 45px;
+}
+
+
+/* Edit Infos */
+#modifier_completer, .modifier_troncon
+{	float: right ;
+	position: relative;
+	top : -50px;
+	left: -20px;
+	
+}

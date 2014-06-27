@@ -1,0 +1,103 @@
+/* Style CV encadre */
+
+.CV
+{
+	border: 1px solid #4a714f;
+	background-color: #e5e5e5;
+	border-radius: 5px;
+	box-shadow: 0px 0px 1px grey;
+	margin-top: 100px;
+	margin-left: 10px;
+	width : 230px;
+	height: 70px;
+}
+
+.CV #email, .CV #password
+{	float: right;
+	margin-right: 3px;
+	margin-top: 2px;
+}
+
+.CV #label_email, .CV #label_password
+{
+	float: left;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	margin-top: 4px;
+	font-size: 13px;
+}
+/*
+.center label
+{	float: left;
+	margin-bottom: 5px;
+	margin-left: 3px;
+}*/
+
+#box-connexion
+{	float: left;
+	position: relative;
+	
+}
+
+.sinscrire
+{	float: right;
+	margin-right: 10px;
+}
+
+
+#portrait_CV div
+{	display: inline-block;
+}
+
+#photo_portrait_CV
+{
+	border: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+}
+
+/* Messages d'alerte */
+
+.message
+{	font-size: 10px;
+	color: #c04535;
+	font-weight: 700;
+	text-align: center;
+}
+
+
+
+
+
+/* Profil */
+
+#identite
+{	border: 1px dashed #134d00;
+	margin: 10px;
+	
+}
+
+#photo_portrait
+{	border: 2px solid #114500;
+	margin-right: 5px;
+	width : 150px;
+}
+
+
+#identite h3
+{	margin-left: 50px;
+	font-size: 20px;
+	color: #686868;
+}
+
+#portrait
+{	float: right;
+}
+
+#box_troncon_choisi
+{	border: 1px dashed #134d00;
+	margin: 10px;
+	
+}

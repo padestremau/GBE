@@ -1,0 +1,125 @@
+@media site_mobile {
+    /* Le code pour les mobiles ici */
+    
+	img, table, td, blockquote, code, pre, textarea, input, iframe, object, embed, video 
+	{
+    	max-width: 100%;
+	}    
+	
+	body
+	{	
+		background-image: url("../img/utilitaire/tdfns.png");
+		background-repeat: no-repeat;
+		background-size: 480px;
+		background-position: center top;
+
+		font-family: 'zektonregular';
+
+		width: 480px;
+		min-width: 300px;
+		margin: auto;
+	
+		box-shadow: 0px 0px 1px 2px grey;
+	}
+
+
+	#head
+	{		
+		border: 2px solid black; 
+		border-radius: 5px;
+		background-color: rgba(249,249,249,0.93);
+		box-shadow: 0px 0px 1px grey;
+		width : 300px;
+		height : 40px;
+		margin-left: 130px;
+	}
+	
+	.logo_tdfns
+	{	
+		width : 30px;
+		position: relative;
+		top: -15px;
+	}
+
+	h1
+	{	
+		font-size: 20px;
+		color: black;	
+		position: relative;
+		top: -22px;
+	}
+
+	
+}
+
+@media (max-width: 300px){
+
+	body
+	{	
+		background-image: url("../img/utilitaire/tdfns.png");
+		background-repeat: no-repeat;
+		background-size: 300px;
+		background-position: center top;
+
+		font-family: 'zektonregular';
+
+		width: 300px;
+		min-width: 300px;
+		margin: auto;
+	
+		box-shadow: 0px 0px 1px 2px grey;
+	}
+
+}
+
+
+
+/* MEDIA QUERIES */   /* Supplémentaires éventuelles 
+ 
+@media (max-width: 700px){
+    aside
+    {
+        top: 100%;
+        left: 50%; 
+        margin-left: -127.5px;
+    }
+     
+    article
+    {
+        margin-right: 0;
+        margin-bottom: 470px;
+        padding-bottom: 10px;
+    }
+}
+ 
+@media (max-width: 600px){
+    nav li
+    {
+        display: block;
+        padding-bottom: 5px;
+    }
+         
+    nav
+    {
+        text-align: left;
+        position: static; 
+        padding-bottom: 5px;
+    }
+     
+    nav ul 
+    {
+        margin-top: 0;
+        padding-left: 10px;
+    }
+}
+ 
+@media (max-width: 480px){
+ 
+    #tweet, #mes_photos, #mes_amis
+    {
+        width: 100%;
+    }
+ 
+}
+
+*/

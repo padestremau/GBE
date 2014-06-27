@@ -1,0 +1,44 @@
+/* petite sécurité */
+#izModal, #izMeta, #izMeta *, #izCont, #izLoading, #izImg { 
+	margin:0;
+	padding:0;
+	border:none;
+}
+/* conteneur global */
+#izCont {
+	background: #fff;
+	padding: 20px;
+	margin: 30px;
+	border: 1px solid #ccc;
+	
+	box-shadow: 0 0 8px #666;
+	-o-box-shadow: 0 0 8px #666;
+	-moz-box-shadow: 0 0 8px #666;
+	-webkit-box-shadow: 0 0 8px #666;
+	
+	border-radius : 6px;
+	-o-border-radius : 6px;
+	-moz-border-radius : 6px;
+	-webkit-border-radius : 6px;
+}
+
+/* métas (tite & nav) */
+#izMeta {
+	color: #333;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 1.4em;
+	text-align:right;
+}
+#izTitle { margin-right: 1em; float:left; }
+
+#izMeta a {
+	color: #333;
+	text-decoration: none;
+}
+#izMeta a:hover { color: #F66; }
+
+#izPlay:before, #izPause:before, #izPlay:after, #izPause:after {
+	color: #333;
+	content:" | "; 
+}
