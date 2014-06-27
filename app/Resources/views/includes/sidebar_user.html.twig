@@ -1,0 +1,105 @@
+{# Pour tout faciliter #}
+{% set route = app.request.attributes.get( '_route' ) %}
+
+<div class="page-sidebar-wrapper page-sidebar-fixed">
+  <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+  <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+  <div class="page-sidebar navbar-collapse collapse">
+    <!-- BEGIN SIDEBAR MENU -->
+    <ul class="page-sidebar-menu" data-auto-scroll="false" data-auto-speed="300">
+      <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+      <li class="sidebar-toggler-wrapper">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler" id="toggler_action">
+          <img src="{{ asset('img/sidebar_toggler_icon_grey.png') }}" alt="tog" title="Toggle Sidebar" class="toggle_icon"/>
+        </div>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+      </li>
+      <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+
+	    <hr/>
+
+		<li class="start
+			{% if app.request.attributes.get( '_route' ) == 'swyca_user_homepage' %} active
+			{% endif %}">
+			<a href="{{ path('swyca_user_homepage') }}"> 
+				<i class="fa fa-book"></i> 
+				<span class="title">
+					{{ 'sidebarUser.mainTitles.generalInfos' | trans }}
+				</span>
+				<span class="arrow"></span>
+				<span class="selected"></span>
+			</a> 
+		</li>				
+		<li class="
+			{% if app.request.attributes.get( '_route' ) == 'swyca_user_accountType' %} active
+			{% endif %}">
+			<a href="{{ path ('swyca_user_accountType') }}"> 
+				<i class="fa fa-user"></i> 
+				<span class="title">
+					{{ 'sidebarUser.mainTitles.accountDetails' | trans }}
+				</span>
+				<span class="arrow"></span>
+			</a>
+		</li>
+		<li class="
+			{% if app.request.attributes.get( '_route' ) == 'swyca_user_accountSecurity' %} active
+			{% endif %}">
+			<a href="{{ path ('swyca_user_accountSecurity') }}">
+				<i class="fa fa-flag"></i> 
+				<span class="title">
+					{{ 'sidebarUser.mainTitles.security' | trans }}
+				</span>
+				<span class="arrow"></span>
+			</a>
+		</li>
+		<li class="
+			{% if app.request.attributes.get( '_route' ) == 'swyca_user_accountBank' %} active
+			{% endif %}">
+			<a href="{{ path ('swyca_user_accountBank') }}"> 
+				<i class="fa fa-th-large"></i> 
+				<span class="title">
+					{{ 'sidebarUser.mainTitles.bankAccount' | trans }}
+				</span>
+				<span class="arrow"></span>
+			</a>
+		</li>
+
+		<hr/>
+		
+		<li class="start
+			{% if app.request.attributes.get( '_route' ) == 'swyca_user_accountSettings' %} active
+			{% endif %}">
+			<a href="{{ path ('swyca_user_accountSettings') }}"> 
+				<i class="fa fa-cog"></i> 
+				<span class="title">
+					{{ 'sidebarUser.mainTitles.settings' | trans }}
+				</span>
+				<span class="arrow"></span>
+			</a>
+		</li>
+		<li class="
+			{% if app.request.attributes.get( '_route' ) == 'fos_user_change_password' %} active
+			{% endif %}">
+			<a href="{{ path ('fos_user_change_password') }}"> 
+				<i class="fa fa-lock"></i> 
+				<span class="title">
+					{{ 'sidebarUser.mainTitles.passwordReset' | trans }}
+				</span>
+				<span class="arrow"></span>
+			</a>
+		</li>
+		<li class=""> 
+			<a href="{{ path ('fos_user_security_logout') }}"> 
+				<i class="fa fa-power-off"></i> 
+				<span class="title">
+					{{ 'sidebarUser.action.logout' | trans }}
+				</span>
+				<span class="arrow"></span>
+			</a>
+		</li>
+	</ul>
+    <!-- END SIDEBAR MENU -->
+  </div>
+
+</div>

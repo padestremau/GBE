@@ -1,0 +1,400 @@
+{# For clearer view #}
+{% set route = app.request.attributes.get( '_route' ) %}
+
+
+<div class="page-header navbar navbar-fixed-top topOfPage">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner">
+
+      <!-- BEGIN LOGO -->
+      <div class="page-logo">
+        <a href="{{ path('swyca_user_mySwyca', {'displayOption':'m'}) }}">
+          <img src="{{ asset('img/logo/logo.png') }}" alt="logo" class="logo-default"/>
+        </a>
+        <div class="menu-toggler sidebar-toggler hide">
+          <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+        </div>
+      </div>
+      <!-- END LOGO -->
+
+      <!-- BEGIN HORIZANTAL MENU -->
+      <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+      <!-- DOC: This is desktop version of the horizontal menu. The mobile version is defined(duplicated) sidebar menu below. So the horizontal menu has 2 seperate versions -->
+      <div class="hor-menu hor-menu-light hidden-sm hidden-xs">
+        <ul class="nav navbar-nav">
+          <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the horizontal opening on mouse hover -->
+
+        <!-- ADMIN PART -->
+        {% if is_granted('ROLE_ADMIN') %}
+          <li class="classic-menu-dropdown
+            {% if route == 'swyca_admin_homepage' %} nav_active 
+            {% endif %}">
+            <a href="{{ path('swyca_admin_homepage') }}">
+              {{ 'nav.titles.admin' | trans }}
+              <i class="fa fa-angle-down"></i>
+              <span class="selected"></span>
+            </a>
+          </li>
+        {% endif %}
+        <!-- NON-ADMIN PART -->
+          <li class="classic-menu-dropdown 
+            {% if (route == 'swyca_user_mySwyca') or
+            (route == 'swyca_photo_homepage') or
+            (route == 'swyca_video_homepage') or
+            (route == 'swyca_music_homepage') or
+            (route == 'swyca_note_homepage') or
+            (route == 'swyca_document_homepage') or
+            (route == 'swyca_safe_box_homepage') or
+            (route == 'swyca_user_mygardians') or
+            (route == 'swyca_user_mygodchildren') or
+            (route == 'swyca_photo_seeAlbum') or
+            (route == 'swyca_photo_addPhotos') or
+            (route == 'swyca_video_seeVideo') or
+            (route == 'swyca_note_seeNotebook') or
+            (route == 'swyca_note_seeNote') or
+            (route == 'swyca_note_editNote') %} nav_active 
+            {% endif %}">
+            <a href="
+              {% if (route == 'swyca_welcome_homepage') or
+                  (route == 'swyca_photo_homepage') or
+                  (route == 'swyca_video_homepage') or
+                  (route == 'swyca_music_homepage') or
+                  (route == 'swyca_note_homepage') or
+                  (route == 'swyca_document_homepage') or 
+                  (route == 'swyca_safe_box_homepage') or
+                  (route == 'swyca_user_homepage') or
+                  (route == 'swyca_user_mySharedSwyca') %}
+                {{ path('swyca_user_mySwyca', {'displayOption':'m'}) }}
+              {% elseif (route == 'swyca_photo_shared_homepage') %}
+                {{ path('swyca_photo_homepage') }}
+              {% elseif route == 'swyca_video_shared_homepage' %}
+                {{ path('swyca_video_homepage') }}
+              {% elseif route == 'swyca_music_shared_homepage' %}
+                {{ path('swyca_music_homepage') }}
+              {% elseif route == 'swyca_note_shared_homepage' %}
+                {{ path('swyca_note_homepage') }}
+              {% elseif route == 'swyca_document_shared_homepage' %}
+                {{ path('swyca_document_homepage') }}
+              {% else %}
+                {{ path('swyca_user_mySwyca', {'displayOption':'m'}) }}
+              {% endif %}
+              ">{{ 'nav.titles.mySwyca' | trans }}</a>
+          </li>
+
+          <li class="classic-menu-dropdown 
+            {% if (route == 'swyca_user_mySharedSwyca') or
+            (route == 'swyca_photo_shared_homepage') or
+            (route == 'swyca_video_shared_homepage') or
+            (route == 'swyca_music_shared_homepage') or
+            (route == 'swyca_note_shared_homepage') or
+            (route == 'swyca_document_shared_homepage') or
+            (route == 'swyca_photo_seeSharedAlbum') or
+            (route == 'swyca_video_seeSharedVideo') %} nav_active
+            {% endif %}">
+            <a href="
+              {% if route == 'swyca_welcome_homepage' or
+                  (route == 'swyca_photo_shared_homepage') or
+                  (route == 'swyca_video_shared_homepage') or
+                  (route == 'swyca_music_shared_homepage') or
+                  (route == 'swyca_note_shared_homepage') or
+                  (route == 'swyca_document_shared_homepage') or
+                  (route == 'swyca_safe_box_homepage') or
+                  (route == 'swyca_user_mygardians') or
+                  (route == 'swyca_user_mygodchildren') or
+                  (route == 'swyca_user_homepage') or
+                  (route == 'swyca_user_mySwyca') %}
+                {{ path('swyca_user_mySharedSwyca') }}
+              {% elseif route == 'swyca_photo_homepage' %}
+                {{ path('swyca_photo_shared_homepage') }}
+              {% elseif route == 'swyca_video_homepage' %}
+                {{ path('swyca_video_shared_homepage') }}
+              {% elseif route == 'swyca_music_homepage' %}
+                {{ path('swyca_music_shared_homepage') }}
+              {% elseif route == 'swyca_note_homepage' %}
+                {{ path('swyca_note_shared_homepage') }}
+              {% elseif route == 'swyca_document_homepage' %}
+                {{ path('swyca_document_shared_homepage') }}
+              {% else %}
+                {{ path('swyca_user_mySharedSwyca') }}
+              {% endif %}
+              ">{{ 'nav.titles.mySharedSwyca' | trans }}</a>
+          </li>
+
+          <li class="classic-menu-dropdown ">
+            <a href="">
+              Mes flux ?
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- END HORIZANTAL MENU -->
+
+      <!-- BEGIN HEADER SEARCH BOX -->
+      <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box - DONE -->
+      <!-- ???? Should we put it here ?
+      <form class="search-form search-form-expanded" action="#" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." name="query">
+          <span class="input-group-btn">
+          <input class="btn submit" type="button" type="button" value=" "/>
+          </span>
+        </div>
+      </form> -->
+      <!-- DOC: value=" ", that is, value with space must be passed to the submit button -->
+      <!-- END HEADER SEARCH BOX -->
+
+      <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+      <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+      </div>
+      <!-- END RESPONSIVE MENU TOGGLER -->
+      <!-- BEGIN TOP NAVIGATION MENU -->
+      <div class="top-menu">
+        <ul class="nav navbar-nav pull-right">
+
+          <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <!-- BEGIN NOTIFICATION DROPDOWN -->
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+              <a href="{{ path ('swyca_user_notification')}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <i class="fa fa-warning"></i>
+                <!-- <span class="badge badge-danger"> 7 </span> -->
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <p>
+                     {{ 'nav.notifs.you_have' | trans }} 5 {{ 'nav.notifs.notifications' | trans }}
+                  </p>
+                </li>
+                <li>
+                  <ul class="dropdown-menu-list scroller" style="height: 250px;">
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-success">
+                      <i class="fa fa-plus"></i>
+                      </span>
+                      New user registered. <span class="time time_notif">
+                      Just now </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-danger">
+                      <i class="fa fa-bolt"></i>
+                      </span>
+                      Server #12 overloaded. <span class="time time_notif">
+                      15 mins </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-warning">
+                      <i class="fa fa-bell-o"></i>
+                      </span>
+                      Server #2 not responding. <span class="time time_notif">
+                      22 mins </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-info">
+                      <i class="fa fa-bullhorn"></i>
+                      </span>
+                      Application error. <span class="time time_notif">
+                      40 mins </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-danger">
+                      <i class="fa fa-bolt"></i>
+                      </span>
+                      Database overloaded 68%. <span class="time time_notif">
+                      2 hrs </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-danger">
+                      <i class="fa fa-bolt"></i>
+                      </span>
+                      2 user IP blocked. <span class="time time_notif">
+                      5 hrs </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-warning">
+                      <i class="fa fa-bell-o"></i>
+                      </span>
+                      Storage Server #4 not responding. <span class="time time_notif">
+                      45 mins </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-info">
+                      <i class="fa fa-bullhorn"></i>
+                      </span>
+                      System Error. <span class="time time_notif">
+                      55 mins </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                      <span class="label label-sm label-icon label-danger">
+                      <i class="fa fa-bolt"></i>
+                      </span>
+                      Database overloaded 68%. <span class="time time_notif">
+                      2 hrs </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="external">
+                  <a href="{{ path ('swyca_user_notification')}}">
+                  See all notifications <i class="m-icon-swapright"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- END NOTIFICATION DROPDOWN -->
+
+          {% endif %}
+          <!--  ///// ///// ///// ///// /////  -  ///// ///// ///// ///// ///// --> 
+          
+
+            <!-- BEGIN LANGUAGE SELECTION DROPDOWN -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                {% if (app.request.get('_route_params')) != null %}
+                  {% if (app.request.get('_route_params')._locale == 'fr') %}
+                    <img src="{{ asset('img/language_flags/fr.png') }}" alt="FR" class="language_flag"/>
+                  {% elseif (app.request.get('_route_params')._locale == 'en') %}
+                    <img src="{{ asset('img/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+                  {% else %}
+                    <img src="{{ asset('img/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+                  {% endif %}
+                {% else %}
+                  <img src="{{ asset('img/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+                  {#
+                  {% set currentLocal = app.request.get('_route_params')._locale %}
+                  {% set currentFlagPath = 'img/language_flags/' ~ currentLocal ~ '.png' %}
+                  <img src="{{ asset(currentFlagPath) }}" alt="{{ app.request.get('_route_params')._locale | upper }}" class="language_flag"/>
+                  #}
+                {% endif %}
+              </a>
+              <ul class="dropdown-menu language">
+                {% if (app.request.get('_route_params')) != null %}
+                  {% if (app.request.get('_route_params')._locale != 'fr') %}
+                    <li>
+                      <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}" title="FR" alt="FR">
+                        <img src="{{ asset('img/language_flags/fr.png') }}" alt="FR" class="language_flag"/>
+                        Français
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if (app.request.get('_route_params')._locale == 'fr') %}
+                    <li>
+                      <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}" title="EN" alt="EN">
+                        <img src="{{ asset('img/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+                        English
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endif %}
+              </ul>
+            </li>
+            <!-- END LANGUAGE SELECTION DROPDOWN -->
+
+          <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          
+            <!-- BEGIN USER LOGIN DROPDOWN -->
+            <li class="dropdown dropdown-user">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img src="{{ asset('img/avatar1.jpg')}}" alt="" class="img-circle img_nav_profile" />
+                <span class="username">
+                  {% if (app.user.firstName|length > 0) %}
+                    {{ app.user.firstName }}
+                  {% else %}
+                    {{ app.user.username }}
+                  {% endif %}
+                </span>
+              <i class="fa fa-angle-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="{{ path('swyca_user_homepage') }}">
+                    <i class="fa fa-user"></i> 
+                    {{ 'nav.profile.myProfile' | trans }}
+                  </a>
+                </li>
+                <li class="disabled">
+                  <a href="{{ path('swyca_user_calendar') }}">
+                    <i class="fa fa-calendar"></i>
+                    {{ 'nav.profile.calendar' | trans }}
+                  </a>
+                </li>
+                <li class="disabled">
+                  <a href="{{ path('swyca_user_inbox') }}">
+                    <i class="fa fa-envelope"></i>
+                    {{ 'nav.profile.inbox' | trans }} 
+                    <span class="badge badge-success"> 7 </span>   <!-- Pour les numéros en badgge -->
+                  </a>
+                </li>
+                <li class="divider divider-login"></li>
+                <a href="{{ path ('swyca_user_accountType')}}">
+                  <div class="memory_usage">
+                    <div class="progress progress-success memory_usage_bar">
+                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                        <span class="sr-only">
+                        20% Complete </span>
+                      </div>
+                    </div>
+                    <span style="color:grey;">
+                      2
+                      {{ 'nav.systemWords.G' | trans }}  
+                      {{ 'nav.profile.outOf' | trans }} 
+                      8 
+                      {{ 'nav.systemWords.G' | trans }}  
+                    </span>
+                  </div>
+                </a>
+                <li class="divider divider-login"></li>
+                <li>
+                  <a href="{{ path('swyca_user_mygodchildren') }}" id="trigger_fullscreen">
+                    <i class="fa fa-star"></i>
+                    {{ 'nav.profile.godchildren' | trans }}
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ path('swyca_user_mygardians') }}" id="trigger_fullscreen">
+                    <i class="fa fa-star-o"></i> 
+                    {{ 'nav.profile.godfathers' | trans }}
+                  </a>
+                </li>
+                <li class="divider divider-login"></li>
+                <li>
+                  <a href="extra_lock.html">
+                  <i class="fa fa-lock"></i> Lock Screen </a>
+                </li>
+                <li>
+                  <a href="{{ path('fos_user_security_logout') }}">
+                    <i class="fa fa-power-off"></i>
+                    {{ 'nav.profile.logout' | trans }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+          {% endif %}
+
+        </ul>
+      </div>
+      <!-- END TOP NAVIGATION MENU -->
+
+    </div>
+    <!-- END HEADER INNER -->
+
+  </div>

@@ -1,0 +1,273 @@
+{# app/Resources/views/index.html.twig #}
+
+{# For clearer view #}
+{% set route = app.request.attributes.get( '_route' ) %}
+
+<!DOCTYPE html>
+<!-- 
+Based on purchased template:
+
+Template Name: Metronic
+Version: 3.0.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}SWYCA{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+    {# Color changed by changing 'css/themes/default.css' to another color #}
+    {% stylesheets
+      'plugins/font-awesome/css/font-awesome.min.css'
+      'plugins/simple-line-icons/simple-line-icons.min.css'
+      'plugins/bootstrap/css/bootstrap.min.css'
+      'plugins/uniform/css/uniform.default.css'
+
+      'plugins/bootstrap-daterangepicker/daterangepicker-bs3.css'
+      'plugins/fullcalendar/fullcalendar/fullcalendar.css'
+      'plugins/jqvmap/jqvmap/jqvmap.css'
+      'plugins/fancybox/source/jquery.fancybox.css'
+      'css/pages/tasks.css'
+
+      'plugins/dropzone/css/dropzone.css'
+      'css/pages/timeline.css'
+      'css/pages/error.css'
+
+      'plugins/jstree/dist/themes/default/style.min.css'
+
+      'css/extra/style-responsive.css'
+      'css/extra/style.css'
+      'css/extra/animate.css'
+
+      'css/extra/components.css'
+      'css/extra/plugins.css'
+      'css/extra/portfolio.css'
+      'css/extra/layout.css'
+      'css/themes/default.css'
+      'css/extra/custom.css'
+
+      'css/swyca_main.css'
+      
+      filter='cssrewrite' %}
+      <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen"/>
+    {% endstylesheets %}
+        
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
+    <link rel="icon" type="image/ico" href="{{ asset('favicon.ico') }}" />
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+
+  <body class="
+    {% if (route != 'fos_user_security_login') and
+          (route != 'fos_user_resetting_request') and 
+          (route != 'fos_user_change_password') and 
+          (route != 'fos_user_registration_register') and 
+          (route != 'swyca_welcome_homepage') %}
+      page-header-fixed
+    {% else %}
+      login
+    {% endif %}
+          ">
+    {% if (route != 'fos_user_security_login') and
+          (route != 'fos_user_resetting_request') and 
+          (route != 'fos_user_change_password') and 
+          (route != 'fos_user_registration_register') and
+          (route != 'swyca_welcome_homepage') %}
+      <!-- BEGIN HEADER -->
+        {% include 'includes/nav.html.twig' %}
+      <!-- END HEADER -->
+    {% endif %}
+
+    <!-- BEGIN ERROR DISPLAY -->
+    <div class="clearfix">
+      <!-- Erreurs -->    
+        {% if (app.session.flashbag.get('info')|length > 0) %}
+          <div class="row-fluid center btn-info">
+            {% for flashMessage in app.session.flashbag.get('info') %}
+              {{ flashMessage }}
+            {% endfor %}
+          </div>
+        {% endif %}
+    </div>
+    <!-- END ERROR DISPLAY -->
+    
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+      {% block body %}
+      {% endblock body %}  
+    </div>
+    <!-- END CONTAINER -->
+
+
+    {% if (route != 'fos_user_security_login') and
+          (route != 'fos_user_resetting_request') and 
+          (route != 'fos_user_change_password') and 
+          (route != 'fos_user_registration_register') and
+          (route != 'swyca_welcome_homepage') %}
+      <!-- BEGIN FOOTER -->
+        {% include 'includes/footer.html.twig' %}
+      <!-- END FOOTER -->
+    {% endif %}
+    
+
+
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+      {% javascripts 
+        'plugins/respond.min.js' 
+        'plugins/excanvas.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+    <![endif]-->
+
+    {% javascripts 
+      'plugins/jquery-1.11.0.min.js'
+      'plugins/jquery-migrate-1.2.1.min.js'
+      'plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js'
+      'plugins/bootstrap/js/bootstrap.min.js'
+      'plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js'
+      'plugins/jquery-slimscroll/jquery.slimscroll.js'
+      'plugins/jquery.blockui.min.js'
+      'plugins/jquery.cokie.min.js'
+      'plugins/uniform/jquery.uniform.min.js'
+      'plugins/jqvmap/jqvmap/jquery.vmap.js'
+      'plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js'
+      'plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js'
+      'plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js'
+      'plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js'
+      'plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js'
+      'plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js'
+      'plugins/flot/jquery.flot.min.js'
+      'plugins/flot/jquery.flot.resize.min.js'
+      'plugins/flot/jquery.flot.categories.min.js'
+      'plugins/jquery.pulsate.min.js'
+      'plugins/jquery-bootpag/jquery.bootpag.min.js'
+      'plugins/bootstrap-daterangepicker/moment.min.js'
+      'plugins/bootstrap-daterangepicker/daterangepicker.js'
+      'plugins/fullcalendar/fullcalendar/fullcalendar.min.js'
+      'plugins/jquery-easypiechart/jquery.easypiechart.min.js'
+      'plugins/jquery.sparkline.min.js'
+      'plugins/holder.js'
+      'plugins/jquery-mixitup/jquery.mixitup.min.js'
+      'plugins/fancybox/source/jquery.fancybox.pack.js'
+      'plugins/jstree/dist/jstree.min.js'
+      'js/metronic.js'
+      'js/portfolio.js'
+      'js/layout.js'
+      'js/index.js'
+      'js/ui-general.js'
+      'js/tasks.js' %}
+      <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+      <script>
+      jQuery(document).ready(function() {    
+         Metronic.init(); // init metronic core componets
+         Layout.init(); // init layout
+         Index.init();   
+         UITree.init();
+      });
+      </script>
+
+      {% if (route == 'swyca_photo_addPhotos')%}
+        <!-- Scripts for dropzone -->
+        {% javascripts 
+          'plugins/dropzone/dropzone.js'
+          'js/form-dropzone.js' %}
+          <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script>
+        jQuery(document).ready(function() {    
+           Metronic.init(); // init metronic core componets
+           Layout.init(); // init layout
+           Index.init();   
+           Index.initJQVMAP(); // init index page's custom scripts
+           Index.initCalendar(); // init index page's custom scripts
+           Index.initCharts(); // init index page's custom scripts
+           Index.initChat();
+           Index.initMiniCharts();
+           Index.initIntro();
+           Tasks.initDashboardWidget();
+        });
+        </script>
+      {% endif %}
+
+      {% if (route == 'swyca_welcome_homepage')%}
+        <!-- Scripts for the smooth scrolling -->
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+          </script>
+          <script>
+          $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+              if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                  $('html,body').animate({
+                    scrollTop: target.offset().top
+                  }, 600);
+                  return false;
+                }
+              }
+            });
+          });
+          </script>
+        <!-- End of smooth scrolling -->
+
+        <!-- Script to show/hide sidebar -->
+          <script>
+            // $('.page-sidebar, .page-header').on('click', '#toggler_action', function (e) {
+            $('#toggler_action').click(function(){
+                var title = $('.title');
+
+                if (title.hasClass("hide")) {
+                    // .toggleClass('title')
+                    // .toggleClass('title hide');
+                    title.removeClass("hide");
+                    if ($.cookie) {
+                        $.cookie('sidebar_closed', '0');
+                    }
+                } else {
+                    title.addClass("hide");
+                    if ($.cookie) {
+                        $.cookie('sidebar_closed', '1');
+                    }
+                }
+
+                $(window).trigger('resize');
+            });
+          </script>
+        <!-- End of Script to show/hide sidebar -->
+
+
+      {% endif %}
+
+    <!-- END JAVASCRIPTS -->
+  </body>
+  <!-- END BODY -->
+</html>

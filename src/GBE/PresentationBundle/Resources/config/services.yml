@@ -1,0 +1,7 @@
+parameters:
+#    gbe_presentation.example.class: GBE\PresentationBundle\Example
+
+services:
+#    gbe_presentation.example:
+#        class: %gbe_presentation.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

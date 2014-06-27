@@ -1,0 +1,7 @@
+parameters:
+#    gbe_user.example.class: GBE\UserBundle\Example
+
+services:
+#    gbe_user.example:
+#        class: %gbe_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,53 @@
+# General links
+gbe_user:
+    resource: "@GBEUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+gbe_presentation:
+    resource: "@GBEPresentationBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+# swyca_welcome_trans:
+#     resource: "@SwycaWelcomeBundle/Resources/config/routing.yml"
+#     prefix:   /{_locale}
+#     requirements:
+#         _locale: en|fr|   # needs to be null in case no /language is provided
+
+# swyca_photo:
+#     resource: "@SwycaPhotoBundle/Resources/config/routing.yml"
+#     prefix:   /{_locale}/photo
+#     requirements:
+#         _locale: en|fr
+
+# USERs
+
+# fos_user_login:
+#     resource: "@SwycaUserBundle/Resources/config/routingLogin.yml"
+#     prefix:     /{_locale}/login
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix:     /{_locale}/profile
+    requirements:
+        _locale: en|fr
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix:     /{_locale}/register
+    requirements:
+        _locale: en|fr
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix:     /{_locale}/resetting
+    requirements:
+        _locale: en|fr
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix:     /{_locale}/profile
+    requirements:
+        _locale: en|fr
