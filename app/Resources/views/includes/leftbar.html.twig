@@ -1,0 +1,114 @@
+{# Pour tout faciliter #}
+{% set route = app.request.attributes.get( '_route' ) %}
+
+<div class="col-md-2" id="menu">
+  <!-- BEGIN SIDEBAR MENU -->
+  <ul class="page-sidebar-menu" data-auto-scroll="false" data-auto-speed="300">
+    <li class="
+          {% if (route == 'gbe_presentation_homepage') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_homepage') }}">
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.home' | trans }}
+        </span>
+        <span class="arrow"></span>
+        <span class="selected"></span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.presentation' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.whoAreWe' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.route' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.calendar' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.partnerships' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.media' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.photos' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.contact' | trans }}
+        </span>
+      </a> 
+    </li>
+
+    <hr/>
+
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.profile' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.administration' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li>
+      <a href="#"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.myTeam' | trans }}
+        </span>
+      </a> 
+    </li>
+    
+  </ul>
+  <!-- END SIDEBAR MENU -->
+</div>

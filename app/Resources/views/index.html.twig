@@ -18,9 +18,28 @@
     <meta content="" name="description"/>
     <meta content="" name="author"/>
 
+    <!--  'css/autre_style.css'
+      'css/cv_style.css'
+      'css/imZoom.css'
+      'css/inscription_style.css'
+      'css/parcours_style.css'
+      'css/bootstrap-responsive.css'
+      'css/bootstrap-responsive.min.css' -->
     {% stylesheets
 
-      'css/swyca_main.css'
+      'bootstrap/css/bootstrap-theme.css'
+      'bootstrap/css/bootstrap-theme.min.css'
+      'bootstrap/css/bootstrap.min.css'
+      'bootstrap/css/bootstrap.css'
+      
+      'css/mobile.css'
+
+      'css/bootstrap.css'
+      'css/bootstrap.min.css'
+
+      'css/police.css'
+      'css/main_style.css'
+
       
       filter='cssrewrite' %}
       <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen"/>
@@ -32,7 +51,7 @@
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
-  <body class="page">
+  <body>
     
     <!-- BEGIN HEADER -->
       {% include 'includes/nav.html.twig' %}
@@ -42,7 +61,7 @@
     <div class="clearfix">
       <!-- Erreurs -->    
         {% if (app.session.flashbag.get('info')|length > 0) %}
-          <div class="row-fluid center btn-info">
+          <div class="row center btn-info">
             {% for flashMessage in app.session.flashbag.get('info') %}
               {{ flashMessage }}
             {% endfor %}
@@ -53,8 +72,8 @@
     
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
-      {% block body %}
-      {% endblock body %}  
+        {% block body %}
+        {% endblock body %}  
     </div>
     <!-- END CONTAINER -->
 
@@ -65,7 +84,9 @@
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 
     {% javascripts 
-      'js/tasks.js' %}
+      'bootstrap/js/bootstrap.js'
+      'bootstrap/js/bootstrap.min.js'
+      %}
       <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 

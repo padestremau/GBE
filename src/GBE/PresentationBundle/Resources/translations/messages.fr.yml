@@ -1,0 +1,43 @@
+# Main
+
+presentation:
+    titles:
+        presentation:           Présentation
+    actions:
+        live:                   Nous suivre en live
+        giveDonation:           Faire un don
+        participate:            Participer
+
+# Menu
+
+menu:
+    mainTitles:
+        home:                   Accueil
+        presentation:           Présentation
+        whoAreWe:               Qui sommes-nous ?
+        route:                  Parcours
+        calendar:               Calendrier
+        partnerships:           Partenaires
+        media:                  Presse
+        photos:                 Photos
+        contact:                Contact
+        profile:                Mon profil
+        administration:         Administration
+        myTeam:                 Mon équipe
+
+# Login
+
+login:
+    actions:
+        login:                  Connexion
+        signup:                 Inscription
+
+# Footer
+
+footer:
+    links:
+        home:                   Accueil
+        myProfile:              Mon profil
+        blog:                   Forum
+        legal:                  Mentions légales
+        contact:                Contact

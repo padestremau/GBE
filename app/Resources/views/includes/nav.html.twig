@@ -1,23 +1,62 @@
 {# For clearer view #}
 {% set route = app.request.attributes.get( '_route' ) %}
 
+<div class="row">
 
-<div class="page-header navbar navbar-fixed-top topOfPage">
-    <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner">
+  <!-- BEGIN HEADER INNER -->
+  <div id="head" class="page-header-inner row">
+    
+    <div class="col-md-3">
+      <div class="user_login">
+        <button class="btn btn-login">
+          {{ 'login.actions.login'|trans }}
+          <i class="fa fa-sign-in"></i>
+        </button>
+        <button class="btn btn-signup">
+          {{ 'login.actions.signup'|trans }}
+          <i class="fa fa-sign-in"></i>
+        </button>
 
-      <!-- BEGIN LOGO -->
-      <div class="page-logo">
-        <a href="{# path('swyca_user_mySwyca', {'displayOption':'m'}) #}">
-          <img src="{{ asset('img/logo/logo.png') }}" alt="logo" class="logo-default"/>
-        </a>
-        <div class="menu-toggler sidebar-toggler hide">
-          <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-        </div>
+        <!-- BEGIN LANGUAGE SELECTION DROPDOWN -->
+        {% if (app.request.get('_route_params')) != null %}
+          {% if (app.request.get('_route_params')._locale == 'fr') %}
+              <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}" title="EN" alt="EN" class="language_selection">
+                <img src="{{ asset('img/system/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+              </a>
+          {% else %}
+              <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"
+                title="FR" alt="FR" class="language_selection">
+                <img src="{{ asset('img/system/language_flags/fr.png') }}" alt="FR" class="language_flag"/>
+              </a>
+          {% endif %}
+        {% else %}
+          <span class="language_selection">
+            <img src="{{ asset('img/system/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+          </span>
+        {% endif %}
+        <!-- END LANGUAGE SELECTION DROPDOWN -->
       </div>
-      <!-- END LOGO -->
-
     </div>
-    <!-- END HEADER INNER -->
+
+    <!-- BEGIN TITLE -->
+    <div class="col-md-6 center">
+      <h1>
+        La Grande Boucle Etudiante
+      </h1>
+    </div>
+    <!-- END TITLE -->
+
+    <div class="col-md-3 right">
+      <a href="https://www.facebook.com/TourDeFranceNonStop" target="_blank">
+        <img alt="FB" src="{{ asset('img/system/fb.png') }}" title="Page Facebook" class="social"/>
+      </a>
+      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+      <a href="http://twitter.com/share" target="_blank" rel="external">
+        <img alt="Twitter" src="{{ asset('img/system/tw.png') }}" title="Nous suivre sur Twitter" class="social"/>
+      </a>
+    </div>
 
   </div>
+  <!-- END HEADER INNER -->
+
+</div>
