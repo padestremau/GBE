@@ -8,7 +8,13 @@ class RouteController extends Controller
 {
     public function routeAction()
     {
-        return $this->render('GBEPresentationBundle:Route:route.html.twig');
+    	$routes = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEPresentationBundle:Routes')
+                        ->findAllRoutes();
+        
+        return $this->render('GBEPresentationBundle:Route:route.html.twig', 
+        	array(  'routes' => $routes	));
     }
 
     public function calendarAction()

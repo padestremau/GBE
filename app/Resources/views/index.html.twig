@@ -78,7 +78,9 @@
     <!-- END CONTAINER -->
 
     <!-- BEGIN FOOTER -->
+    {% if route != 'gbe_presentation_live' %}
       {% include 'includes/footer.html.twig' %}
+    {% endif %}
     <!-- END FOOTER -->
 
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

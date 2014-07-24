@@ -34,6 +34,9 @@ gbe_presentation_contact:
     pattern:  /contact
     defaults: { _controller: GBEPresentationBundle:Presentation:contact }
 
+gbe_presentation_live:
+    pattern:  /live
+    defaults: { _controller: GBEPresentationBundle:Live:live }
 
     # "Participer"=>"pages/participer.php",
     # "Presentation"=>"pages/presentation.php",

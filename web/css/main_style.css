@@ -27,6 +27,46 @@ body
 	/*box-shadow: 0px 0px 1px 2px grey;*/
 }
 
+.row {
+	width: 100%;
+}
+.col-md-1 {
+	width: 8%;
+}
+.col-md-2 {
+	width: 16%;
+}
+.col-md-3 {
+	width: 25%;
+}
+.col-md-4 {
+	width: 33%;
+}
+.col-md-5 {
+	width: 41%;
+}
+.col-md-6 {
+	width: 50%;
+}
+.col-md-7 {
+	width: 58.33%;
+}
+.col-md-8 {
+	width: 66.66%;
+}
+.col-md-9 {
+	width: 75%;
+}
+.col-md-10 {
+	width: 83.33%;
+}
+.col-md-11 {
+	width: 91.66%;
+}
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11 {
+	display: inline-block;
+}
+
 
 #head
 {	
@@ -65,6 +105,10 @@ h4
 	font-style: italic;
 }
 
+label {
+	font-weight: 300;
+}
+
 .center {
 	text-align: center;
 }
@@ -83,6 +127,10 @@ h4
 
 .float-left {
 	float: left;
+}
+
+.bold {
+	font-weight: 800;
 }
 
 .language_flag {
@@ -198,7 +246,6 @@ button {
 {	
 	font-size: 14px;
 	background-color: rgba(180,180,180,0.8);
-	height : 100%;
 	margin: 0;
 	padding: 3px 10px 3px 10px;
 
@@ -291,18 +338,55 @@ button {
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
+.content_live {
+	width : 96%;
+	height : 660px;
+	margin: 10px 2% 10px 2%;
+	padding: 10px;
+	border: 1px solid white;
+	
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
 
 /* Presentation */
-.paragraph {
-	text-indent:40px; 
-	margin-left : 20px; 
-	margin-right : 20px; 
+.paragraph 
+{
+	text-indent:20px; 
+	margin-left : 5px; 
+	margin-right : 5px; 
 	text-align : justify;
 }
 
+.img_bio {
+	width : 150px;
+	height : 150px;
+	border: 1px solid white;
+}
+
+/* Bio */
+.member_org {
+	width: 33%;
+	text-align: center;
+	display: inline-block;
+}
+
+
+/* Routes */
+.single_route {
+	text-align: left;
+}
+
+.route_img {
+	text-align: right;
+	margin-left: 29%;
+	width: 70%;
+	border : 1px solid white;
+}
+
+
 /* Calendar */
-#calendar_table
-{
+#calendar_table {
     border-collapse: collapse;
 }
 
@@ -323,6 +407,19 @@ button {
 	height : 10px;
 }
 
+
+/* Contact */
+.input_name_email {
+	width: 35%;
+}
+.message {
+	width: 100%;
+}
+
+/* Live */
+.title_live  {
+	text-align: center;
+}
 
 /* Footer */
 .footer

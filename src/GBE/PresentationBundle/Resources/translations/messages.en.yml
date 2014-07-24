@@ -8,8 +8,11 @@ index:
         live:                   Follow live
         giveDonation:           Give donation
         participate:            Participate
+        join:                   Join
         addPhotos:              Add photos
         becomePartner:          Become partner
+        back:                   Back
+        close:                  Close
     content:
         numberOfParticipants:   Number of participants: 
         rightWelcomeSentence:   "Come and help Mekong Children with your school!"
@@ -66,6 +69,15 @@ bio:
 route:
     titles:
         route:                  Route
+    content: 
+        step:                   Step
+        startCity:              Start city:
+        endCity:                End city:
+        length:                 Length:
+        heightPos:              H+ :
+        heightNeg:              H- :
+        startDate:              Start date:
+        endDate:                End date:
 
 
 # Calendar 
@@ -101,3 +113,17 @@ photos:
 contact:
     titles:
         contact:                Contact
+    actions: 
+        send:                   Send
+    content:
+        sender:                 Sender
+        recipient:              Recipient
+        message:                Message
+        object:                 Object:
+        content:                Content:
+
+# Live 
+
+live:
+    titles:
+        live:                   Live

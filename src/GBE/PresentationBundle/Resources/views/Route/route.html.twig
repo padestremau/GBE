@@ -17,19 +17,104 @@
 		<!-- BEGIN CONTENT -->
 		<div class="content">
 
-			<div>
-				<button class="btn btn-perso float-right">
-			    	{{ 'index.actions.participate'|trans }}
-			     	<i class="fa fa-sign-in"></i>
-			    </button>
-			</div>
-
 			<h2>
 				{{ 'route.titles.route'|trans }}
 			</h2>
 			<hr/>
 			
-			
+			{% if routes|length > 0 %}
+				{% set index_route = 0 %}
+				{% for route in routes %}
+					<div class="single_route">
+						<h3>
+							{{ 'route.content.step'|trans }} {{ route.id }}. {{ route.name }}
+						</h3>
+
+						<div class="row">
+							<div class="col-md-6">
+								<img src="{{ asset(route.url) }}" alt="{{ route.alt }}" class="route_img"/>
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.startCity'|trans }}
+									</div>
+									<div class="col-md-7 left">
+										{{ route.startCity }}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.endCity'|trans }}
+									</div>
+									<div class="col-md-7 left">
+										{{ route.endCity }}
+									</div>
+								</div>
+
+								<hr/>
+
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.length'|trans }}
+									</div>
+									<div class="col-md-3 left">
+										{{ route.length }}
+									</div>
+									<div class="col-md-4 right">
+										<div>
+											<button class="btn btn-perso float-right">
+										    	{{ 'index.actions.join'|trans }}
+										     	<i class="fa fa-sign-in"></i>
+										    </button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.heightPos'|trans }}
+									</div>
+									<div class="col-md-7 left">
+										{{ route.heightPos }}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.heightNeg'|trans }}
+									</div>
+									<div class="col-md-7 left">
+										{{ route.heightNeg }}
+									</div>
+								</div>
+
+								<hr/>
+
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.startDate'|trans }}
+									</div>
+									<div class="col-md-7 left">
+										{{ route.startDate|date('d M Y') }} - {{ route.startDate|date('h:i') }}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 right bold">
+										{{ 'route.content.endDate'|trans }}
+									</div>
+									<div class="col-md-7 left">
+										{{ route.endDate|date('d M Y') }} - {{ route.endDate|date('h:i') }}
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						{% if (index_route != 10) %}
+						<hr/>
+						{% endif %}
+					</div>
+					{% set index_route = index_route + 1 %}
+				{% endfor %}
+			{% endif %}
 			
 		</div>
 		<!-- END CONTENT -->

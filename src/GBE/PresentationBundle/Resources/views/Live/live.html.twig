@@ -1,0 +1,33 @@
+{# src/GBE/PresentationBundle/Resources/Photos/live.html.twig #}
+
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'live.titles.live' | trans }}
+{% endblock %}
+
+{% block GBE_Presentation_body %}
+
+	<!-- BEGIN CONTENT -->
+	<div class="">  <!-- Live page - exceptional -->
+		<!-- BEGIN CONTENT -->
+		<div class="content_live">
+
+			<div>
+				<button class="btn btn-perso float-right">
+			    	{{ 'index.actions.close'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </button>
+			</div>
+
+			<h2 class="title_live">
+				{{ 'live.titles.live'|trans }}
+			</h2>
+			<hr/>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+{% endblock GBE_Presentation_body %}

@@ -17,17 +17,49 @@
 		<!-- BEGIN CONTENT -->
 		<div class="content">
 
-			<div>
-				<button class="btn btn-perso float-right">
-			    	{{ 'index.actions.participate'|trans }}
-			     	<i class="fa fa-sign-in"></i>
-			    </button>
-			</div>
-
 			<h2>
 				{{ 'contact.titles.contact'|trans }}
 			</h2>
 			<hr/>
+
+			<form action="" method="post">
+				<h3>
+					{{ 'contact.content.recipient'|trans }}
+				</h3>
+					<input type="checkbox" name="destinataire1" value="p.a.destremau@gmail.com" id="dest1">
+						<label for="dest1">Pierre-Arnaud Destremau, WebMaster</label>
+						<br/>
+					<input type="checkbox" name="destinataire2" value="???" id="dest2"/>
+						<label for="dest2">Joseph de Chateauvieux, Chef de projet</label>
+						<br/>
+					<input type="checkbox" name="destinataire3" value="augustin.dst@gmail.com" id="dest3"/>
+						<label for="dest3">Augustin Destremau, Génie</label>
+						<br/>
+                    <input type="checkbox" name="destinataire4" value="adavout@enfantsdumekong.com" id="dest4"/>
+                    	<label for="dest4">Alban d'Avout, Directeur de Défi du Mékong</label>
+                    	<br/>
+                    <input type="checkbox" name="destinataire5" value="gdaboville@enfantsdumekong.com" id="dest5"/>
+                    	<label for="dest5">Guillaume d'Aboville, Directeur de la Communication et du Développement des Ressources</label>
+                    	<br/>
+			
+				<h3>
+					{{ 'contact.content.sender'|trans }}
+				</h3>
+					Nom :<br/>
+					<input type="input" name="nom_expediteur" placeholder="Jean Dupont"  class="input_name_email" required/><br/>
+					Adresse mail :<br/>
+					<input type="email" name="email_expediteur" placeholder="adresse@nomdedomaine" class="input_name_email"required/><br/>
+				
+				<h3>
+					{{ 'contact.content.message'|trans }}
+				</h3>
+					{{ 'contact.content.object'|trans }} <br/>
+					<input type="input" name="objet_email_contact" class="message" placeholder="Ecrivez ici l'objet de votre message." required/><br/>
+					{{ 'contact.content.content'|trans }} <br/>
+					<textarea name="texte_email_contact" class="message" placeholder="Ecrivez ici le texte de votre message." rows=10 required></textarea>
+
+				<input id="bouton-valider-contact" type="submit" value="{{ 'contact.actions.send'|trans }}" class="btn btn-perso float-right"/>
+			</form>
 			
 		</div>
 		<!-- END CONTENT -->

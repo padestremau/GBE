@@ -8,8 +8,11 @@ index:
         live:                   Nous suivre en live
         giveDonation:           Faire un don
         participate:            Participer
+        join:                   Rejoindre
         addPhotos:              Ajouter des photos
         becomePartner:          Devenir partenaire
+        back:                   Retour
+        close:                  Fermer
     content:
         numberOfParticipants:   Nombre de participants : 
         rightWelcomeSentence:   "Viens soutenir les Enfants du Mékong avec ton école !"
@@ -66,6 +69,15 @@ bio:
 route:
     titles:
         route:                  Parcours
+    content: 
+        step:                   Etape
+        startCity:              Départ de :
+        endCity:                Arrivée à :
+        length:                 Distance :
+        heightPos:              D+ :
+        heightNeg:              D- :
+        startDate:              Date de départ :
+        endDate:                Date d'arrivée :
 
 
 # Calendar 
@@ -101,3 +113,17 @@ photos:
 contact:
     titles:
         contact:                Contact
+    actions: 
+        send:                   Envoyer
+    content:
+        sender:                 Expéditeur
+        recipient:              Destinataire
+        message:                Message
+        object:                 Objet du message :
+        content:                Contenu du message :
+
+# Live 
+
+live:
+    titles:
+        live:                   Live
