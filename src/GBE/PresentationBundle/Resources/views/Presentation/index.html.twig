@@ -1,0 +1,36 @@
+{# src/GBE/PresentationBundle/Resources/Presentation/indexPresentation.html.twig #}
+
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'index.titles.presentation' | trans }}
+{% endblock %}
+
+{% block GBE_Presentation_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+			
+			<div class="main_map">
+				<button class="btn btn-perso participate_button">
+			    	{{ 'index.actions.participate'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </button>
+			</div>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_Presentation_body %}

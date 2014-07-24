@@ -2,6 +2,39 @@ gbe_presentation_homepage:
     pattern:  /
     defaults: { _controller: GBEPresentationBundle:Presentation:index }
 
+gbe_presentation_presentation:
+    pattern:  /presentation
+    defaults: { _controller: GBEPresentationBundle:Presentation:presentation }
+
+gbe_presentation_bio:
+    pattern:  /bio
+    defaults: { _controller: GBEPresentationBundle:Presentation:bio }
+
+gbe_presentation_route:
+    pattern:  /route
+    defaults: { _controller: GBEPresentationBundle:Route:route }
+
+gbe_presentation_calendar:
+    pattern:  /calendar
+    defaults: { _controller: GBEPresentationBundle:Route:calendar }
+
+gbe_presentation_partners:
+    pattern:  /partners
+    defaults: { _controller: GBEPresentationBundle:Media:partners }
+
+gbe_presentation_media:
+    pattern:  /media
+    defaults: { _controller: GBEPresentationBundle:Media:media }
+
+gbe_presentation_photos:
+    pattern:  /photos
+    defaults: { _controller: GBEPresentationBundle:Photos:photos }
+
+gbe_presentation_contact:
+    pattern:  /contact
+    defaults: { _controller: GBEPresentationBundle:Presentation:contact }
+
+
     # "Participer"=>"pages/participer.php",
     # "Presentation"=>"pages/presentation.php",
     # "Trophees"=>"pages/trophees.php",

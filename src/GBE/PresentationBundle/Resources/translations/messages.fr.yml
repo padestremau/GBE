@@ -1,12 +1,18 @@
 # Main
 
-presentation:
+index:
     titles:
+        title:                  La Grande Boucle Etudiante
         presentation:           Présentation
     actions:
         live:                   Nous suivre en live
         giveDonation:           Faire un don
         participate:            Participer
+        addPhotos:              Ajouter des photos
+        becomePartner:          Devenir partenaire
+    content:
+        numberOfParticipants:   Nombre de participants : 
+        rightWelcomeSentence:   "Viens soutenir les Enfants du Mékong avec ton école !"
 
 # Menu
 
@@ -40,4 +46,58 @@ footer:
         myProfile:              Mon profil
         blog:                   Forum
         legal:                  Mentions légales
+        contact:                Contact
+
+# Presentation
+
+presentation:
+    titles:
+        presentation:           Présentation
+
+
+# Bio 
+
+bio:
+    titles:
+        bio:                    Qui sommes-nous ?
+
+# Route 
+
+route:
+    titles:
+        route:                  Parcours
+
+
+# Calendar 
+
+calendar:
+    titles:
+        calendar:               Calendrier
+
+
+# Partners 
+
+partners:
+    titles:
+        partners:               Partenaires
+
+
+# Media
+
+media:
+    titles:
+        media:                  Média
+
+
+# Photos
+
+photos:
+    titles:
+        photos:                 Photos
+
+
+# Contact
+
+contact:
+    titles:
         contact:                Contact

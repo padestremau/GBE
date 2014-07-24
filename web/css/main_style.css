@@ -47,14 +47,22 @@ h1
 
 h2
 {	
-	font-size : 18px;
-	color: white; /*#922e2e*/
+	margin: 8px 0 0 0;
+	font-size : 22px;
+	color: black; /*#922e2e*/
 }
 
 h3
 {	
+	font-size : 18px;
+	color: white;
+}
+
+h4
+{	
 	font-size : 14px;
-	color: black;
+	color: grey;
+	font-style: italic;
 }
 
 .center {
@@ -121,7 +129,12 @@ button {
 	background-color: white;
 }
 
+.btn-login, .btn-signup {
+	margin-top: 3px;
+}
+
 .btn-login {
+	color: white;
 	background-color: rgba(77,137,39,0.8);
 }
 
@@ -275,7 +288,39 @@ button {
 	padding: 10px;
 	border: 1px solid white;
 	
-	overflow: scroll;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+/* Presentation */
+.paragraph {
+	text-indent:40px; 
+	margin-left : 20px; 
+	margin-right : 20px; 
+	text-align : justify;
+}
+
+/* Calendar */
+#calendar_table
+{
+    border-collapse: collapse;
+}
+
+#calendar_table tr
+{
+	height : 25px;
+}
+
+#calendar_table th, #calendar_table td
+{
+	border: 1px solid #e4e4e4;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+#calendar_table #td_space
+{
+	height : 10px;
 }
 
 

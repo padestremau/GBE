@@ -17,64 +17,88 @@
         <span class="selected"></span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_presentation') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_presentation') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.presentation' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_bio') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_bio') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.whoAreWe' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_route') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_route') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.route' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_calendar') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_calendar') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.calendar' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_partners') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_partners') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.partnerships' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_media') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_media') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.media' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_photos') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_photos') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.photos' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_presentation_contact') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_contact') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.contact' | trans }}
@@ -82,32 +106,50 @@
       </a> 
     </li>
 
+    <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
     <hr/>
 
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_user_homepage') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_user_homepage') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.profile' | trans }}
         </span>
       </a> 
     </li>
-    <li>
-      <a href="#"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.administration' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li>
-      <a href="#"> 
+    <li class="
+          {% if (route == 'gbe_user_team') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_user_team') }}"> 
         <i class="fa fa-camera-retro"></i> 
         <span class="title">
           {{ 'menu.mainTitles.myTeam' | trans }}
         </span>
       </a> 
     </li>
+
+    {% endif %}
+
+    <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
+    {% if is_granted("ROLE_ADMIN") %}
+    <li class="
+          {% if (route == 'gbe_user_admin') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_user_admin') }}"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.administration' | trans }}
+        </span>
+      </a> 
+    </li>
+    {% endif %}
     
   </ul>
   <!-- END SIDEBAR MENU -->

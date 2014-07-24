@@ -49,9 +49,9 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/fr/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/en/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, role: IS_AUTHENTICATED_REMEMBERED }
-        - { path: ^/fr/, role: IS_AUTHENTICATED_REMEMBERED }
-        - { path: ^/en/, role: IS_AUTHENTICATED_REMEMBERED }
-        - { path: ^/admin, role: [IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN] }
-        - { path: ^/fr/admin, role: [IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN] }
-        - { path: ^/en/admin, role: [IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN] }
+        - { path: ^/user/, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/fr/user/, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/en/user/, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/user/admin, role: [IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN] }
+        - { path: ^/fr/user/admin, role: [IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN] }
+        - { path: ^/en/user/admin, role: [IS_AUTHENTICATED_REMEMBERED,ROLE_ADMIN] }

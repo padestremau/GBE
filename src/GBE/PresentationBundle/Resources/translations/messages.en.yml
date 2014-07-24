@@ -1,12 +1,18 @@
 # Main
 
-presentation:
+index:
     titles:
+        title:                  La Grande Boucle Etudiante
         presentation:           Presentation
     actions:
         live:                   Follow live
         giveDonation:           Give donation
         participate:            Participate
+        addPhotos:              Add photos
+        becomePartner:          Become partner
+    content:
+        numberOfParticipants:   Number of participants: 
+        rightWelcomeSentence:   "Come and help Mekong Children with your school!"
 
 # Menu
 
@@ -40,4 +46,58 @@ footer:
         myProfile:              My profile
         blog:                   Blog
         legal:                  Conditions
+        contact:                Contact
+
+# Presentation
+
+presentation:
+    titles:
+        presentation:           Presentation
+
+
+# Bio 
+
+bio:
+    titles:
+        bio:                    Who are we?
+
+# Route 
+
+route:
+    titles:
+        route:                  Route
+
+
+# Calendar 
+
+calendar:
+    titles:
+        calendar:               Calendar
+
+
+# Partners 
+
+partners:
+    titles:
+        partners:               Partnerships
+
+
+# Media
+
+media:
+    titles:
+        media:                  Media
+
+
+# Photos
+
+photos:
+    titles:
+        photos:                 Photos
+
+
+# Contact
+
+contact:
+    titles:
         contact:                Contact

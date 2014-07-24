@@ -8,14 +8,14 @@
     
     <div class="col-md-3">
       <div class="user_login">
-        <button class="btn btn-login">
+        <a href="#loginModal" role="button" class="btn btn-login" data-toggle="modal">
           {{ 'login.actions.login'|trans }}
           <i class="fa fa-sign-in"></i>
-        </button>
-        <button class="btn btn-signup">
+        </a>
+        <a href="#signupModal" role="button" class="btn btn-signup" data-toggle="modal">
           {{ 'login.actions.signup'|trans }}
           <i class="fa fa-sign-in"></i>
-        </button>
+        </a>
 
         <!-- BEGIN LANGUAGE SELECTION DROPDOWN -->
         {% if (app.request.get('_route_params')) != null %}
@@ -41,7 +41,7 @@
     <!-- BEGIN TITLE -->
     <div class="col-md-6 center">
       <h1>
-        La Grande Boucle Etudiante
+        {{ 'index.titles.title'|trans }}
       </h1>
     </div>
     <!-- END TITLE -->
