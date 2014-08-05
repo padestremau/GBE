@@ -8,32 +8,42 @@
     
     <div class="col-md-3">
       <div class="user_login">
-        <a href="#loginModal" role="button" class="btn btn-login" data-toggle="modal">
-          {{ 'login.actions.login'|trans }}
-          <i class="fa fa-sign-in"></i>
-        </a>
-        <a href="#signupModal" role="button" class="btn btn-signup" data-toggle="modal">
-          {{ 'login.actions.signup'|trans }}
-          <i class="fa fa-sign-in"></i>
-        </a>
+        <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <div class="user_box">
+            {{ app.user.username }}
+            
+          </div>
+        {% else %}
+          <a href="{{ path('fos_user_security_login') }}" class="btn btn-login">
+            {{ 'login.actions.login'|trans }}
+            <i class="fa fa-sign-in"></i>
+          </a>
+          <a href="{{ path('fos_user_registration_register') }}" class="btn btn-signup">
+            {{ 'login.actions.signup'|trans }}
+            <i class="fa fa-sign-in"></i>
+          </a>
+        {% endif %}
 
         <!-- BEGIN LANGUAGE SELECTION DROPDOWN -->
-        {% if (app.request.get('_route_params')) != null %}
-          {% if (app.request.get('_route_params')._locale == 'fr') %}
-              <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}" title="EN" alt="EN" class="language_selection">
-                <img src="{{ asset('img/system/language_flags/en.png') }}" alt="EN" class="language_flag"/>
-              </a>
+        <div class="language_box">
+          {% if (app.request.get('_route_params')) != null %}
+            {% if (app.request.get('_route_params')._locale == 'fr') %}
+                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}" title="EN" alt="EN" class="language_selection">
+                  <img src="{{ asset('img/system/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+                </a>
+            {% else %}
+                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"
+                  title="FR" alt="FR" class="language_selection">
+                  <img src="{{ asset('img/system/language_flags/fr.png') }}" alt="FR" class="language_flag"/>
+                </a>
+            {% endif %}
           {% else %}
-              <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"
-                title="FR" alt="FR" class="language_selection">
-                <img src="{{ asset('img/system/language_flags/fr.png') }}" alt="FR" class="language_flag"/>
-              </a>
+            <span class="language_selection">
+              <img src="{{ asset('img/system/language_flags/en.png') }}" alt="EN" class="language_flag"/>
+            </span>
           {% endif %}
-        {% else %}
-          <span class="language_selection">
-            <img src="{{ asset('img/system/language_flags/en.png') }}" alt="EN" class="language_flag"/>
-          </span>
-        {% endif %}
+        </div>
         <!-- END LANGUAGE SELECTION DROPDOWN -->
       </div>
     </div>

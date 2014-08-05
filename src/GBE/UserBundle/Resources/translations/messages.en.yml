@@ -1,0 +1,58 @@
+# Register and forgotten password
+registerUser:
+    titles:
+        signUp:             Sign Up
+        enterDetails:       Enter your details below:
+        username:           Username
+        password:           Password
+        rePassword:         Re-Type your password
+        email:              Email
+        iAgreeToThe:        I agree to the
+        TermsOfService:     Terms of Service
+        and:                and
+        PrivacyPolicy:      Privacy Policy
+    actions: 
+        back:               Back
+        signUp:             Sign Up
+forgotPassword:
+    titles:
+        forgotPassword:     Forgot your Password?
+        enterEmail:         "Enter your e-mail address below to reset your password."
+        email:              Email
+    actions:
+        back:               Back
+        submit:             Submit
+resetPassword:
+    titles:
+        resetPassword:      Reset your Password?
+        enterOld:           Current password
+        enterNew:           New password
+        reEnterNew:         Re-Type new password
+    actions:
+        back:               Back
+        changePassword:     Change password
+
+# Login
+login:
+    titles:
+        loginTitle:     Login to your account
+        enterUsernameAndPassword:   Enter a username and a password. 
+        username:       Username
+        password:       Password
+        orLoginWith:    Or login with
+        forgetPassword: Forgot your password?
+        noWorriesClick: "no worries, click"
+        here:           here
+        toResetPassword: to reset your password.
+        noAccount:      "Don't have an account yet?"
+    actions:
+        login:          Login
+        remember_me:    Remember me
+        createAccount:  Create an account
+    connected:
+        titleAlreadyConnected:  "You're already connected"
+        accessAccount:  Access your account
+    comments:
+        anyComments:    Any comments about SWYCA you would like to share?
+        feelFreeTo:     Feel free to 
+        tellUs:         tell us

@@ -177,10 +177,6 @@ button {
 	background-color: white;
 }
 
-.btn-login, .btn-signup {
-	margin-top: 3px;
-}
-
 .btn-login {
 	color: white;
 	background-color: rgba(77,137,39,0.8);
@@ -419,6 +415,25 @@ button {
 .title_live  {
 	text-align: center;
 }
+
+
+
+
+
+/* User */ 
+.checkbox {
+	margin-left: 2px;
+}
+
+.user_login {
+	margin-top: 4px;
+}
+
+.user_box, .language_box {
+	display: inline-block;
+}
+
+
 
 /* Footer */
 .footer

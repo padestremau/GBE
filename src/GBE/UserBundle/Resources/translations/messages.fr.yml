@@ -1,1 +1,58 @@
-'Symfony2 is great': 'J''aime Symfony2'
+# Register and forgotten password
+registerUser:
+    titles:
+        signUp:             "S'inscrire"
+        enterDetails:       Saisissez vos informations :
+        username:           "Nom d'utilisateur"
+        password:           Mot de passe
+        rePassword:         Saisissez à nouveau votre mot de passe
+        email:              Email
+        iAgreeToThe:        J'accepte les 
+        TermsOfService:     "Conditions d'utilisation"
+        and:                et les
+        PrivacyPolicy:      Mentions légales
+    actions: 
+        back:               Retour
+        signUp:             Inscription
+forgotPassword:
+    titles:
+        forgotPassword:     Mot de passe oublié ?
+        enterEmail:         "Saisissez votre e-mail ci-dessous pour réinitialiser votre mot de passe."
+        email:              Email
+    actions:
+        back:               Retour
+        submit:             Envoyer
+resetPassword:
+    titles:
+        resetPassword:      Changer de mot de passe ?
+        enterOld:           Mot de passe actuel
+        enterNew:           Nouveau mot de passe
+        reEnterNew:         Entrer à nouveau votre nouveau mot de passe
+    actions:
+        back:               Retour
+        changePassword:     Changer le mot de passe
+
+# Login
+login:
+    titles:
+        loginTitle:     Se connecter à son compte
+        enterUsernameAndPassword:   Enter a username and a password. 
+        username:       "Nom d'utilisateur"
+        password:       Mot de passe
+        orLoginWith:    Ou se connecter avec
+        forgetPassword: Mot de passe oublié ?
+        noWorriesClick: cliquez
+        here:           ici
+        toResetPassword: pour réinitialiser votre mot de passe.
+        noAccount:      "Toujours pas de compte ?"
+    actions:
+        login:          Connexion
+        remember_me:    Se souvenir de moi
+        createAccount:  Créer un compte
+    connected:
+        titleAlreadyConnected:  Vous êtes déjà connecté
+        accessAccount:  Accédez rapidement à votre compte
+    comments:
+        anyComments:    Des commentaires à propos de SWYCA ?
+        feelFreeTo:     "N'hésitez pas à nous"
+        tellUs:         en faire part

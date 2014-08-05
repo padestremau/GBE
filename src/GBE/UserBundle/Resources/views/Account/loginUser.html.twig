@@ -1,0 +1,136 @@
+{# src/GBE/UserBundle/Resources/User/loginUser.html.twig #}
+
+{% extends "GBEUserBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'login.titles.login' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<h2>
+				{{ 'login.titles.login'|trans }}
+			</h2>
+			<hr/>
+
+			<div>
+				<!-- BEGIN original LOGIN ADD-ON FORM -->
+			    <form class="login-form" action="{# path("fos_user_security_check") #}" method="post">
+			      <!-- <input type="hidden" name="_csrf_token" value="{# csrf_token #}" /> -->
+
+			      <h3 class="form-title">
+			        {# 'loginWelcome.titles.loginTitle'|trans #}
+			      </h3>
+			      <div class="alert alert-danger display-hide">
+			        <button class="close" data-close="alert"></button>
+			        <span>
+			          {# 'loginWelcome.titles.enterUsernameAndPassword'|trans #}
+			        </span>
+			      </div>
+			      <div class="form-group">
+			        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			        <label class="control-label visible-ie8 visible-ie9" for="username">
+			          {# 'loginWelcome.titles.username'|trans #}
+			        </label>
+			        <div class="input-icon">
+			          <i class="fa fa-user"></i>
+			          <input class="form-control placeholder-no-fix" type="text" placeholder="{# 'loginWelcome.titles.username'|trans #}" value="{# last_username #}" id="username" name="_username" required="required" autofocus>
+			        </div>
+			      </div>
+			      <div class="form-group">
+			        <label class="control-label visible-ie8 visible-ie9" for="password">
+			          {# 'loginWelcome.titles.password'|trans #}
+			        </label>
+			        <div class="input-icon">
+			          <i class="fa fa-lock"></i>
+			          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{# 'loginWelcome.titles.password'|trans #}" id="password" name="_password" required="required">
+			        </div>
+			      </div>
+			      <div class="form-actions">
+			        <button type="submit" data-loading-text="{# 'welcome.buttons.loading' | trans #}" class="demo-loading-btn btn blue pull-right">
+			          {# 'loginWelcome.actions.login'|trans #}
+			          <i class="fa fa-sign-in"></i>
+			        </button>
+			        <label for="remember_me" class="checkbox">
+			          <div class="checker">
+			            <span>
+			              <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+			            </span>
+			          </div> 
+			          {# 'loginWelcome.actions.remember_me'|trans #}
+			        </label>
+			      </div>
+
+			      <br/>
+			      <hr/>
+			      
+			      <div class="login-options">
+			        <h4>
+			          {# 'loginWelcome.titles.orLoginWith'|trans #}
+			        </h4>
+			        <ul class="social-icons">
+			          <li>
+			            <a class="facebook" data-original-title="facebook" href="#">
+			            </a>
+			          </li>
+			          <li>
+			            <a class="twitter" data-original-title="Twitter" href="#">
+			            </a>
+			          </li>
+			          <li>
+			            <a class="googleplus" data-original-title="Goole Plus" href="#">
+			            </a>
+			          </li>
+			          <li>
+			            <a class="linkedin" data-original-title="Linkedin" href="#">
+			            </a>
+			          </li>
+			        </ul>
+			      </div>
+			      <div class="forget-password">
+			        <h4>
+			          {# 'loginWelcome.titles.forgetPassword'|trans #}
+			        </h4>
+			        <p>
+			          {# 'loginWelcome.titles.noWorriesClick'|trans #}
+			          <a href="{# path('fos_user_resetting_request') #}">
+			            {# 'loginWelcome.titles.here'|trans #} 
+			          </a> 
+			          {# 'loginWelcome.titles.toResetPassword'|trans #} 
+			        </p>
+			      </div>
+
+			      <hr/>
+
+			      <div class="create-account">
+			        <p>
+			          {# 'loginWelcome.titles.noAccount'|trans #} 
+			          <a href="{# path('fos_user_registration_register') #}">
+			            {# 'loginWelcome.actions.createAccount'|trans #} 
+			          </a>
+			        </p>
+			      </div>
+			    </form>
+			    <!-- END LOGIN FORM -->
+			</div>
+			<!-- END LOGIN MODAL -->
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

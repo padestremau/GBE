@@ -1,29 +1,18 @@
 # General links
 gbe_presentation:
     resource: "@GBEPresentationBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr|   # needs to be null in case no /language is provided
+
 
 gbe_user:
     resource: "@GBEUserBundle/Resources/config/routing.yml"
-    prefix:   /user
-
-# swyca_welcome_trans:
-#     resource: "@SwycaWelcomeBundle/Resources/config/routing.yml"
-#     prefix:   /{_locale}
-#     requirements:
-#         _locale: en|fr|   # needs to be null in case no /language is provided
-
-# swyca_photo:
-#     resource: "@SwycaPhotoBundle/Resources/config/routing.yml"
-#     prefix:   /{_locale}/photo
-#     requirements:
-#         _locale: en|fr
+    prefix:   /{_locale}/user
+    requirements:
+        _locale: en|fr
 
 # USERs
-
-# fos_user_login:
-#     resource: "@SwycaUserBundle/Resources/config/routingLogin.yml"
-#     prefix:     /{_locale}/login
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
