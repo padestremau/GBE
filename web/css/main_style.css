@@ -234,9 +234,8 @@ button {
 }
 
 .participate_button {
-	margin-top : 40%;
-	margin-left: 45%;
-	font-size: 36px !important;
+	font-size: 32px !important;
+	text-align: center;
 }
 
 
