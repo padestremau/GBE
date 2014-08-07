@@ -433,6 +433,26 @@ button {
 	display: inline-block;
 }
 
+.user_box_name {
+	margin-left: 6px;
+}
+
+.nav_profile {
+	width: 34px;
+	border-radius: 17px;
+}
+
+.nav_profile_link {
+	text-decoration: none;
+	color: white;
+	font-size: 13px;
+}
+
+.nav_profile_link:hover {
+	text-decoration: none;
+	color: white;
+	opacity: 0.6;
+}
 
 
 /* Footer */

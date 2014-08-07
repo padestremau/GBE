@@ -1,3 +1,20 @@
+# Profile
+user:
+    titles:
+        profile:            Mon profil
+    actions:
+        edit:               Modifier
+
+# Team
+team:
+    titles:
+        team:               Mon équipe
+    actions:
+        edit:               Modifier
+
+
+
+
 # Register and forgotten password
 registerUser:
     titles:

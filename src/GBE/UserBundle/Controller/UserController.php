@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
-    public function indexAction()
+    public function indexUserAction()
     {
         return $this->render('GBEUserBundle:User:index.html.twig');
     }
 
-    public function teamAction()
+    public function teamUserAction()
     {
         return $this->render('GBEUserBundle:User:team.html.twig');
     }

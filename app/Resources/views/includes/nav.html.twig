@@ -11,8 +11,17 @@
         <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
           <div class="user_box">
-            {{ app.user.username }}
-            
+            <a href="{{ path('gbe_user_homepage') }}" class="nav_profile_link">
+              <img src="{{ asset('img/profile/profil_defaut.png') }}" alt="default" class="nav_profile"/> 
+              <span class="user_box_name">
+                {% if app.user.firstName|length > 0 and app.user.lastName|length > 0 %}
+                  {{ app.user.firstName }}
+                  {{ app.user.lastName }}
+                {% else %}
+                  {{ app.user.username }}
+                {% endif %}
+              </span>
+            </a>
           </div>
         {% else %}
           <a href="{{ path('fos_user_security_login') }}" class="btn btn-login">
