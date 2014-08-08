@@ -40,7 +40,8 @@
       </a> 
     </li>
     <li class="
-          {% if (route == 'gbe_presentation_route') %}
+          {% if (route == 'gbe_presentation_route') or
+              (route == 'gbe_user_selectRoute') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_presentation_route') }}"> 
@@ -138,7 +139,7 @@
 
     <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
     {% if is_granted("ROLE_ADMIN") %}
-    <li class="
+    <li class="menu_administration_li
           {% if (route == 'gbe_user_admin') %}
             active
           {% endif %}"> 
@@ -149,6 +150,36 @@
         </span>
       </a> 
     </li>
+    {% endif %}
+
+    <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    <hr/>
+
+    <li class="menu_settings_li
+          {% if (route == 'gbe_user_settings') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_user_settings') }}"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.settings' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li class="menu_logout_li
+          {% if (route == 'fos_user_security_logout') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('fos_user_security_logout') }}"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.logout' | trans }}
+        </span>
+      </a> 
+    </li>
+
     {% endif %}
     
   </ul>

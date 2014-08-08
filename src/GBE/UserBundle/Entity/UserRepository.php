@@ -12,4 +12,46 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+	public function findByTeam ($team)
+	{
+		return $this->createQueryBuilder('u')
+					->where ('u.team = :team')
+						->setParameter('team', $team)
+					->orderBy('u.lastName', 'ASC')
+					->getQuery()
+					->getResult();
+	}
+
+	public function findWithRouteOrder ($routes)
+	{
+		$members = array();
+		for ($i=0; $i < sizeof($routes); $i++) { 
+			$members[$i] = $this->createQueryBuilder('u')
+									->where ('u.route = :route')
+										->setParameter('route', $routes[$i])
+									->orderBy('u.lastName', 'ASC')
+									->getQuery()
+									->getResult();
+		}
+		return $members;
+	}
+
+	public function findByRoute ($route)
+	{
+		return $this->createQueryBuilder('u')
+					->where ('u.route = :route')
+						->setParameter('route', $route)
+					->orderBy('u.lastName', 'ASC')
+					->getQuery()
+					->getResult();
+	}
+
+	public function findAllUser() {
+		return $members = $this->createQueryBuilder('u')
+								->orderBy('u.team', 'ASC')
+								->getQuery()
+								->getResult();
+	}
+
+	
 }

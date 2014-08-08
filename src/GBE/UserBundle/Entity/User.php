@@ -2,6 +2,14 @@
 
 namespace GBE\UserBundle\Entity;
 
+use GBE\PresentationBundle\Entity\Routes;
+use GBE\UserBundle\Entity\Team;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -51,25 +59,58 @@ class User extends BaseUser
     private $gender;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="route", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="GBE\PresentationBundle\Entity\Routes")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $route;
 
     /**
+     * @ORM\ManyToOne(targetEntity="GBE\UserBundle\Entity\Team")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $team;
+
+    /**
      * @var integer
      *
-     * @ORM\Column(name="teamId", type="integer", nullable=true)
+     * @ORM\Column(name="age", type="integer", nullable=true)
      */
-    private $teamId;
+    private $age;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="team", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
      */
-    private $team;
+    private $tel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address1", type="string", length=255, nullable=true)
+     */
+    private $address1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address2", type="string", length=255, nullable=true)
+     */
+    private $address2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     */
+    private $alt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     */
+    private $url;
 
     /*   *********      construct  *************  */
 
@@ -80,6 +121,8 @@ class User extends BaseUser
 
 
     /*   *********     Setter and getter Functions  *************  */
+
+
 
 
     /**
@@ -185,12 +228,150 @@ class User extends BaseUser
     }
 
     /**
-     * Set route
+     * Set age
      *
-     * @param integer $route
+     * @param integer $age
      * @return User
      */
-    public function setRoute($route)
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return integer 
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param string $tel
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return string 
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set address1
+     *
+     * @param string $address1
+     * @return User
+     */
+    public function setAddress1($address1)
+    {
+        $this->address1 = $address1;
+
+        return $this;
+    }
+
+    /**
+     * Get address1
+     *
+     * @return string 
+     */
+    public function getAddress1()
+    {
+        return $this->address1;
+    }
+
+    /**
+     * Set address2
+     *
+     * @param string $address2
+     * @return User
+     */
+    public function setAddress2($address2)
+    {
+        $this->address2 = $address2;
+
+        return $this;
+    }
+
+    /**
+     * Get address2
+     *
+     * @return string 
+     */
+    public function getAddress2()
+    {
+        return $this->address2;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return User
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string 
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return User
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set route
+     *
+     * @param \GBE\PresentationBundle\Entity\Routes $route
+     * @return User
+     */
+    public function setRoute(\GBE\PresentationBundle\Entity\Routes $route = null)
     {
         $this->route = $route;
 
@@ -200,7 +381,7 @@ class User extends BaseUser
     /**
      * Get route
      *
-     * @return integer 
+     * @return \GBE\PresentationBundle\Entity\Routes 
      */
     public function getRoute()
     {
@@ -208,35 +389,12 @@ class User extends BaseUser
     }
 
     /**
-     * Set teamId
-     *
-     * @param integer $teamId
-     * @return User
-     */
-    public function setTeamId($teamId)
-    {
-        $this->teamId = $teamId;
-
-        return $this;
-    }
-
-    /**
-     * Get teamId
-     *
-     * @return integer 
-     */
-    public function getTeamId()
-    {
-        return $this->teamId;
-    }
-
-    /**
      * Set team
      *
-     * @param string $team
+     * @param \GBE\UserBundle\Entity\Team $team
      * @return User
      */
-    public function setTeam($team)
+    public function setTeam(\GBE\UserBundle\Entity\Team $team = null)
     {
         $this->team = $team;
 
@@ -246,7 +404,7 @@ class User extends BaseUser
     /**
      * Get team
      *
-     * @return string 
+     * @return \GBE\UserBundle\Entity\Team 
      */
     public function getTeam()
     {

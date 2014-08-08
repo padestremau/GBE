@@ -2,9 +2,21 @@ gbe_user_homepage:
     pattern:  /
     defaults: { _controller: GBEUserBundle:User:indexUser }
 
+gbe_user_selectRoute:
+    pattern:  /select/{routeId}
+    defaults: { _controller: GBEUserBundle:User:selectRoute }
+
+gbe_user_confirmRoute:
+    pattern:  /confirm/{routeId}
+    defaults: { _controller: GBEUserBundle:User:confirmRoute }
+
 gbe_user_team:
     pattern:  /team
     defaults: { _controller: GBEUserBundle:User:teamUser }
+
+gbe_user_settings:
+    pattern:  /settings
+    defaults: { _controller: GBEUserBundle:Settings:settingsUser }
 
 gbe_user_admin:
     pattern:  /admin

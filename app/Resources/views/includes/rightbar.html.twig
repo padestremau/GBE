@@ -1,11 +1,9 @@
+{# Pour tout faciliter #}
+{% set route = app.request.attributes.get( '_route' ) %}
+
 <div class="col-md-2" id="rightside">
 
 	<h3>du 23 Octobre <br/> au 2 Novembre</h3>
-
-	<div>
-		{{ 'index.content.numberOfParticipants'|trans }}
-		0
-	</div>
 
 	<br/>
 
@@ -29,10 +27,15 @@
 
     <br/><br/><br/><br/><br/><br/><br/>
 
+    {% if (route != 'gbe_presentation_route') and
+          (route != 'gbe_user_selectRoute') %}
+
     <a href="#" class="btn btn-perso participate_button">
     	{{ 'index.actions.participate'|trans }}
      	<i class="fa fa-sign-in"></i>
     </a>
+
+    {% endif %}
 
     <!-- BEGIN LOGIN ADD-ON -->
       {# include 'includes/loginAddOn.html.twig' #}

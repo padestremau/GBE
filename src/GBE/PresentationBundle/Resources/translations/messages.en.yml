@@ -34,6 +34,8 @@ menu:
         profile:                My profile
         administration:         Administration
         myTeam:                 My team
+        settings:               Settings
+        logout:                 Logout
 
 # Login
 
@@ -70,6 +72,10 @@ bio:
 route:
     titles:
         route:                  Route
+        full:                   Full
+        people:                 Ppl.
+        chosenStep:             Chosen step
+        missing:                Missing:
     content: 
         step:                   Step
         startCity:              Start city:
@@ -79,6 +85,13 @@ route:
         heightNeg:              H- :
         startDate:              Start date:
         endDate:                End date:
+        areYouSure:             Are you really sure you want to  participate to this step?
+        noRouteYetMessage:      Still not part of one of the steps? Hurry up and sign-up asap!
+    actions:
+        cancel:                 Cancel
+        back:                   Back
+        confirm:                Confirm
+        join:                   Join a step
 
 
 # Calendar 

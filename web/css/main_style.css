@@ -105,6 +105,11 @@ h4
 	font-style: italic;
 }
 
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 label {
 	font-weight: 300;
 }
@@ -125,12 +130,48 @@ label {
 	float: right;
 }
 
+.float-center {
+	float: center;
+}
+
 .float-left {
 	float: left;
 }
 
 .bold {
 	font-weight: 800;
+}
+
+.font10 {
+	font-size: 10px;
+}
+
+.font12 {
+	font-size: 12px;
+}
+
+.font14 {
+	font-size: 14px;
+}
+
+.font16 {
+	font-size: 16px;
+}
+
+.font18 {
+	font-size: 18px;
+}
+
+.font20 {
+	font-size: 20px;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.list_no_style_li {
+	list-style-type: none;
 }
 
 .language_flag {
@@ -214,6 +255,24 @@ button {
 	-moz-transition: 0.3s;
 	-o-transition: 0.3s;
 	-ms-transition: 0.3s;
+}
+
+.cancel_button {
+	margin-left : 20%;
+	background-color: rgba(176, 42, 44, 0.3);
+}
+
+.cancel_button:hover {
+	background-color: rgba(176, 42, 44, 0.8);
+}
+
+.validate_button {
+	margin-right: 20%;
+	background-color: rgba(42, 166, 44, 0.3);
+}
+
+.validate_button:hover {
+	background-color: rgba(42, 166, 44, 0.8);
 }
 
 
@@ -306,7 +365,13 @@ button {
 {	background-color: #db0404;
 }
 
+.menu_settings_li {
+	background-color: rgba(210,210,210,0.92);
+}
 
+.menu_administration_li, .menu_logout_li {
+	background-color: rgba(161, 42, 40, 0.2);
+}
 
 
 /* Right side */
@@ -422,7 +487,7 @@ button {
 
 /* User */ 
 .checkbox {
-	margin-left: 2px;
+	margin-left: 20px;
 }
 
 .user_login {
@@ -453,6 +518,52 @@ button {
 	color: white;
 	opacity: 0.6;
 }
+
+.avatar_profile {
+	width: 150px;
+	margin: auto;
+	border-radius: 75px;
+}
+
+.avatar_team {
+	width: 110px;
+	margin: auto;
+	border-radius: 55px;
+}
+
+.teamleader_avatar {
+	border : 3px solid red;
+}
+
+.change_avatar {
+	padding: 3px;
+}
+
+
+/* Admin */
+.single_admin_member {
+	width: 60%;
+}
+
+.avatar_admin {
+	width: 30px;
+	border-radius: 15px;
+}
+
+.team_admin {
+	margin-left: 12%;
+}
+
+.email_button {
+	background-color: rgba(26, 54, 108, 0.5);
+}
+
+.admin_ok {
+	width : 20px;
+	border-radius: 10px;
+	opacity: 0.7;
+}
+
 
 
 /* Footer */

@@ -12,9 +12,16 @@ class RouteController extends Controller
                         ->getManager()
                         ->getRepository('GBEPresentationBundle:Routes')
                         ->findAllRoutes();
+
+        $members = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEUserBundle:User')
+                        ->findAllUser();
         
-        return $this->render('GBEPresentationBundle:Route:route.html.twig', 
-        	array(  'routes' => $routes	));
+        return $this->render('GBEPresentationBundle:Route:route.html.twig', array(  
+            'routes' => $routes,
+            'members' => $members
+            ));
     }
 
     public function calendarAction()

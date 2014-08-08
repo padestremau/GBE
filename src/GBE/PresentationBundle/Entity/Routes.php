@@ -108,12 +108,12 @@ class Routes
 
     /*   *********      construct  *************  */
 
-    public function __construct()
-    {
-        $this->createdAt         = new \Datetime;
-        $this->updatedAt         = new \Datetime;
+    // public function __construct()
+    // {
+    //     $this->createdAt         = new \Datetime;
+    //     $this->updatedAt         = new \Datetime;
 
-    }
+    // }
 
 
     /*   *********     Setter and getter Functions  *************  */

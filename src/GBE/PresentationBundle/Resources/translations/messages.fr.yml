@@ -34,6 +34,8 @@ menu:
         profile:                Mon profil
         administration:         Administration
         myTeam:                 Mon équipe
+        settings:               Paramètres
+        logout:                 Déconnexion
 
 # Login
 
@@ -70,6 +72,10 @@ bio:
 route:
     titles:
         route:                  Parcours
+        full:                   Complet
+        people:                 Pers.
+        chosenStep:             Etape choisie
+        missing:                Manque :
     content: 
         step:                   Etape
         startCity:              Départ de :
@@ -79,6 +85,13 @@ route:
         heightNeg:              D- :
         startDate:              Date de départ :
         endDate:                Date d'arrivée :
+        areYouSure:             Es-tu certain de vouloir participer à ce tronçon ?
+        noRouteYetMessage:      Toujours pas enrôlé dans un tronçon ? Fonce !
+    actions:
+        cancel:                 Annuler
+        back:                   Retour
+        confirm:                Valider
+        join:                   Rejoindre un tronçon
 
 
 # Calendar 

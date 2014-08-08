@@ -1,0 +1,150 @@
+{# src/GBE/UserBundle/Resources/User/routeConfirmation.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'route.content.step'|trans }} {{ routeSelected.id }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<a href="{{ path('gbe_presentation_route') }}" class="btn btn-perso float-right">
+			    	{{ 'route.actions.cancel'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			</div>
+
+			<h2>
+				{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ routeSelected.id }}
+			</h2>
+			<hr/>
+
+
+			<div class="single_route">
+				<h3>
+					{{ routeSelected.name }}
+				</h3>
+
+				<div class="row">
+					<div class="col-md-6">
+						<img src="{{ asset(routeSelected.url) }}" alt="{{ routeSelected.alt }}" class="route_img"/>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-5 right bold">
+								{{ 'route.content.startCity'|trans }}
+							</div>
+							<div class="col-md-7 left">
+								{{ routeSelected.startCity }}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5 right bold">
+								{{ 'route.content.endCity'|trans }}
+							</div>
+							<div class="col-md-7 left">
+								{{ routeSelected.endCity }}
+							</div>
+						</div>
+
+						<hr/>
+
+						<div class="row">
+							<div class="col-md-5 right bold">
+								{{ 'route.content.length'|trans }}
+								<br/>
+								{{ 'route.content.heightPos'|trans }}
+								<br/>
+								{{ 'route.content.heightNeg'|trans }}
+							</div>
+							<div class="col-md-3 left">
+								{{ routeSelected.length }}
+								<br/>
+								{{ routeSelected.heightPos }}
+								<br/>
+								{{ routeSelected.heightNeg }}
+							</div>
+							<div class="col-md-4 right">
+								<div>
+									{% set number_participants = 0 %}
+									{% for member in members %}
+										{% if member.team %}
+											{% if member.team.id == routeSelected.id %}
+												{% set number_participants = number_participants + 1 %}
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+
+									
+									<div class="float-right bold">
+										{{ number_participants }} {{ 'route.titles.people'|trans }}
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<hr/>
+
+						<div class="row">
+							<div class="col-md-5 right bold">
+								{{ 'route.content.startDate'|trans }}
+							</div>
+							<div class="col-md-7 left">
+								{{ routeSelected.startDate|date('d M Y') }} - {{ routeSelected.startDate|date('h:i') }}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-5 right bold">
+								{{ 'route.content.endDate'|trans }}
+							</div>
+							<div class="col-md-7 left">
+								{{ routeSelected.endDate|date('d M Y') }} - {{ routeSelected.endDate|date('h:i') }}
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			<hr/>
+			<br/>
+
+			<div class="center">
+				{{ 'route.content.areYouSure'|trans }}
+			</div>
+
+			<br/><br/>
+
+
+			<a href="{{ path('gbe_presentation_route') }}" class="btn btn-perso float-left cancel_button">
+		    	{{ 'route.actions.back'|trans }}
+		     	<i class="fa fa-sign-in"></i>
+		    </a>
+
+		    <a href="{{ path('gbe_user_confirmRoute', {'routeId':routeSelected.id}) }}" class="btn btn-perso float-right validate_button">
+		    	{{ 'route.actions.confirm'|trans }}
+		     	<i class="fa fa-sign-in"></i>
+		    </a>
+
+
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

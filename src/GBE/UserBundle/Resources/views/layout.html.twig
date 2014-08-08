@@ -28,7 +28,7 @@
 
           <div>
             <!-- BEGIN FORGOT PASSWORD FORM -->
-            <form class="forget-form" action="{{ path('fos_user_resetting_reset', {'token': csrf_token}) }}" method="post" novalidate="novalidate">
+            <form class="forget-form" action="{{ path('fos_user_resetting_reset', {'token': csrf_token}) }}" method="post">
               <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
               <p>
@@ -116,7 +116,6 @@
           <div>
             <!-- BEGIN REGISTRATION FORM -->
             <form class="register-form" action="{{ path('fos_user_registration_register') }}" method="post" novalidate="novalidate">
-              
               <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">
                   {{ 'registerUser.titles.username'|trans }}

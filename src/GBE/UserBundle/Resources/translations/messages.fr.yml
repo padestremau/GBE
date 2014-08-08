@@ -4,6 +4,16 @@ user:
         profile:            Mon profil
     actions:
         edit:               Modifier
+        change:             Changer l'avatar
+        changeRoute:        Echanger
+    details: 
+        firstName:          Prénom :
+        lastName:           Nom :
+        gender:             Sexe :
+        email:              Email :
+        tel:                Tel :
+        age:                Âge :
+        address:            Adresse :
 
 # Team
 team:
@@ -11,6 +21,10 @@ team:
         team:               Mon équipe
     actions:
         edit:               Modifier
+        joinATeam:          Rejoindre/Créer une équipe
+    default: 
+        noName:             Aucun nom ...
+        noTeamYetMessage:   Vous n'avez pas encore rejoint d'équipe. Désirez-vous prendre part à la course ?
 
 
 
@@ -73,3 +87,12 @@ login:
         anyComments:    Des commentaires à propos de SWYCA ?
         feelFreeTo:     "N'hésitez pas à nous"
         tellUs:         en faire part
+
+
+# Admin
+admin:
+    titles:
+        admin:          Administration
+    actions:
+        edit:           Edit
+        sendEmail:      Mail à toute l'équipe

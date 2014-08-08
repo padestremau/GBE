@@ -57,36 +57,64 @@
 								<div class="row">
 									<div class="col-md-5 right bold">
 										{{ 'route.content.length'|trans }}
+										<br/>
+										{{ 'route.content.heightPos'|trans }}
+										<br/>
+										{{ 'route.content.heightNeg'|trans }}
 									</div>
 									<div class="col-md-3 left">
 										{{ route.length }}
+										<br/>
+										{{ route.heightPos }}
+										<br/>
+										{{ route.heightNeg }}
 									</div>
 									<div class="col-md-4 right">
 										<div>
-											<button class="btn btn-perso float-right">
-										    	{{ 'index.actions.join'|trans }}
-										     	<i class="fa fa-sign-in"></i>
-										    </button>
+											{% set number_participants = 0 %}
+											{% for member in members %}
+												{% if member.team %}
+													{% if member.team.id == route.id %}
+														{% set number_participants = number_participants + 1 %}
+													{% endif %}
+												{% endif %}
+											{% endfor %}
+
+											{% if route.id == 3 or route.id == 8 %}
+												{% set number_participants = 4 %}
+											{% endif %}
+
+											{% if number_participants < 4 %}
+												{% if app.user.team %}
+													<button class="btn float-right">
+														- - -
+													</button>
+												{% else %}
+													<a href="
+														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+															{{ path('gbe_user_selectRoute', {'routeId' : route.id}) }}
+														{% else %}
+															{{ path('fos_user_registration_register') }}
+														{% endif %}
+															" class="btn btn-perso float-right">
+												    	{{ 'index.actions.join'|trans }}
+												     	<i class="fa fa-sign-in"></i>
+												    </a>
+												{% endif %}
+											{% else %}
+												<button class="btn float-right">
+													{{ 'route.titles.full'|trans }}
+												</button>
+											{% endif %}
+											<br/>
+											<br/>
+											<div class="float-right bold">
+												{{ number_participants }} {{ 'route.titles.people'|trans }}
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-5 right bold">
-										{{ 'route.content.heightPos'|trans }}
-									</div>
-									<div class="col-md-7 left">
-										{{ route.heightPos }}
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-5 right bold">
-										{{ 'route.content.heightNeg'|trans }}
-									</div>
-									<div class="col-md-7 left">
-										{{ route.heightNeg }}
-									</div>
-								</div>
-
+								
 								<hr/>
 
 								<div class="row">

@@ -1,12 +1,12 @@
-{# src/GBE/PresentationBundle/Resources/Media/media.html.twig #}
+{# src/GBE/UserBundle/Resources/Admin/indexSettings.html.twig #}
 
-{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+{% extends "GBEUserBundle::user_general.html.twig" %}
 
 {% block title %}
-  {{ parent() }} - {{ 'media.titles.media' | trans }}
+  {{ parent() }} - {{ 'settings.titles.settings' | trans }}
 {% endblock %}
 
-{% block GBE_Presentation_body %}
+{% block GBE_User_body %}
 
 	<!-- BEGIN leftbar -->
       {% include 'includes/leftbar.html.twig' %}
@@ -19,22 +19,18 @@
 
 			<div>
 				<button class="btn btn-perso float-right">
-			    	{{ 'index.actions.askForMore'|trans }}
+			    	{{ 'settings.actions.edit'|trans }}
 			     	<i class="fa fa-sign-in"></i>
 			    </button>
 			</div>
 
 			<h2>
-				{{ 'media.titles.media'|trans }}
+				{{ 'settings.titles.settings'|trans }}
 			</h2>
 			<hr/>
 
-			<div>
-				{{ 'index.content.numberOfParticipants'|trans }}
-				{{ number_of_participants }}
-			</div>
 
-
+			
 			
 		</div>
 		<!-- END CONTENT -->
@@ -45,4 +41,4 @@
       {% include 'includes/rightbar.html.twig' %}
     <!-- END rightbar -->
 
-{% endblock GBE_Presentation_body %}
+{% endblock GBE_User_body %}

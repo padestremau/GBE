@@ -2,12 +2,12 @@
 // src/GBE/PresentationBundle/DataFixtures/ORM/Routes.php
 
 namespace GBE\PresentationBundle\DataFixtures\ORM;
-
+use GBE\PresentationBundle\Entity\Routes;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use GBE\PresentationBundle\Entity\Routes;
 
-class Routes implements FixtureInterface
+
+class RoutesFixtures implements FixtureInterface
 {
   // Dans l'argument de la méthode load, l'objet $manager est l'EntityManager
   public function load(ObjectManager $manager)
@@ -97,7 +97,7 @@ class Routes implements FixtureInterface
         );
 
     $start_date = array(
-        '1'=>"2014-10-24 18:00:00",
+        '1'=> "2014-10-24 18:00:00",
         '2'=>"2014-10-25 11:30:00",
         '3'=>"2014-10-26 07:45:00",
         '4'=>"2014-10-27 01:45:00",
@@ -148,8 +148,8 @@ class Routes implements FixtureInterface
         $route->setHeightNeg($height_neg[$i]);
         $route->setStartCity($start_city[$i]);
         $route->setEndCity($end_city[$i]);
-        $route->setStartDate($start_date[$i]);
-        $route->setEndDate($end_date[$i]);
+        // $route->setStartDate($start_date[$i]);
+        // $route->setEndDate($end_date[$i]);
         $route->setUrl($url[$i]);
         $route->setAlt($names_routes[$i]);
         $manager->persist($route);

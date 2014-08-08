@@ -4,6 +4,16 @@ user:
         profile:            My profile
     actions:
         edit:               Edit
+        change:             Change pic
+        changeRoute:        Switch
+    details: 
+        firstName:          First name:
+        lastName:           Last name:
+        gender:             Gender:
+        email:              Email:
+        tel:                Tel:
+        age:                Age:
+        address:            Address:
 
 # Team
 team:
@@ -11,7 +21,10 @@ team:
         team:               My team
     actions:
         edit:               Edit
-
+        joinATeam:          Join/Create a team
+    default: 
+        noName:             No name so far...
+        noTeamYetMessage:   You haven't joined any team yet. Do you want to participate ?
 
 
 
@@ -73,3 +86,14 @@ login:
         anyComments:    Any comments about SWYCA you would like to share?
         feelFreeTo:     Feel free to 
         tellUs:         tell us
+
+
+
+
+# Admin
+admin:
+    titles:
+        admin:          Administration
+    actions:
+        edit:           Edit
+        sendEmail:      Send email to team

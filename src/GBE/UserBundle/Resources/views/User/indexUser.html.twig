@@ -1,0 +1,264 @@
+{# src/GBE/UserBundle/Resources/User/indexUser.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'user.titles.profile' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<button class="btn btn-perso float-right">
+			    	{{ 'user.actions.edit'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </button>
+			</div>
+
+			<h2>
+				{{ 'user.titles.profile'|trans }}
+			</h2>
+			<hr/>
+
+
+			<div>
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-4 right">
+							<ul class="list_no_style_li">
+								<li class="bold">
+									{{ 'user.details.firstName'|trans }}
+								</li>
+								<li class="bold">
+									{{ 'user.details.lastName'|trans }}
+								</li>
+								<li class="bold">
+									{{ 'user.details.gender'|trans }}
+								</li>
+								<li class="bold">
+									{{ 'user.details.email'|trans }}
+								</li>
+								<li class="bold">
+									{{ 'user.details.tel'|trans }}
+								</li>
+								<li class="bold">
+									{{ 'user.details.age'|trans }}
+								</li>
+								<li class="bold">
+									{{ 'user.details.address'|trans }}
+								</li>
+								<li class="bold">
+									<br/>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-8 left">
+							<ul class="list_no_style_li">
+								<li>
+									{% if app.user.firstName|length > 0 %}
+										{{ app.user.firstName }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.lastName|length > 0 %}
+										{{ app.user.lastName }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.gender|length > 0 %}
+										{{ app.user.gender }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.email|length > 0 %}
+										<a href="mailto:{{ app.user.email }}">{{ app.user.email }}</a>
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.tel|length > 0 %}
+										{{ app.user.tel }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.age|length > 0 %}
+										{{ app.user.age }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.address1|length > 0 %}
+										{{ app.user.address1 }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+								<li>
+									{% if app.user.address2|length > 0 %}
+										{{ app.user.address2 }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="profile" class="avatar_profile" />
+					<div>
+						<button class="btn float-right change_avatar">
+					    	{{ 'user.actions.change'|trans }}
+					     	<i class="fa fa-sign-in"></i>
+					    </button>
+					</div>
+				</div>
+			</div>
+
+			<br/><br/>
+
+			{% if app.user.route %}
+
+				<h2>
+					{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ app.user.route.id }}
+				</h2>
+				<hr/>
+
+
+				<div class="single_route">
+					<h3>
+						{{ app.user.route.name }}
+					</h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<img src="{{ asset(app.user.route.url) }}" alt="{{ app.user.route.alt }}" class="route_img"/>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-5 right bold">
+									{{ 'route.content.startCity'|trans }}
+								</div>
+								<div class="col-md-7 left">
+									{{ app.user.route.startCity }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 right bold">
+									{{ 'route.content.endCity'|trans }}
+								</div>
+								<div class="col-md-7 left">
+									{{ app.user.route.endCity }}
+								</div>
+							</div>
+
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-5 right bold">
+									{{ 'route.content.length'|trans }}
+									<br/>
+									{{ 'route.content.heightPos'|trans }}
+									<br/>
+									{{ 'route.content.heightNeg'|trans }}
+								</div>
+								<div class="col-md-3 left">
+									{{ app.user.route.length }}
+									<br/>
+									{{ app.user.route.heightPos }}
+									<br/>
+									{{ app.user.route.heightNeg }}
+								</div>
+								<div class="col-md-4 right">
+									<a href="{{ path('gbe_presentation_route') }}" class="btn btn-perso float-right">
+								    	{{ 'user.actions.changeRoute'|trans }}
+								     	<i class="fa fa-sign-in"></i>
+								    </a>
+								</div>
+							</div>
+							
+							<hr/>
+
+							<div class="row">
+								<div class="col-md-5 right bold">
+									{{ 'route.content.startDate'|trans }}
+								</div>
+								<div class="col-md-7 left">
+									{{ app.user.route.startDate|date('d M Y') }} - {{ app.user.route.startDate|date('h:i') }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 right bold">
+									{{ 'route.content.endDate'|trans }}
+								</div>
+								<div class="col-md-7 left">
+									{{ app.user.route.endDate|date('d M Y') }} - {{ app.user.route.endDate|date('h:i') }}
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+
+			{% else %}
+
+				<h2>
+					{{ 'route.titles.chosenStep'|trans }} : 
+				</h2>
+				<hr/>
+
+				<div class="center">
+					<p>
+						<br/><br/><br/><br/>
+					</p>
+					<p class="center">
+						{{ 'route.content.noRouteYetMessage'|trans }}
+					</p>
+					<p>
+						<br/><br/><br/><br/>
+					</p>
+					<a href="
+    					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							{{ path('gbe_presentation_route') }}
+						{% else %}
+							{{ path('fos_user_registration_register') }}
+						{% endif %}
+						" class="btn btn-perso font18">
+				    	{{ 'route.actions.join'|trans }}
+				     	<i class="fa fa-sign-in"></i>
+				    </a>
+				</div>
+
+
+			{% endif %}
+
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}
