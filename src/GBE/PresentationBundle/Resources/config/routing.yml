@@ -32,7 +32,11 @@ gbe_presentation_photos:
 
 gbe_presentation_contact:
     pattern:  /contact
-    defaults: { _controller: GBEPresentationBundle:Presentation:contact }
+    defaults: { _controller: GBEPresentationBundle:Contact:contact }
+
+gbe_presentation_send:
+    pattern:  /send
+    defaults: { _controller: GBEPresentationBundle:Contact:send }
 
 gbe_presentation_live:
     pattern:  /live

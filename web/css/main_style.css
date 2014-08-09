@@ -15,7 +15,7 @@ body
 	background-size: 1260px;
 	background-position: center top;*/
 
-	background-color: rgba(248,248,248,0.95) !important;
+	background-color: rgba(248,248,248,0.65) !important;
 
 	font-family: 'zektonregular';
 
@@ -29,6 +29,15 @@ body
 
 .row {
 	width: 100%;
+}
+.margin0 {
+	margin:0;
+}
+.margin_left_10 {
+	margin-left: 10px;
+}
+.margin_right_10 {
+	margin-right: 10px;
 }
 .col-md-1 {
 	width: 8%;
@@ -90,6 +99,7 @@ h2
 	margin: 8px 0 0 0;
 	font-size : 22px;
 	color: black; /*#922e2e*/
+	text-align: left;
 }
 
 h3
@@ -196,6 +206,18 @@ a:hover {
 	text-decoration: underline;
 }
 
+.no_style_a {
+	color: black;
+	text-decoration: none;
+	font-style: normal;
+}
+
+.no_style_a:hover {
+	color: black;
+	text-decoration: none;
+	font-style: normal;
+}
+
 p {	
 	margin: 5px 10px 5px 10px;
 	text-align: justify;
@@ -275,6 +297,13 @@ button {
 	background-color: rgba(42, 166, 44, 0.8);
 }
 
+.warning_btn {
+	background-color: rgba(176, 42, 44, 0.3);
+}
+
+.warning_btn {
+	background-color: rgba(176, 42, 44, 0.8);
+}
 
 
 /* Accueil */
@@ -304,6 +333,10 @@ button {
 	padding: 3px 10px 3px 10px;
 
 	height : 660px;
+}
+
+#rightside {
+	width: 17.5%;
 }
 
 #menu ul {
@@ -363,10 +396,6 @@ button {
 
 #menu li.administration
 {	background-color: #db0404;
-}
-
-.menu_settings_li {
-	background-color: rgba(210,210,210,0.92);
 }
 
 .menu_administration_li, .menu_logout_li {
@@ -532,11 +561,28 @@ button {
 }
 
 .teamleader_avatar {
-	border : 3px solid red;
+	border : 1px solid red;
 }
 
 .change_avatar {
 	padding: 3px;
+}
+
+.form-group {
+	width : 96%;
+	margin-left: 2%;
+}
+
+.edit_profile .control-label {
+	float: left;
+	text-align: right;
+	width : 30%;
+	margin-top: 8px;
+}
+
+.edit_profile .input-icon {
+	width : 60%;
+	float: right;
 }
 
 
@@ -581,7 +627,7 @@ button {
 	font-size: 10px;
 	text-align: center;
 	margin: 0;
-	color : #666666;
+	color : white; /*#666666;*/
 }
 
 #liens_footer ul
@@ -599,7 +645,7 @@ button {
 
 #liens_footer a
 {	text-decoration: none;
-	color : white;
+	color : white;/*#666666;*/
 }
 
 #liens_footer a:hover

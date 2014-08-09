@@ -1,0 +1,163 @@
+{# src/GBE/UserBundle/Resources/User/indexUser.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'user.titles.profile' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<button class="btn btn-perso float-right">
+			    	{{ 'user.actions.cancel'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </button>
+			</div>
+
+			<h2>
+				{{ 'user.titles.profile'|trans }}
+			</h2>
+			<hr/>
+
+
+        	<form method="post" {{ form_enctype(formEditUser) }}>
+				<div class="edit_profile">
+					<div class="form-group row">
+						{% set username_title = 'user.details.username' | trans %}
+						{{ form_label(formEditUser.username, username_title, 
+							{'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.username) }}
+						<div class="input-icon">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_username = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'j.doe', 'value':app.user.username, 'id':'username', 
+				        		'name':'_username', 'required':'required', 'autofocus':''}} %}
+				        	{{ form_widget(formEditUser.username, opt_username) }}
+				        </div>
+					</div>
+					<div class="form-group row">
+						{% set firstName_title = 'user.details.firstName' | trans %}
+				        {{ form_label(formEditUser.firstName, firstName_title, 
+				        	{'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.firstName) }}
+						<div class="input-icon">
+				        	<i class="fa fa-user"></i>
+				        	{% set opt_firstname = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'John', 'value':app.user.firstName, 'id':'firstName', 
+				        		'name':'_firstName'}} %}
+				        	{{ form_widget(formEditUser.firstName, opt_firstname) }}
+				        </div>
+					</div>
+					<div class="form-group row">
+						{% set lastName_title = 'user.details.lastName' | trans %}
+				        {{ form_label(formEditUser.lastName, lastName_title, 
+				        	{'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.lastName) }}
+						<div class="input-icon">
+				        	<i class="fa fa-group"></i>
+				        	{% set opt_lastname = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'Doe', 'value':app.user.lastName, 'id':'lastName', 
+				        		'name':'_lastName'}} %}
+				        	{{ form_widget(formEditUser.lastName, opt_lastname) }}
+				        </div>
+					</div>
+					<div class="form-group row">
+						{% set email_title = 'user.details.email' | trans %}
+				        {{ form_label(formEditUser.email, email_title, {'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.email) }}
+						<div class="input-icon">
+				        	<i class="fa fa-envelope"></i>
+				        	{% set opt_email = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'j.doe@gmail.com', 'value':app.user.email, 'id':'email', 
+				        		'name':'_email', 'required':'required'}} %}
+				        	{{ form_widget(formEditUser.email, opt_email) }}
+				        </div>
+					</div>
+					<div class="form-group row">
+						{% set gender_title = 'user.details.gender' | trans %}
+				        {{ form_label(formEditUser.gender, gender_title, {'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.gender) }}
+						<div class="input-icon">
+				        	{% set opt_gender = {'attr': {'class': 'form-control select2',
+				        		'type':'text', 'id':'gender', 'name':'_gender'}} %}
+				        	{{ form_widget(formEditUser.gender, opt_gender) }}
+				        </div>
+					</div>
+			        <div class="form-group row">
+			        	{% set country_title = 'user.details.country' | trans %}
+						{{ form_label(formEditUser.country, country_title, 
+							{'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.country) }}
+						<div class="input-icon">
+							{% set opt_country = {'attr': {'class': 'form-control select2',
+				        		'type':'text', 'id':'country', 'name':'_country'}} %}
+				        	{{ form_widget(formEditUser.country, opt_country) }}
+						</div>
+					</div>
+					<div class="form-group row">
+						{% set tel_title = 'user.details.tel' | trans %}
+				        {{ form_label(formEditUser.tel, tel_title, {'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.tel) }}
+						<div class="input-icon">
+				        	<i class="fa fa-envelope"></i>
+				        	{% set opt_tel = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'+33 6 45 36 37 22', 'value':app.user.tel, 'id':'tel', 
+				        		'name':'_tel'}} %}
+				        	{{ form_widget(formEditUser.tel, opt_tel) }}
+				        </div>
+					</div>
+					<div class="form-group row">
+						{% set address1_title = 'user.details.address' | trans %}
+				        {{ form_label(formEditUser.address1, address1_title, {'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditUser.address1) }}
+						<div class="input-icon">
+				        	<i class="fa fa-envelope"></i>
+				        	{% set opt_address1 = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'45, rue la Loutre', 'value':app.user.address1, 'id':'address1', 
+				        		'name':'_address1'}} %}
+				        	{{ form_widget(formEditUser.address1, opt_address1) }}
+				        </div>
+					</div>
+					<div class="form-group row">
+						{{ form_errors(formEditUser.address2) }}
+						<div class="input-icon">
+				        	<i class="fa fa-envelope"></i>
+				        	{% set opt_address2 = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'Paris 75000', 'value':app.user.address2, 'id':'address2', 
+				        		'name':'_address2'}} %}
+				        	{{ form_widget(formEditUser.address2, opt_address2) }}
+				        </div>
+					</div>
+
+					<div>
+						<br/><br/>
+					</div>
+
+					<a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-left cancel_button">
+						{{ 'user.actions.back' | trans }}
+					</a>
+					<input type="submit" class="btn btn-perso  float-right validate_button"  
+						value="{{'user.actions.save' | trans }}"/>
+				</div>
+			</form>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

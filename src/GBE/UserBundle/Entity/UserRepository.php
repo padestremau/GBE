@@ -26,12 +26,19 @@ class UserRepository extends EntityRepository
 	{
 		$members = array();
 		for ($i=0; $i < sizeof($routes); $i++) { 
-			$members[$i] = $this->createQueryBuilder('u')
+			$arrayTemp = $this->createQueryBuilder('u')
 									->where ('u.route = :route')
 										->setParameter('route', $routes[$i])
 									->orderBy('u.lastName', 'ASC')
 									->getQuery()
 									->getResult();
+
+			if (sizeof($arrayTemp) != 0) {
+				$members[$i] = $arrayTemp;
+			}
+			else {
+				$members[$i] = '';	
+			}
 		}
 		return $members;
 	}

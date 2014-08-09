@@ -43,7 +43,7 @@ class Team
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="GBE\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="GBE\UserBundle\Entity\User")
      * @ORM\JoinColumn(nullable=true)
      */
     private $leader;
@@ -126,5 +126,28 @@ class Team
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set leader
+     *
+     * @param \GBE\UserBundle\Entity\User $leader
+     * @return Team
+     */
+    public function setLeader(\GBE\UserBundle\Entity\User $leader = null)
+    {
+        $this->leader = $leader;
+
+        return $this;
+    }
+
+    /**
+     * Get leader
+     *
+     * @return \GBE\UserBundle\Entity\User 
+     */
+    public function getLeader()
+    {
+        return $this->leader;
     }
 }

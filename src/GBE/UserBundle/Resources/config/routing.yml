@@ -2,6 +2,18 @@ gbe_user_homepage:
     pattern:  /
     defaults: { _controller: GBEUserBundle:User:indexUser }
 
+gbe_user_edit:
+    pattern:  /edit/infos
+    defaults: { _controller: GBEUserBundle:User:editUser }
+
+gbe_user_editAvatar:
+    pattern:  /edit/avatar
+    defaults: { _controller: GBEUserBundle:User:editAvatar }
+
+gbe_user_editPassword:
+    pattern:  /edit/password
+    defaults: { _controller: GBEUserBundle:User:editPassword }
+
 gbe_user_selectRoute:
     pattern:  /select/{routeId}
     defaults: { _controller: GBEUserBundle:User:selectRoute }
@@ -14,9 +26,9 @@ gbe_user_team:
     pattern:  /team
     defaults: { _controller: GBEUserBundle:User:teamUser }
 
-gbe_user_settings:
-    pattern:  /settings
-    defaults: { _controller: GBEUserBundle:Settings:settingsUser }
+gbe_user_editTeamName:
+    pattern:  /edit/team/name
+    defaults: { _controller: GBEUserBundle:User:editTeamName }
 
 gbe_user_admin:
     pattern:  /admin

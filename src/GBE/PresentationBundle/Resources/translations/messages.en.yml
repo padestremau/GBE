@@ -87,11 +87,13 @@ route:
         endDate:                End date:
         areYouSure:             Are you really sure you want to  participate to this step?
         noRouteYetMessage:      Still not part of one of the steps? Hurry up and sign-up asap!
+        areYouSureChange:       Are you sure you wish to change?
     actions:
         cancel:                 Cancel
         back:                   Back
         confirm:                Confirm
         join:                   Join a step
+        change:                 Change
 
 
 # Calendar 
@@ -106,6 +108,8 @@ calendar:
 partners:
     titles:
         partners:               Partnerships
+    default: 
+        waitingMessage:         "Feel free to join our team of sponsors, by sending us your details!"
 
 
 # Media

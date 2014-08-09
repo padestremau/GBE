@@ -3,17 +3,28 @@ user:
     titles:
         profile:            My profile
     actions:
-        edit:               Edit
+        edit:               Edit infos
         change:             Change pic
         changeRoute:        Switch
+        back:               Back
+        save:               Save
+        cancel:             Cancel
+        changePassword:     Change password
     details: 
+        username :          Username:
         firstName:          First name:
         lastName:           Last name:
         gender:             Gender:
         email:              Email:
         tel:                Tel:
+        country:            Country:
         age:                Age:
         address:            Address:
+        team:               Team:
+        male:               Male
+        female:             Female
+        avatar:             Profile picture
+        changeAvatar:       Please select a new profile picture:
 
 # Team
 team:
@@ -22,6 +33,11 @@ team:
     actions:
         edit:               Edit
         joinATeam:          Join/Create a team
+        back:               Back
+        save:               Save
+        cancel:             Cancel
+    details:
+        name:               Name of the team
     default: 
         noName:             No name so far...
         noTeamYetMessage:   You haven't joined any team yet. Do you want to participate ?
@@ -97,3 +113,7 @@ admin:
     actions:
         edit:           Edit
         sendEmail:      Send email to team
+        sendEmailOther: Mail à tous les autres
+    content:
+        step:           Step
+        others:         Other members

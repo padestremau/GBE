@@ -1,12 +1,12 @@
-{# src/GBE/UserBundle/Resources/Admin/indexSettings.html.twig #}
+{# src/GBE/PresentationBundle/Resources/Presentation/contact.html.twig #}
 
-{% extends "GBEUserBundle::user_general.html.twig" %}
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
 
 {% block title %}
-  {{ parent() }} - {{ 'settings.titles.settings' | trans }}
+  {{ parent() }} - {{ 'contact.titles.contact' | trans }}
 {% endblock %}
 
-{% block GBE_User_body %}
+{% block GBE_Presentation_body %}
 
 	<!-- BEGIN leftbar -->
       {% include 'includes/leftbar.html.twig' %}
@@ -17,20 +17,14 @@
 		<!-- BEGIN CONTENT -->
 		<div class="content">
 
-			<div>
-				<button class="btn btn-perso float-right">
-			    	{{ 'settings.actions.edit'|trans }}
-			     	<i class="fa fa-sign-in"></i>
-			    </button>
-			</div>
-
 			<h2>
-				{{ 'settings.titles.settings'|trans }}
+				{{ 'contact.titles.thankYou'|trans }}
 			</h2>
 			<hr/>
 
-
-			
+			<p>
+				Message sent
+			</p>
 			
 		</div>
 		<!-- END CONTENT -->
@@ -41,4 +35,4 @@
       {% include 'includes/rightbar.html.twig' %}
     <!-- END rightbar -->
 
-{% endblock GBE_User_body %}
+{% endblock GBE_Presentation_body %}

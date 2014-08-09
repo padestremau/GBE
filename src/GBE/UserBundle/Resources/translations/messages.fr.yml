@@ -3,17 +3,28 @@ user:
     titles:
         profile:            Mon profil
     actions:
-        edit:               Modifier
+        edit:               Modifier ses infos
         change:             Changer l'avatar
         changeRoute:        Echanger
+        back:               Retour
+        save:               Enregistrer
+        cancel:             Annuler
+        changePassword:     Changer de mot de passe
     details: 
+        username :          Pseudo :
         firstName:          Prénom :
         lastName:           Nom :
         gender:             Sexe :
         email:              Email :
         tel:                Tel :
+        country:            Pays :
         age:                Âge :
         address:            Adresse :
+        team:               Equipe :
+        male:               Homme
+        female:             Femme
+        avatar:             Mon avatar
+        changeAvatar:       Sélectionner une nouvelle photo :
 
 # Team
 team:
@@ -22,6 +33,11 @@ team:
     actions:
         edit:               Modifier
         joinATeam:          Rejoindre/Créer une équipe
+        back:               Retour
+        save:               Enregistrer
+        cancel:             Annuler
+    details:
+        name:               "Nom de l'équipe"
     default: 
         noName:             Aucun nom ...
         noTeamYetMessage:   Vous n'avez pas encore rejoint d'équipe. Désirez-vous prendre part à la course ?
@@ -96,3 +112,7 @@ admin:
     actions:
         edit:           Edit
         sendEmail:      Mail à toute l'équipe
+        sendEmailOther: Mail à tous les autres
+    content:
+        step:           Etape
+        others:         Autres membres

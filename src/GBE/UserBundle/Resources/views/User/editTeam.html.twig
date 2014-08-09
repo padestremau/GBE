@@ -1,0 +1,70 @@
+{# src/GBE/UserBundle/Resources/User/indexTeam.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'team.titles.team' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<a href="{{ path('gbe_user_team') }}" class="btn btn-perso float-right">
+			    	{{ 'team.actions.cancel'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			</div>
+
+			<h2>
+				{{ 'team.titles.team'|trans }}
+			</h2>
+			<hr/>
+
+
+        	<form method="post" {{ form_enctype(formEditTeam) }}>
+				<div class="edit_profile">
+					<div class="form-group row">
+						{% set name_title = 'team.details.name' | trans %}
+						{{ form_label(formEditTeam.name, name_title, 
+							{'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditTeam.name) }}
+						<div class="input-icon">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_name = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'j.doe', 'value':app.user.team.name, 'id':'name', 
+				        		'name':'_name', 'required':'required', 'autofocus':''}} %}
+				        	{{ form_widget(formEditTeam.name, opt_name) }}
+				        </div>
+					</div>
+
+					<div>
+						<br/><br/>
+					</div>
+
+					<a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-left cancel_button">
+						{{ 'team.actions.back' | trans }}
+					</a>
+					<input type="submit" class="btn btn-perso  float-right validate_button"  
+						value="{{'team.actions.save' | trans }}"/>
+				</div>
+			</form>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

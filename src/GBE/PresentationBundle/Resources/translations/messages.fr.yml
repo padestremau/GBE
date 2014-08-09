@@ -87,11 +87,13 @@ route:
         endDate:                Date d'arrivée :
         areYouSure:             Es-tu certain de vouloir participer à ce tronçon ?
         noRouteYetMessage:      Toujours pas enrôlé dans un tronçon ? Fonce !
+        areYouSureChange:       Es-tu certain de vouloir changer de tronçon ?
     actions:
         cancel:                 Annuler
         back:                   Retour
         confirm:                Valider
         join:                   Rejoindre un tronçon
+        change:                 Echanger
 
 
 # Calendar 
@@ -106,6 +108,8 @@ calendar:
 partners:
     titles:
         partners:               Partenaires
+    default: 
+        waitingMessage:         "N'hésitez pas à vous joindre à nous pour cette aventure extra-ordinaire ! Plus on est de fous, plus on rit !"
 
 
 # Media

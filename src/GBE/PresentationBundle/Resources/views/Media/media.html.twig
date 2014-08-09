@@ -29,9 +29,70 @@
 			</h2>
 			<hr/>
 
-			<div>
+			<div class="center">
+
 				{{ 'index.content.numberOfParticipants'|trans }}
-				{{ number_of_participants }}
+				{% set number_of_participants = members|length %}
+				<strong>
+					{{ number_of_participants }}
+				</strong>
+
+				<hr/ style="width:40%; margin-left:30%;">
+
+				{% if routes|length > 0 %}
+					{% set index_route = 0 %}
+					{% for route in routes %}
+						<div class="row">
+							<div class="col-md-2">
+							</div>
+							<div class="col-md-2 left margin_left_10">
+								<strong>
+									{{ 'route.content.step'|trans }} {{ route.id }}
+								</strong>
+							</div>
+							<div class="col-md-1 left">
+								-
+							</div>
+							<div class="col-md-3 left">
+								{{ route.name }}
+							</div>
+							<div class="col-md-1 left">
+								-
+							</div>
+							<div class="col-md-3 left">
+								{% set nb_part_p_rte = 0 %}
+								{% for team in membersByRoute %}
+									{% for member in team %}
+										{% if member.route == route %}
+											{% set nb_part_p_rte = nb_part_p_rte + 1 %}
+										{% endif %}
+									{% endfor %}
+								{% endfor %}
+
+								{{ nb_part_p_rte }}
+							</div>
+
+						</div>
+
+						{% set index_route = index_route + 1 %}
+					{% endfor %}
+				{% endif %}
+
+			</div>
+
+			<div class="row margin0">
+				<h3>
+					Event's official images
+				</h3>
+
+				<div class="row">
+					<div class="col-md-5 right">
+						name
+					</div>
+					<div class="col-md-7">
+						file link
+					</div>
+				</div>
 			</div>
 
 

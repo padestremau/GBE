@@ -1,0 +1,66 @@
+{# src/GBE/UserBundle/Resources/User/user.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'user.details.avatar' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-right">
+			    	{{ 'user.actions.cancel'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			</div>
+
+			<h2>
+				{{ 'user.details.avatar'|trans }}
+			</h2>
+			<hr/>
+
+
+        	<form method="post" {{ form_enctype(formEditAvatar) }}>
+				<div class="edit_profile">
+					<div class="form-group row">
+						{% set name_title = 'user.details.changeAvatar' | trans %}
+						{{ form_label(formEditAvatar.file, name_title, 
+							{'label_attr': {'class': 'control-label'}}) }}
+						{{ form_errors(formEditAvatar) }}
+						<div class="input-icon">
+				        	{{ form_widget(formEditAvatar.file) }}
+				        </div>
+					</div>
+
+					<div>
+						<br/><br/>
+					</div>
+
+					<a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-left cancel_button">
+						{{ 'user.actions.back' | trans }}
+					</a>
+					<input type="submit" class="btn btn-perso  float-right validate_button"  
+						value="{{'user.actions.save' | trans }}"/>
+				</div>
+			</form>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

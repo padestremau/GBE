@@ -19,10 +19,10 @@
 
 			{% if teamCurrent %}
 				<div>
-					<button class="btn btn-perso float-right">
+					<a href="{{ path('gbe_user_editTeamName') }}" class="btn btn-perso float-right">
 				    	{{ 'team.actions.edit'|trans }}
 				     	<i class="fa fa-sign-in"></i>
-				    </button>
+				    </a>
 				</div>
 			{% endif %}
 
@@ -46,11 +46,11 @@
 					{% for member in members %}
 						<div class="col-md-3 center">
 							<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_team
-									{# if teamCurrent.leader %}
+									{% if teamCurrent.leader %}
 										{% if teamCurrent.leader == member %}
 											teamleader_avatar
 										{% endif %}
-									{% endif #}
+									{% endif %}
 									"/> 
 							<br/><br/>
 							<span class="bold">

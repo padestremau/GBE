@@ -80,15 +80,29 @@
 												{% endif %}
 											{% endfor %}
 
+											{# EXAMPLE ... TO BE DELETED !!!! #}
 											{% if route.id == 3 or route.id == 8 %}
 												{% set number_participants = 4 %}
 											{% endif %}
+											{# END OF EXAMPLE #}
 
 											{% if number_participants < 4 %}
 												{% if app.user.team %}
-													<button class="btn float-right">
-														- - -
-													</button>
+													<a href="
+														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+															{{ path('gbe_user_selectRoute', {'routeId' : route.id}) }}
+														{% else %}
+															{{ path('fos_user_registration_register') }}
+														{% endif %}
+														" onClick="areYouSureChange()" class="btn btn-perso float-right warning_btn">
+														{{ 'route.actions.change'|trans }}
+													</a>
+													<script type="text/javascript">
+														function areYouSureChange()
+														{
+														    confirm('{{ 'route.content.areYouSureChange'|trans }}');
+														}
+													</script>
 												{% else %}
 													<a href="
 														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

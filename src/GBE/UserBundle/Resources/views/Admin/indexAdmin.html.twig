@@ -41,54 +41,168 @@
 						</div>
 
 						<h3>
-							{{ 'route.content.step'|trans }} {{ route.id }}. {{ route.name }}
+							{{ 'admin.content.step'|trans }} {{ route.id }}. {{ route.name }}
 						</h3>
 
 						<div class="row team_admin">
-							{% for team in members %}
-								{% for member in team %}
-									{% if member.route == route %}
-										<div class="row single_admin_member">
-											<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
-													{# if teamCurrent.leader %}
-														{% if teamCurrent.leader == member %}
-															teamleader_avatar
+							<div class="col-md-2">
+								
+							</div>
+							<div class="col-md-10">
+								{% set index_route = 0 %}
+								{% for team in members %}
+									{% for member in team %}
+										{% if member.route == route %}
+											<div class="row single_admin_member">
+												<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
+														{% if member.team %}
+															{% for team in teams %}
+																{% if member.team == team %}
+																	{% if team.leader %}
+																		{% if team.leader == member %}
+																			teamleader_avatar
+																		{% endif %}
+																	{% endif %}
+																{% endif %}
+															{% endfor %}
 														{% endif %}
-													{% endif #}
-													"/> 
-											<span class="bold">
-												{{ member.firstName }} {{ member.lastName }}
-											</span> - {{ member.age }}
+														"/> 
+												<span class="bold">
+													{{ member.firstName }} {{ member.lastName }}
+												</span> - {{ member.age }}
 
-											<span class="float-right">
-												{% if member.firstName|length > 0
-													and member.lastName|length > 0
-													and member.tel|length > 0
-													and member.address1|length > 0
-													and member.address2|length > 0
-													and member.gender
-													and member.route
-													and member.team %}
-													<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok"/>
-												{% else %}
-													<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok"/>
-												{% endif %}
-											</span>
-										</div>
-										<br/>
-									{% endif %}
+												<span class="float-right">
+													{% if member.firstName|length > 0
+														and member.lastName|length > 0
+														and member.tel|length > 0
+														and member.age|length > 0
+														and member.address1|length > 0
+														and member.address2|length > 0
+														and member.gender
+														and member.route
+														and member.team %}
+														<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
+													{% else %}
+														<a href="#" style="z-index : 200;">
+															<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" title="Membre n'ayant pas rempli les éléments suivants: 
+																			{% if member.firstName|length == 0 %}
+																				{{ 'user.details.firstName'|trans }}
+																			{% endif %}
+																			{% if member.lastName|length == 0 %}
+																				{{ 'user.details.lastName'|trans }}
+																			{% endif %}
+																			{% if member.age|length == 0 %}
+																				{{ 'user.details.age'|trans }}
+																			{% endif %}
+																			{% if member.tel|length == 0 %}
+																				{{ 'user.details.tel'|trans }}
+																			{% endif %}
+																			{% if member.address1|length == 0 %}
+																				{{ 'user.details.address'|trans }}
+																			{% endif %}
+																			{% if member.gender|length == 0 %}
+																				{{ 'user.details.gender'|trans }}
+																			{% endif %}
+																			{% if member.team|length == 0 %}
+																				{{ 'user.details.team'|trans }}
+																			{% endif %}
+																			"/>
+														</a>
+													{% endif %}
+												</span>
+											</div>
+											<br/>
+										{% endif %}
+									{% endfor %}
+									{% set index_route = index_route + 1 %}
 								{% endfor %}
-							{% endfor %}
+							</div>
 						</div>
 
-						
-						{% if (index_route != 10) %}
 						<hr/>
-						{% endif %}
 					</div>
 					{% set index_route = index_route + 1 %}
 				{% endfor %}
 			{% endif %}
+
+			<div>
+				<a href="#" class="btn btn-perso font10 float-right email_button">
+			    	{{ 'admin.actions.sendEmailOther'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			</div>
+
+			<h3>
+				{{ 'admin.content.others'|trans }}
+			</h3>
+
+			<div class="row team_admin">
+				{% for team in members %}
+					{% for member in team %}
+						{% if member.team == null %}
+							<div class="row single_admin_member">
+								<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
+										{% if member.team %}
+											{% for team in teams %}
+												{% if member.team == team %}
+													{% if team.leader %}
+														{% if team.leader == member %}
+															teamleader_avatar
+														{% endif %}
+													{% endif %}
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+										"/> 
+								<span class="bold">
+									{{ member.firstName }} {{ member.lastName }}
+								</span> - {{ member.age }}
+
+								<span class="float-right">
+									{% if member.firstName|length > 0
+										and member.lastName|length > 0
+										and member.tel|length > 0
+										and member.age|length > 0
+										and member.address1|length > 0
+										and member.address2|length > 0
+										and member.gender
+										and member.route
+										and member.team %}
+										<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
+									{% else %}
+										<a href="#" style="z-index : 200;">
+											<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" title="Membre n'ayant pas rempli les éléments suivants: 
+															{% if member.firstName|length == 0 %}
+																{{ 'user.details.firstName'|trans }}
+															{% endif %}
+															{% if member.lastName|length == 0 %}
+																{{ 'user.details.lastName'|trans }}
+															{% endif %}
+															{% if member.age|length == 0 %}
+																{{ 'user.details.age'|trans }}
+															{% endif %}
+															{% if member.tel|length == 0 %}
+																{{ 'user.details.tel'|trans }}
+															{% endif %}
+															{% if member.address1|length == 0 %}
+																{{ 'user.details.address'|trans }}
+															{% endif %}
+															{% if member.gender|length == 0 %}
+																{{ 'user.details.gender'|trans }}
+															{% endif %}
+															{% if member.team|length == 0 %}
+																{{ 'user.details.team'|trans }}
+															{% endif %}
+
+															"/>
+										</a>
+									{% endif %}
+								</span>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</div>
 			
 			
 		</div>

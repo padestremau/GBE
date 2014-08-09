@@ -18,10 +18,14 @@
 		<div class="content">
 
 			<div>
-				<button class="btn btn-perso float-right">
+				<a href="{{ path('gbe_user_edit') }}" class="btn btn-perso float-right">
 			    	{{ 'user.actions.edit'|trans }}
 			     	<i class="fa fa-sign-in"></i>
-			    </button>
+			    </a>
+			    <a href="{{ path('fos_user_change_password') }}" class="btn btn-perso float-right margin_right_10">
+			    	{{ 'user.actions.changePassword'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
 			</div>
 
 			<h2>
@@ -35,6 +39,9 @@
 					<div class="row">
 						<div class="col-md-4 right">
 							<ul class="list_no_style_li">
+								<li class="bold">
+									{{ 'user.details.username'|trans }}
+								</li>
 								<li class="bold">
 									{{ 'user.details.firstName'|trans }}
 								</li>
@@ -63,6 +70,13 @@
 						</div>
 						<div class="col-md-8 left">
 							<ul class="list_no_style_li">
+								<li>
+									{% if app.user.username|length > 0 %}
+										{{ app.user.username }}
+									{% else %}
+										<br/>
+									{% endif %}
+								</li>
 								<li>
 									{% if app.user.firstName|length > 0 %}
 										{{ app.user.firstName }}
@@ -127,8 +141,10 @@
 					<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="profile" class="avatar_profile" />
 					<div>
 						<button class="btn float-right change_avatar">
-					    	{{ 'user.actions.change'|trans }}
-					     	<i class="fa fa-sign-in"></i>
+							<a href="{{ path('gbe_user_editAvatar') }}" class="no_style_a">
+						    	{{ 'user.actions.change'|trans }}
+						     	<i class="fa fa-sign-in"></i>
+							</a>
 					    </button>
 					</div>
 				</div>
@@ -136,13 +152,15 @@
 
 			<br/><br/>
 
+			<h2>------------------------</h2>
+
+			<div class="row margin0">
 			{% if app.user.route %}
 
 				<h2>
 					{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ app.user.route.id }}
 				</h2>
 				<hr/>
-
 
 				<div class="single_route">
 					<h3>
@@ -248,8 +266,8 @@
 				    </a>
 				</div>
 
-
 			{% endif %}
+			</div>
 
 			
 		</div>
