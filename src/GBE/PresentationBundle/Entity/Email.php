@@ -36,6 +36,13 @@ class Email
     private $recipients;                                            /* !!!!! */
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="senderName", type="string", length=255, nullable=true)
+     */
+    private $senderName;
+
+    /**
      * @ORM\ManyToOne(targetEntity="GBE\UserBundle\Entity\User")
      * @ORM\JoinColumn(nullable=true)                               
      */
@@ -189,5 +196,28 @@ class Email
     public function getSentAt()
     {
         return $this->sentAt;
+    }
+
+    /**
+     * Set senderName
+     *
+     * @param string $senderName
+     * @return Email
+     */
+    public function setSenderName($senderName)
+    {
+        $this->senderName = $senderName;
+
+        return $this;
+    }
+
+    /**
+     * Get senderName
+     *
+     * @return string 
+     */
+    public function getSenderName()
+    {
+        return $this->senderName;
     }
 }

@@ -22,43 +22,95 @@
 			</h2>
 			<hr/>
 
-			<form action="" method="post">
+			<form action="{{ path('gbe_presentation_send') }}" method="post" {{ form_enctype(formEmail) }}>
 				<h3>
 					{{ 'contact.content.recipient'|trans }}
 				</h3>
-					<input type="checkbox" name="destinataire1" value="p.a.destremau@gmail.com" id="dest1">
-						<label for="dest1">Pierre-Arnaud Destremau, WebMaster</label>
-						<br/>
-					<input type="checkbox" name="destinataire2" value="???" id="dest2"/>
-						<label for="dest2">Joseph de Chateauvieux, Chef de projet</label>
-						<br/>
-					<input type="checkbox" name="destinataire3" value="augustin.dst@gmail.com" id="dest3"/>
-						<label for="dest3">Augustin Destremau, Génie</label>
-						<br/>
-                    <input type="checkbox" name="destinataire4" value="adavout@enfantsdumekong.com" id="dest4"/>
-                    	<label for="dest4">Alban d'Avout, Directeur de Défi du Mékong</label>
-                    	<br/>
-                    <input type="checkbox" name="destinataire5" value="gdaboville@enfantsdumekong.com" id="dest5"/>
-                    	<label for="dest5">Guillaume d'Aboville, Directeur de la Communication et du Développement des Ressources</label>
-                    	<br/>
+
+                    <div class="form-group row">
+						{{ form_errors(formEmail.recipients) }}
+						<div class="input-icon">
+				        	{% set index_fields = 1 %}
+				        	{% for emailField in formEmail.recipients %}
+				        		{% set name_field = '_recipient'~index_fields %}
+					        	{% set opt_recipients = {'attr': {'class': name_field, 'id':'recipient',
+					        		'type':'choice', 'id':'recipients', 'name':name_field }} %}
+				        		<div class="row margin0">
+							        {{ form_errors(emailField) }}
+				        			<div class="col-md-1 right checkbox_case">
+								        {{ form_widget(emailField, opt_recipients) }}
+				        			</div>
+				        			<div class="col-md-11 left">
+								        {{ form_label(emailField) }}
+				        			</div>
+				        		</div>
+				        		{% set index_fields = index_fields + 1 %}
+							{% endfor %}
+						</div>
+					</div>
 			
 				<h3>
 					{{ 'contact.content.sender'|trans }}
 				</h3>
-					Nom :<br/>
-					<input type="input" name="nom_expediteur" placeholder="Jean Dupont"  class="input_name_email" required/><br/>
-					Adresse mail :<br/>
-					<input type="email" name="email_expediteur" placeholder="adresse@nomdedomaine" class="input_name_email"required/><br/>
+					<div class="col-md-6">
+						{% set senderName_title = 'contact.content.name' | trans %}
+						{{ form_label(formEmail.senderName, senderName_title, 
+							{'label_attr': {'class': ''}}) }}
+						{{ form_errors(formEmail.senderName) }}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_senderName = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'Jean Dupont', 'name':'_senderName' }} %}
+				        	{{ form_widget(formEmail.senderName, opt_senderName) }}
+				        </div>
+					</div>
+
+					<div class="col-md-6">
+						{% set sender_title = 'contact.content.email' | trans %}
+						{{ form_label(formEmail.sender, sender_title, 
+							{'label_attr': {'class': ''}}) }}
+						{{ form_errors(formEmail.sender) }}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_sender = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'jean.dupont@email.zone', 'name':'_sender' }} %}
+				        	{{ form_widget(formEmail.sender, opt_sender) }}
+				        </div>
+					</div>
+
+					<br/><br/><br/>
 				
 				<h3>
 					{{ 'contact.content.message'|trans }}
 				</h3>
-					{{ 'contact.content.object'|trans }} <br/>
-					<input type="input" name="objet_email_contact" class="message" placeholder="Ecrivez ici l'objet de votre message." required/><br/>
-					{{ 'contact.content.content'|trans }} <br/>
-					<textarea name="texte_email_contact" class="message" placeholder="Ecrivez ici le texte de votre message." rows=10 required></textarea>
+					<div class="form-group row">
+						{% set object_title = 'contact.content.object' | trans %}
+						{{ form_label(formEmail.object, object_title, 
+							{'label_attr': {'class': ''}}) }}
+						{{ form_errors(formEmail.object) }}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_object = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':object_title, 'name':'_object' }} %}
+				        	{{ form_widget(formEmail.object, opt_object) }}
+				        </div>
+					</div>
 
-				<input id="bouton-valider-contact" type="submit" value="{{ 'contact.actions.send'|trans }}" class="btn btn-perso float-right"/>
+					<div class="form-group row">
+						{% set content_title = 'contact.content.content' | trans %}
+						{{ form_label(formEmail.content, content_title, 
+							{'label_attr': {'class': ''}}) }}
+						{{ form_errors(formEmail.content) }}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_content = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'textarea', 'placeholder':content_title, 'name':'_content',
+				        		'rows':'10' }} %}
+				        	{{ form_widget(formEmail.content, opt_content) }}
+				        </div>
+					</div>
+
+				<input id="send_email" type="submit" value="{{ 'contact.actions.send'|trans }}" class="btn btn-perso float-right"/>
 			</form>
 			
 		</div>

@@ -18,34 +18,21 @@ class ContactController extends Controller
         // On récupère la requête
         $formEmail->handleRequest($this->getRequest());
 
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo('p.a.destremau@gmail.com')
-            ->setBody(
-                'coucou'
-                // $this->renderView(
-                //     'PresentationBundle:Contact:email.html.twig',
-                //     array('name' => 'toto')
-                // )
-            )
-        ;
-        $this->get('mailer')->send($message);
-
-
-
-
         // On vérifie que les valeurs entrées sont correctes
         if ($formEmail->isValid()) {
+            $object = $formEmail->get('Email[object]')->getData();
+            $sender = $formEmail->get('Email[sender]')->getData();
+            $senderName = $formEmail->get('Email[senderName]')->getData();
+            $content = $formEmail->get('Email[content]')->getData();
+
+            $content = 'Ceci est un message';
             $message = \Swift_Message::newInstance()
-                ->setSubject('Hello Email')
-                ->setFrom('send@example.com')
+                ->setSubject('objet ici')
+                ->setFrom('test@coco.fr')
                 ->setTo('p.a.destremau@gmail.com')
                 ->setBody(
-                    $this->renderView(
-                        'PresentationBundle:Contact:email.html.twig',
-                        array('name' => $name)
+                    $this->renderView('GBEPresentationBundle:Contact:email.html.twig',
+                        array('content' => $content)
                     )
                 )
             ;

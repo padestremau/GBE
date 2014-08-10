@@ -131,14 +131,18 @@ photos:
 contact:
     titles:
         contact:                Contact
+        thankYou:               Merci !
     actions: 
         send:                   Envoyer
     content:
         sender:                 Expéditeur
+        name:                   Nom
+        email:                  Email
         recipient:              Destinataire
         message:                Message
         object:                 Objet du message :
         content:                Contenu du message :
+        messageSent:            Message bien envoyé.
 
 # Live 
 

@@ -498,11 +498,12 @@ button {
 
 
 /* Contact */
-.input_name_email {
-	width: 35%;
+.checkbox_case input {
+	padding-bottom: 12px;
 }
-.message {
-	width: 100%;
+
+#send_email {
+	margin-right: 18px;
 }
 
 /* Live */
