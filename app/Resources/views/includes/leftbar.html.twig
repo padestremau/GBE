@@ -40,8 +40,9 @@
       </a> 
     </li>
     <li class="
-          {% if (route == 'gbe_presentation_route') or
-              (route == 'gbe_user_selectRoute') %}
+          {% if (route == 'gbe_presentation_route') 
+              or (route == 'gbe_user_selectRoute')
+              or (route == 'gbe_user_confirmRoute') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_presentation_route') }}"> 
@@ -96,7 +97,8 @@
       </a> 
     </li>
     <li class="
-          {% if (route == 'gbe_presentation_contact') %}
+          {% if (route == 'gbe_presentation_contact')
+              or (route == 'gbe_presentation_send') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_presentation_contact') }}"> 
@@ -113,7 +115,10 @@
     <hr/>
 
     <li class="
-          {% if (route == 'gbe_user_homepage') %}
+          {% if (route == 'gbe_user_homepage')
+            or (route == 'gbe_user_editAvatar')
+            or (route == 'gbe_user_editPassword')
+            or (route == 'gbe_user_edit') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_user_homepage') }}"> 
@@ -124,7 +129,8 @@
       </a> 
     </li>
     <li class="
-          {% if (route == 'gbe_user_team') %}
+          {% if (route == 'gbe_user_team')
+              or (route == 'gbe_user_editTeamName') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_user_team') }}"> 

@@ -45,19 +45,32 @@
 				<div class="row">
 					{% for member in members %}
 						<div class="col-md-3 center">
-							<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_team
-									{% if teamCurrent.leader %}
-										{% if teamCurrent.leader == member %}
-											teamleader_avatar
-										{% endif %}
-									{% endif %}
-									"/> 
-							<br/><br/>
-							<span class="bold">
-								{{ member.firstName }} <br/>
-								{{ member.lastName }}
-							</span> <br/>
-								{{ member.age }}
+							<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" class="no_style_a">
+								{% if member.avatar %}
+									<img  src="{{ asset(member.avatar.webPath) }}"  alt="{{ member.avatar.alt }}" 
+										class="avatar_team
+											{% if teamCurrent.leader %}
+												{% if teamCurrent.leader == member %}
+													teamleader_avatar
+												{% endif %}
+											{% endif %}
+											"/> 
+								{% else %}
+									<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_team
+											{% if teamCurrent.leader %}
+												{% if teamCurrent.leader == member %}
+													teamleader_avatar
+												{% endif %}
+											{% endif %}
+											"/> 
+								{% endif %}
+								<br/><br/>
+								<span class="bold">
+									{{ member.firstName }} <br/>
+									{{ member.lastName }}
+								</span> <br/>
+									{{ member.age }}
+							</a>
 						</div>
 					{% endfor %}
 				</div>

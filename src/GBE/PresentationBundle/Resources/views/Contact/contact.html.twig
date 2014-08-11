@@ -23,32 +23,7 @@
 			<hr/>
 
 			<form action="{{ path('gbe_presentation_send') }}" method="post" {{ form_enctype(formEmail) }}>
-				<h3>
-					{{ 'contact.content.recipient'|trans }}
-				</h3>
-
-                    <div class="form-group row">
-						{{ form_errors(formEmail.recipients) }}
-						<div class="input-icon">
-				        	{% set index_fields = 1 %}
-				        	{% for emailField in formEmail.recipients %}
-				        		{% set name_field = '_recipient'~index_fields %}
-					        	{% set opt_recipients = {'attr': {'class': name_field, 'id':'recipient',
-					        		'type':'choice', 'id':'recipients', 'name':name_field }} %}
-				        		<div class="row margin0">
-							        {{ form_errors(emailField) }}
-				        			<div class="col-md-1 right checkbox_case">
-								        {{ form_widget(emailField, opt_recipients) }}
-				        			</div>
-				        			<div class="col-md-11 left">
-								        {{ form_label(emailField) }}
-				        			</div>
-				        		</div>
-				        		{% set index_fields = index_fields + 1 %}
-							{% endfor %}
-						</div>
-					</div>
-			
+				
 				<h3>
 					{{ 'contact.content.sender'|trans }}
 				</h3>

@@ -22,6 +22,10 @@ gbe_user_confirmRoute:
     pattern:  /confirm/{routeId}
     defaults: { _controller: GBEUserBundle:User:confirmRoute }
 
+gbe_user_member:
+    pattern:  /member/{memberId}
+    defaults: { _controller: GBEUserBundle:User:memberPage }
+
 gbe_user_team:
     pattern:  /team
     defaults: { _controller: GBEUserBundle:User:teamUser }

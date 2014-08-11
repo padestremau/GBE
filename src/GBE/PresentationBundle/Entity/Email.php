@@ -29,13 +29,6 @@ class Email
     private $object;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="recipients", type="array", nullable=true)
-     */
-    private $recipients;                                            /* !!!!! */
-
-    /**
      * @var string
      *
      * @ORM\Column(name="senderName", type="string", length=255, nullable=true)
@@ -105,30 +98,7 @@ class Email
     {
         return $this->object;
     }
-
-    /**
-     * Set recipients
-     *
-     * @param array $recipients
-     * @return Email
-     */
-    public function setRecipients($recipients)
-    {
-        $this->recipients = $recipients;
-
-        return $this;
-    }
-
-    /**
-     * Get recipients
-     *
-     * @return array 
-     */
-    public function getRecipients()
-    {
-        return $this->recipients;
-    }
-
+    
     /**
      * Set sender
      *

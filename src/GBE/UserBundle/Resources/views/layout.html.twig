@@ -182,6 +182,9 @@
             <!-- END REGISTRATION FORM -->
           </div>
 
+          {% block fos_user_content %}
+          {% endblock fos_user_content %}
+
 
         {% else %}
           <h2>
@@ -214,10 +217,6 @@
                   </div>
                 </div>
                 <div class="form-actions">
-                  <button type="submit" data-loading-text="{{ 'welcome.buttons.loading' | trans }}" class="demo-loading-btn btn btn-perso pull-right">
-                    {{ 'login.actions.login'|trans }}
-                    <i class="fa fa-sign-in"></i>
-                  </button>
                   <label for="remember_me" class="checkbox">
                     <div class="checker">
                       <span>
@@ -226,6 +225,10 @@
                     </div> 
                     {{ 'login.actions.remember_me'|trans }}
                   </label>
+                  <button type="submit" data-loading-text="{{ 'welcome.buttons.loading' | trans }}" class="demo-loading-btn btn btn-perso pull-right">
+                    {{ 'login.actions.login'|trans }}
+                    <i class="fa fa-sign-in"></i>
+                  </button>
                 </div>
 
                 <br/>

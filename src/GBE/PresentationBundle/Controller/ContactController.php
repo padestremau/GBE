@@ -27,9 +27,10 @@ class ContactController extends Controller
 
             $content = 'Ceci est un message';
             $message = \Swift_Message::newInstance()
-                ->setSubject('objet ici')
-                ->setFrom('test@coco.fr')
-                ->setTo('p.a.destremau@gmail.com')
+                ->setSubject($object)
+                ->setFrom(array($sender => $senderName))
+                ->setTo(array('p.a.destremau@gmail.com',
+                                'augustin.dst@hotmail.fr'))
                 ->setBody(
                     $this->renderView('GBEPresentationBundle:Contact:email.html.twig',
                         array('content' => $content)

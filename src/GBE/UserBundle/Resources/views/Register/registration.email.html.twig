@@ -1,0 +1,28 @@
+{# src/GBE/PresentationBundle/Resources/views/Contact/email.html.twig #}
+
+{% block body_text %}
+{% autoescape false %}
+Salut {{ user.username }},
+
+Bienvenu dans l'équipe !
+
+Peux-tu confirmer que c'est bien l'adresse email que tu vas utiliser pour le site en cliquant sur le lient suivant ?
+{{ confirmationUrl }}
+
+Cordialement,
+La GBE Team
+
+Content : 
+{{ content }}
+
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{#
+    You can of course render the html directly here.
+    Including a template as done here allows keeping things DRY by using
+    the template inheritance in it
+#}
+
+{% endblock %}

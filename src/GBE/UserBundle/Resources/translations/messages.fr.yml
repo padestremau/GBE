@@ -2,6 +2,7 @@
 user:
     titles:
         profile:            Mon profil
+        member:             Membre
     actions:
         edit:               Modifier ses infos
         change:             Changer l'avatar
@@ -25,6 +26,11 @@ user:
         female:             Femme
         avatar:             Mon avatar
         changeAvatar:       Sélectionner une nouvelle photo :
+    warning:
+        fileMustBe:         Le fichier doit :
+        under1Mo:           "< 1Mo"
+        square:             Carré si possible ...
+        face:               Contenir ton visage
 
 # Team
 team:

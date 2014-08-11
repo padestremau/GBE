@@ -14,7 +14,24 @@ class UserController extends Controller
 {
     public function indexUserAction()
     {
-        return $this->render('GBEUserBundle:User:indexUser.html.twig');
+        /* Current User */
+        $currentUser = $this->getUser();
+
+        return $this->render('GBEUserBundle:User:indexUser.html.twig', array(
+            'user' => $currentUser
+            ));
+    }
+
+    public function memberPageAction($memberId)
+    {
+        $user = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEUserBundle:User')
+                        ->find($memberId);
+
+        return $this->render('GBEUserBundle:User:indexUser.html.twig', array(
+            'user' => $user
+            ));
     }
 
     public function teamUserAction()
