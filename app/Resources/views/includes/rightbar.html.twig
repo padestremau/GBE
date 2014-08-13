@@ -27,15 +27,18 @@
 
     <br/><br/><br/><br/><br/><br/><br/>
 
-    {% if (route != 'gbe_presentation_route') and
-          (route != 'gbe_user_selectRoute') %}
+    {# if app.user.routes != null %}
+      {% if (route != 'gbe_presentation_route') and
+            (route != 'gbe_user_selectRoute') #}
 
-    <a href="#" class="btn btn-perso participate_button">
-    	{{ 'index.actions.participate'|trans }}
-     	<i class="fa fa-sign-in"></i>
-    </a>
+      <a href="#" class="btn btn-perso participate_button">
+      	{{ 'index.actions.participate'|trans }}
+       	<i class="fa fa-sign-in"></i>
+      </a>
 
-    {% endif %}
+      {# endif %}
+    {% endif #}
+
 
     <!-- BEGIN LOGIN ADD-ON -->
       {# include 'includes/loginAddOn.html.twig' #}

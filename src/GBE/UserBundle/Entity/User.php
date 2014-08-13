@@ -65,7 +65,7 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="GBE\PresentationBundle\Entity\Routes")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $route;
+    private $routes;
 
     /**
      * @ORM\ManyToOne(targetEntity="GBE\UserBundle\Entity\Team")
@@ -316,29 +316,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set route
-     *
-     * @param \GBE\PresentationBundle\Entity\Routes $route
-     * @return User
-     */
-    public function setRoute(\GBE\PresentationBundle\Entity\Routes $route = null)
-    {
-        $this->route = $route;
-
-        return $this;
-    }
-
-    /**
-     * Get route
-     *
-     * @return \GBE\PresentationBundle\Entity\Routes 
-     */
-    public function getRoute()
-    {
-        return $this->route;
-    }
-
-    /**
      * Set team
      *
      * @param \GBE\UserBundle\Entity\Team $team
@@ -383,5 +360,28 @@ class User extends BaseUser
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Set routes
+     *
+     * @param \GBE\PresentationBundle\Entity\Routes $routes
+     * @return User
+     */
+    public function setRoutes(\GBE\PresentationBundle\Entity\Routes $routes = null)
+    {
+        $this->routes = $routes;
+
+        return $this;
+    }
+
+    /**
+     * Get routes
+     *
+     * @return \GBE\PresentationBundle\Entity\Routes 
+     */
+    public function getRoutes()
+    {
+        return $this->routes;
     }
 }
