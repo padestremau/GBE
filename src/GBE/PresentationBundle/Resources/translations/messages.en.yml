@@ -3,7 +3,7 @@
 index:
     titles:
         title:                  La Grande Boucle Etudiante
-        presentation:           Presentation
+        presentation:           Home
     actions:
         live:                   Follow live
         giveDonation:           Give donation
@@ -17,14 +17,17 @@ index:
     content:
         numberOfParticipants:   Number of participants: 
         rightWelcomeSentence:   "Come and help Mekong Children with your school!"
+        date1:                  24 of October
+        date2:                  to 2nd of November
 
 # Menu
 
 menu:
     mainTitles:
         home:                   Home
-        presentation:           Presentation
-        whoAreWe:               Who are we?
+        presentation:           Enfants du Mékong
+        whoAreWe:               The Team
+        history:                History
         route:                  Route
         calendar:               Calendar
         partnerships:           Partnerships
@@ -58,14 +61,22 @@ footer:
 
 presentation:
     titles:
-        presentation:           Presentation
+        presentation:           Enfants du Mékong
 
 
 # Bio 
 
 bio:
     titles:
-        bio:                    Who are we?
+        bio:                    The Team
+        team2014:               2014 Team
+
+
+# History
+
+history:
+    titles:
+        history:                Long story short
 
 # Route 
 

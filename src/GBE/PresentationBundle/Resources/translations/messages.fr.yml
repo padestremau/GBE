@@ -3,7 +3,7 @@
 index:
     titles:
         title:                  La Grande Boucle Etudiante
-        presentation:           Présentation
+        presentation:           Accueil
     actions:
         live:                   Nous suivre en live
         giveDonation:           Faire un don
@@ -17,14 +17,17 @@ index:
     content:
         numberOfParticipants:   Nombre de participants : 
         rightWelcomeSentence:   "Viens soutenir les Enfants du Mékong avec ton école !"
+        date1:                  du 24 Octobre
+        date2:                  au 2 Novembre
 
 # Menu
 
 menu:
     mainTitles:
         home:                   Accueil
-        presentation:           Présentation
-        whoAreWe:               Qui sommes-nous ?
+        presentation:           Enfants du Mékong
+        whoAreWe:               La Team
+        history:                La petite histoire
         route:                  Parcours
         calendar:               Calendrier
         partnerships:           Partenaires
@@ -58,14 +61,22 @@ footer:
 
 presentation:
     titles:
-        presentation:           Présentation
+        presentation:           Enfants du Mékong
 
 
 # Bio 
 
 bio:
     titles:
-        bio:                    Qui sommes-nous ?
+        bio:                    La Team
+        team2014:               L'équipe 2014
+
+# History
+
+history:
+    titles:
+        history:                La petite histoire
+
 
 # Route 
 

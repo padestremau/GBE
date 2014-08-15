@@ -1,0 +1,59 @@
+{# src/GBE/PresentationBundle/Resources/Presentation/bio.html.twig #}
+
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'history.titles.history' | trans }}
+{% endblock %}
+
+{% block GBE_Presentation_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<h2>
+				{{ 'history.titles.history'|trans }}
+			</h2>
+			<hr/>
+
+			<div>
+				<p class="paragraph">
+					En Mars 2013, au cœur de l’EMLYON Business School, un groupe d’amis aventuriers et un peu inconscients par moment se lance un défi : <a href="http://defidumekong24hvelo.alvarum.net" target="_blank">faire Lyon-Marseille en vélo d’une seule traite au profit de l’association Enfants du Mékong.</a> En un mois, Augustin, Thibault, Tanguy, Geoffroy et Joseph montent leur projet, lancent une campagne de collecte de fond, mobilisent les médias locaux, affinent leur parcours et leur matériel. 
+				</p>
+				<p class="paragraph">
+					Le 11 Avril 2013 à 18h, entourés d’une vingtaine d’amis et de curieux, ils partent de la place des Terreaux à Lyon. Après 22h d’efforts ininterrompu, ils s’arrêtent à Salon de Provence, 340 kilomètres plus loin, éreintés mais heureux de l’exploit. Au total, le projet aura réussi à rassembler près de 5000 euros, réuni près de 400 personnes sur Facebook pour suivre l’avancée des coureurs pendant l’événement et mobilisé une quinzaine de médias locaux. 
+				</p>
+				<p class="paragraph">
+					Forts de ce succès inattendus, Augustin et Joseph décident de ne pas s’arrêter là et rêvent d’un projet de plus grande ampleur qui pourrait, pourquoi pas, réunir plusieurs écoles et qui sait, faire le tour de la France. La Grande Boucle Etudiante était née. 
+				</p>
+				<p class="paragraph">
+					Pierre-Arnaud, le cousin d’Augustin, séduit par le projet, décide de le lancer pour la Toussaint 2013. Un site internet apparaît, le tracé et le principe de l’événement sont définis, les premières affiches sortent sur le net. Un peu court niveau timing, l’événement peine à mobiliser un nombre suffisant d’équipes et ne peut voir le jour malgré le gros travail de Pierre-Arnaud et des équipes d’Enfants du Mékong. 
+				</p>
+				<p class="paragraph">
+					Nullement découragé par cet épisode, Pierre-Arnaud se greffe à Augustin et Joseph, fraîchement revenus de stage à l’étranger au début de l’année 2014. Ensemble, en s’appuyant sur le travail réalisé auparavant, ils redessinent les contours de ce qui éclora en juin 2014 comme la Grande Boucle Etudiante. Après de multiples tâtonnements, ils réussissent à assembler leur différence de caractère pour mettre en place un événement à la fois stimulant au niveau sportif, engagé du point de vue solidaire et raisonnable au niveau pratique. C’est donc grâce à la ténacité des porteurs du projet, à l’appui incontestable d’Enfants du Mékong et à la bienveillance de l’EMLYON Business School que l’événement voit le jour.  
+				</p>
+				<p class="paragraph">
+					Tout au long de leur démarche, les organisateurs de la Grande Boucle Etudiante ont voulu placer l’accompagnement de l’action d’Enfants du Mékong au cœur du projet. Sensibilisés par leur histoire personnelle et leur famille à la problématique de la scolarisation des enfants en Asie du Sud Est, Augustin et Joseph ont désiré donner un coup de pouce à leur manière et montrer que les étudiants des grandes écoles pouvaient entreprendre eux aussi des actions de générosité et de mobilisation d’ampleur. 
+				</p>
+				<p class="paragraph">
+					La suite de l’histoire, c’est à nous de l’écrire, c’est à vous de la vivre.
+				</p>
+
+			</div>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_Presentation_body %}

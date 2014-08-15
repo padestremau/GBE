@@ -189,21 +189,21 @@
 			<h2>------------------------</h2>
 
 			<div class="row margin0">
-			{% if user.route %}
+			{% if user.routes %}
 
 				<h2>
-					{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ user.route.id }}
+					{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ user.routes.id }}
 				</h2>
 				<hr/>
 
 				<div class="single_route">
 					<h3>
-						{{ user.route.name }}
+						{{ user.routes.name }}
 					</h3>
 
 					<div class="row">
 						<div class="col-md-6">
-							<img src="{{ asset(user.route.url) }}" alt="{{ user.route.alt }}" class="route_img"/>
+							<img src="{{ asset(user.routes.url) }}" alt="{{ user.routes.alt }}" class="route_img"/>
 						</div>
 						<div class="col-md-6">
 							<div class="row">
@@ -211,7 +211,7 @@
 									{{ 'route.content.startCity'|trans }}
 								</div>
 								<div class="col-md-7 left">
-									{{ user.route.startCity }}
+									{{ user.routes.startCity }}
 								</div>
 							</div>
 							<div class="row">
@@ -219,7 +219,7 @@
 									{{ 'route.content.endCity'|trans }}
 								</div>
 								<div class="col-md-7 left">
-									{{ user.route.endCity }}
+									{{ user.routes.endCity }}
 								</div>
 							</div>
 
@@ -234,11 +234,11 @@
 									{{ 'route.content.heightNeg'|trans }}
 								</div>
 								<div class="col-md-3 left">
-									{{ user.route.length }}
+									{{ user.routes.length }}
 									<br/>
-									{{ user.route.heightPos }}
+									{{ user.routes.heightPos }}
 									<br/>
-									{{ user.route.heightNeg }}
+									{{ user.routes.heightNeg }}
 								</div>
 								<div class="col-md-4 right">
 									{% if user == app.user %}
@@ -257,7 +257,7 @@
 									{{ 'route.content.startDate'|trans }}
 								</div>
 								<div class="col-md-7 left">
-									{{ user.route.startDate|date('d M Y') }} - {{ user.route.startDate|date('h:i') }}
+									{{ user.routes.startDate|date('d M Y') }} - {{ user.routes.startDate|date('h:i') }}
 								</div>
 							</div>
 							<div class="row">
@@ -265,7 +265,7 @@
 									{{ 'route.content.endDate'|trans }}
 								</div>
 								<div class="col-md-7 left">
-									{{ user.route.endDate|date('d M Y') }} - {{ user.route.endDate|date('h:i') }}
+									{{ user.routes.endDate|date('d M Y') }} - {{ user.routes.endDate|date('h:i') }}
 								</div>
 							</div>
 							

@@ -5,6 +5,7 @@ namespace GBE\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use GBE\UserBundle\Entity\User;
+use GBE\UserBundle\Entity\Avatar;
 
 use GBE\UserBundle\Form\EditUserType;
 use GBE\UserBundle\Form\EditTeamType;
@@ -156,8 +157,10 @@ class UserController extends Controller
         /* Current User */
         $currentUser = $this->getUser();
 
+        $avatar = $currentUser->getAvatar();
+
         // On utiliser le NoteEditType
-        $formEditAvatar = $this->createForm(new EditAvatarType(), $currentUser);
+        $formEditAvatar = $this->createForm(new EditAvatarType(), $avatar);
 
         // On récupère la requête
         $formEditAvatar->handleRequest($this->getRequest());

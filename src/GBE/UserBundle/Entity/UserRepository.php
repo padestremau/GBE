@@ -27,8 +27,8 @@ class UserRepository extends EntityRepository
 		$members = array();
 		for ($i=0; $i < sizeof($routes); $i++) { 
 			$arrayTemp = $this->createQueryBuilder('u')
-									->where ('u.route = :route')
-										->setParameter('route', $routes[$i])
+									->where ('u.routes = :routes')
+										->setParameter('routes', $routes[$i])
 									->orderBy('u.lastName', 'ASC')
 									->getQuery()
 									->getResult();
@@ -46,8 +46,8 @@ class UserRepository extends EntityRepository
 	public function findByRoute ($route)
 	{
 		return $this->createQueryBuilder('u')
-					->where ('u.route = :route')
-						->setParameter('route', $route)
+					->where ('u.routes = :routes')
+						->setParameter('routes', $route)
 					->orderBy('u.lastName', 'ASC')
 					->getQuery()
 					->getResult();

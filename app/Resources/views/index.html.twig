@@ -54,47 +54,48 @@
 
 <!-- BEGIN BODY -->
   <body>
-    
     <!-- BEGIN HEADER -->
       {% include 'includes/nav.html.twig' %}
     <!-- END HEADER -->
+    <div class="website_content">
+      <div class="row">
+        <!-- BEGIN ERROR DISPLAY -->
+        <div class="clearfix">
+          <!-- Erreurs -->    
+            {% if (app.session.flashbag.get('info')|length > 0) %}
+              <div class="row center btn-info">
+                {% for flashMessage in app.session.flashbag.get('info') %}
+                  {{ flashMessage }}
+                {% endfor %}
+              </div>
+            {% endif %}
+        </div>
+        <!-- END ERROR DISPLAY -->
+        
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            {% block body %}
+            {% endblock body %}  
+        </div>
+        <!-- END CONTAINER -->
 
-    <!-- BEGIN ERROR DISPLAY -->
-    <div class="clearfix">
-      <!-- Erreurs -->    
-        {% if (app.session.flashbag.get('info')|length > 0) %}
-          <div class="row center btn-info">
-            {% for flashMessage in app.session.flashbag.get('info') %}
-              {{ flashMessage }}
-            {% endfor %}
-          </div>
-        {% endif %}
-    </div>
-    <!-- END ERROR DISPLAY -->
-    
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-        {% block body %}
-        {% endblock body %}  
-    </div>
-    <!-- END CONTAINER -->
+        <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 
+        {% javascripts 
+          'bootstrap/js/bootstrap.js'
+          'bootstrap/js/bootstrap.min.js'
+          %}
+          <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <!-- END JAVASCRIPTS -->
+      </div>
+    </div>
     <!-- BEGIN FOOTER -->
     {% if route != 'gbe_presentation_live' %}
       {% include 'includes/footer.html.twig' %}
     {% endif %}
     <!-- END FOOTER -->
-
-    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-
-    {% javascripts 
-      'bootstrap/js/bootstrap.js'
-      'bootstrap/js/bootstrap.min.js'
-      %}
-      <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-    <!-- END JAVASCRIPTS -->
   </body>
   <!-- END BODY -->
 </html>

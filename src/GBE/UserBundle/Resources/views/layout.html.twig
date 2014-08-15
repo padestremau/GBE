@@ -1,4 +1,5 @@
 {# src/GBE/UserBundle/Resources/view/layout.html.twig #}
+{% set route = app.request.attributes.get( '_route' ) %}
 
 {% extends "::index.html.twig" %}
 
@@ -19,7 +20,23 @@
   <div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
     <!-- BEGIN CONTENT -->
     <div class="content">
-        {% if (app.request.attributes.get( '_route' ) == 'fos_user_resetting_request') %}
+
+          <!-- Begin Back Button -->
+          {% if (route == 'fos_user_resetting_request')
+              or (route == 'fos_user_change_password') %}
+            <a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-right">
+              {{ 'user.actions.cancel'|trans }}
+              <i class="fa fa-sign-in"></i>
+            </a>
+          {% else %}
+            <a href="{{ path('gbe_presentation_homepage') }}" class="btn btn-perso float-right">
+              {{ 'user.actions.cancel'|trans }}
+              <i class="fa fa-sign-in"></i>
+            </a>
+          {% endif %}
+          <!-- End Back Button -->
+
+        {% if (route == 'fos_user_resetting_request') %}
 
           <h2>
             {{ 'forgotPassword.titles.forgotPassword'|trans }}
@@ -50,7 +67,7 @@
           </div>
           <!-- END FORGOT PASSWORD FORM -->
 
-          {% elseif (app.request.attributes.get( '_route' ) == 'fos_user_change_password') %}
+          {% elseif (route == 'fos_user_change_password') %}
 
             <h2>
               {{ 'resetPassword.titles.resetPassword'|trans }}
@@ -106,7 +123,7 @@
         
 
 
-        {% elseif (app.request.attributes.get( '_route' ) == 'fos_user_registration_register') %}
+        {% elseif (route == 'fos_user_registration_register') %}
 
           <h2>
             {{ 'registerUser.titles.signUp'|trans }}

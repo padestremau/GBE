@@ -63,7 +63,7 @@
 								{% set nb_part_p_rte = 0 %}
 								{% for team in membersByRoute %}
 									{% for member in team %}
-										{% if member.route == route %}
+										{% if member.routes == route %}
 											{% set nb_part_p_rte = nb_part_p_rte + 1 %}
 										{% endif %}
 									{% endfor %}
@@ -87,7 +87,7 @@
 
 				<div class="row">
 					<div class="col-md-5 right">
-						name
+						Affiche principale
 					</div>
 					<div class="col-md-7">
 						file link

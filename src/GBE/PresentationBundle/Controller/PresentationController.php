@@ -20,4 +20,9 @@ class PresentationController extends Controller
     {
         return $this->render('GBEPresentationBundle:Presentation:bio.html.twig');
     }
+
+    public function historyAction()
+    {
+        return $this->render('GBEPresentationBundle:Presentation:history.html.twig');
+    }
 }

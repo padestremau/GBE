@@ -94,13 +94,22 @@
 														{% else %}
 															{{ path('fos_user_registration_register') }}
 														{% endif %}
-														" onClick="areYouSureChange()" class="btn btn-perso float-right warning_btn">
+														" onClick="
+															{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+																areYouSureChange()
+															{% endif %}
+															" class="btn btn-perso float-right warning_btn">
 														{{ 'route.actions.change'|trans }}
 													</a>
 													<script type="text/javascript">
 														function areYouSureChange()
 														{
-														    confirm('{{ 'route.content.areYouSureChange'|trans }}');
+															if (confirm('{{ 'route.content.areYouSureChange'|trans }}')) {
+																window.location = "{{ path('gbe_user_selectRoute', {'routeId' : route.id}) }}";
+															}
+															else {
+																
+															}
 														}
 													</script>
 												{% else %}

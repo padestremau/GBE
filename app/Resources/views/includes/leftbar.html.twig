@@ -29,6 +29,17 @@
       </a> 
     </li>
     <li class="
+          {% if (route == 'gbe_presentation_history') %}
+            active
+          {% endif %}"> 
+      <a href="{{ path('gbe_presentation_history') }}"> 
+        <i class="fa fa-camera-retro"></i> 
+        <span class="title">
+          {{ 'menu.mainTitles.history' | trans }}
+        </span>
+      </a> 
+    </li>
+    <li class="
           {% if (route == 'gbe_presentation_bio') %}
             active
           {% endif %}"> 

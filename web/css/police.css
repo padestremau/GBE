@@ -15,6 +15,14 @@
 
 }
 
+@font-face {
+	font-family: 'airstream';
+	src: url('fonts/AIRSTREA.eot');
+	src: local('☺'), url('fonts/AIRSTREA.woff') format('woff'), url('fonts/AIRSTREA.ttf') format('truetype'), url('fonts/AIRSTREA.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /*
 body 
 { 

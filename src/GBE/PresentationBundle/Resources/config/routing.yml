@@ -10,6 +10,10 @@ gbe_presentation_bio:
     pattern:  /bio
     defaults: { _controller: GBEPresentationBundle:Presentation:bio }
 
+gbe_presentation_history:
+    pattern:  /history
+    defaults: { _controller: GBEPresentationBundle:Presentation:history }
+
 gbe_presentation_route:
     pattern:  /route
     defaults: { _controller: GBEPresentationBundle:Route:route }
