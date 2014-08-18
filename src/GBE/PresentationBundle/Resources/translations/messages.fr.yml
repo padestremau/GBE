@@ -53,7 +53,7 @@ footer:
     links:
         home:                   Accueil
         myProfile:              Mon profil
-        blog:                   Forum
+        route:                  Parcours
         legal:                  Mentions légales
         contact:                Contact
 
@@ -128,6 +128,8 @@ partners:
 media:
     titles:
         media:                  Média
+    actions:
+        download:               Télécharger
 
 
 # Photos
@@ -135,6 +137,8 @@ media:
 photos:
     titles:
         photos:                 Photos
+        selectRoute:            Selectionner le parcours :
+        selectPhoto:            Selectionner la photo :
 
 
 # Contact

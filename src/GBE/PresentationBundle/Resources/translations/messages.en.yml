@@ -53,7 +53,7 @@ footer:
     links:
         home:                   Home
         myProfile:              My profile
-        blog:                   Blog
+        route:                  Route
         legal:                  Conditions
         contact:                Contact
 
@@ -128,6 +128,8 @@ partners:
 media:
     titles:
         media:                  Media
+    actions:
+        download:               Download
 
 
 # Photos
@@ -135,6 +137,8 @@ media:
 photos:
     titles:
         photos:                 Photos
+        selectRoute:            Select the route concerned:
+        selectPhoto:            Select photo:
 
 
 # Contact
@@ -151,8 +155,8 @@ contact:
         email:                  Email
         recipient:              Recipient
         message:                Message
-        object:                 Object:
-        content:                Content:
+        object:                 Object
+        content:                Content
         messageSent:            Message sent.
 
 # Live 

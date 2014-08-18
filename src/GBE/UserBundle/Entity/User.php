@@ -19,6 +19,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="GBE\UserBundle\Entity\UserRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class User extends BaseUser
 {
@@ -111,12 +112,22 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $username = $this->getEmail();
+        $usernameCanonical = $this->getEmailCanonical();
     }
 
 
     /*   *********     Setter and getter Functions  *************  */
 
-
+    /**
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
+     */
+    public function setUsernameToEmail()
+    {
+        $this->username = $this->email;
+        $this->usernameCanonical = $this->emailCanonical;
+    }
 
 
     /**

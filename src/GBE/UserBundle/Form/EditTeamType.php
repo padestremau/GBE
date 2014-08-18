@@ -16,7 +16,11 @@ class EditTeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array('label' => 'Name of the team'))            
+            ->add('name', 'text', array('label' => 'Name of the team'))
+            ->add('leader', 'entity', array(
+                                'class' => 'GBEUserBundle:User',
+                                'property' => 'firstName'
+                            ))
             ;
 
         // On récupère la factory (usine)

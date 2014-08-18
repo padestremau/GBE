@@ -1,17 +1,24 @@
 {# src/GBE/PresentationBundle/Resources/views/Contact/email.html.twig #}
 
+{% block subject %}
+{% autoescape false %}
+[GBE] Message : {{ object }}
+{% endautoescape %}
+{% endblock %}
+
 {% block body_text %}
 {% autoescape false %}
+
 Hello !
 
-Vous avez reçu un nouveau message.
+Nouveau message depuis l'onglet Contact du site. Bonne lecture.
 
 Cordialement,
-La GBE Team
+La Team de la Grande Boucle Etudiante
 
 --------------------------------
 
-Sender : 
+Sender : {{ senderName }} ({{ sender }})
 
 Content : 
 {{ content }}
@@ -25,5 +32,67 @@ Content :
     Including a template as done here allows keeping things DRY by using
     the template inheritance in it
 #}
+
+<div style="
+color: rgb(50,50,50);
+width:94%;
+margin-left:3%;
+margin-top:5px;
+border:1px solid white;
+padding:10px;
+background-color: rgba(150,150,150, 0.1);">
+
+	<div style="text-align:center; ">
+		<h2 style="color:rgba(77,137,39,0.8);">
+			Nouveau message
+		</h2>	
+		<hr/>
+	</div>
+
+	<div style="text-align:left; padding:10px;">
+		Hello !
+
+		Nouveau message depuis l'onglet Contact du site. Bonne lecture.
+
+		<br/>
+		Cordialement,<br/>
+		<strong>
+			La Team de la Grande Boucle Etudiante
+		</strong>
+
+		<br/><br/>
+
+		-----------------------------------------------
+
+		<br/><br/>
+
+		<div style="background-color:white; padding:10px;">
+			<strong>De :</strong> {{ senderName }} ({{ sender }})
+
+			<strong>Contenu du message : </strong> <br/>
+			{{ content }}
+		</div>
+
+		<br/><br/>
+
+		<div style="text-align:center;">
+			<a href="{{ path('gbe_user_member', {'memberId': app.user.id}) }}" style="
+												font-size:12px;
+												text-decoration:none;
+												padding: 5px;
+												background-color: rgba(77,137,39,0.8);
+												border: 1px solid white;
+												border-radius: 0;
+												color: white;">
+				Accès à son profil
+			</a>
+		</div>
+		
+		
+		
+	</div>
+</div>
+
+<!-- <img src="{# asset('img/system/banniere.jpg') #}" style="width:90%; margin-left:5%;"/> -->
 
 {% endblock %}

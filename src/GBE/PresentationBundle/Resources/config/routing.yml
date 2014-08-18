@@ -34,6 +34,10 @@ gbe_presentation_photos:
     pattern:  /photos
     defaults: { _controller: GBEPresentationBundle:Photos:photos }
 
+gbe_presentation_add_photos:
+    pattern:  /photos/add
+    defaults: { _controller: GBEPresentationBundle:Photos:add }
+
 gbe_presentation_contact:
     pattern:  /contact
     defaults: { _controller: GBEPresentationBundle:Contact:contact }

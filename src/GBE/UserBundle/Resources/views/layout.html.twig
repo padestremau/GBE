@@ -6,11 +6,11 @@
 {% block body %}
 
   {# On affiche les messages flash que définissent les contrôleurs du bundle #}
-  {% for key, message in app.session.flashbag.all() %}
+  {# for key, message in app.session.flashbag.all() %}
     <div class="alert alert-{{ key }}">
       {{ message|trans({}, 'FOSUserBundle') }}
     </div>
-  {% endfor %}
+  {% endfor #}
 
   <!-- BEGIN leftbar -->
       {% include 'includes/leftbar.html.twig' %}
@@ -30,42 +30,24 @@
             </a>
           {% else %}
             <a href="{{ path('gbe_presentation_homepage') }}" class="btn btn-perso float-right">
-              {{ 'user.actions.cancel'|trans }}
+              {{ 'user.actions.home'|trans }}
               <i class="fa fa-sign-in"></i>
             </a>
           {% endif %}
           <!-- End Back Button -->
 
-        {% if (route == 'fos_user_resetting_request') %}
+          {% if (route == 'fos_user_resetting_request') 
+              or (route == 'fos_user_resetting_reset') %}
 
-          <h2>
-            {{ 'forgotPassword.titles.forgotPassword'|trans }}
-          </h2>
-          <hr/>
+            <h2>
+              {{ 'forgotPassword.titles.forgotPassword'|trans }}
+            </h2>
+            <hr/>
 
-          <div>
-            <!-- BEGIN FORGOT PASSWORD FORM -->
-            <form class="forget-form" action="{{ path('fos_user_resetting_reset', {'token': csrf_token}) }}" method="post">
-              <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-              <p>
-                {{ 'forgotPassword.titles.enterEmail'|trans }}
-              </p>
-              <div class="form-group">
-                <div class="input-icon">
-                  <i class="fa fa-envelope"></i>
-                  <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{{ 'forgotPassword.titles.email'|trans }}" name="email">
-                </div>
-              </div>
-              <div class="form-actions">
-                <button type="submit" class="btn btn-perso pull-right">
-                  {{ 'forgotPassword.actions.submit'|trans }}
-                  <i class="m-icon-swapright m-icon-white"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-          <!-- END FORGOT PASSWORD FORM -->
+            <div>
+              {% block fos_user_content %}
+              {% endblock fos_user_content %}
+            </div>
 
           {% elseif (route == 'fos_user_change_password') %}
 
@@ -80,7 +62,17 @@
                 
                 <div class="form-group">
                   {% set currentPassword_title = 'resetPassword.titles.enterOld' | trans %}
-                  {{ form_errors(form.current_password) }}
+                  {% if form_errors(form.current_password) %}
+                    <div class="error_message">
+                      <span class="warning_word">
+                        {{ 'user.warning.warning'|trans }}
+                      </span>
+                      <span class="warning_message">
+                        {{ form_errors(form.current_password) }}
+                      </span>
+                    </div>
+                    <br/>
+                  {% endif %}
                   <div class="input-icon">
                     <i class="fa fa-pencil"></i>
                     {% set opt_currentPassword = {'attr': {'class': 'form-control placeholder-no-fix',
@@ -91,7 +83,17 @@
                 </div>
                 <div class="form-group">
                   {% set new_password_title = 'resetPassword.titles.enterNew' | trans %}
-                  {{ form_errors(form.plainPassword.first) }}
+                  {% if form_errors(form.plainPassword.first) %}
+                    <div class="error_message">
+                      <span class="warning_word">
+                        {{ 'user.warning.warning'|trans }}
+                      </span>
+                      <span class="warning_message">
+                        {{ form_errors(form.plainPassword.first) }}
+                      </span>
+                    </div>
+                    <br/>
+                  {% endif %}
                   <div class="input-icon">
                     <i class="fa fa-pencil"></i>
                     {% set opt_new_password = {'attr': {'class': 'form-control placeholder-no-fix',
@@ -102,7 +104,17 @@
                 </div>
                 <div class="form-group">
                   {% set new_password_confirmation_title = 'resetPassword.titles.reEnterNew' | trans %}
-                  {{ form_errors(form.plainPassword.second) }}
+                  {% if form_errors(form.plainPassword.second) %}
+                    <div class="error_message">
+                      <span class="warning_word">
+                        {{ 'user.warning.warning'|trans }}
+                      </span>
+                      <span class="warning_message">
+                        {{ form_errors(form.plainPassword.second) }}
+                      </span>
+                    </div>
+                    <br/>
+                  {% endif %}
                   <div class="input-icon">
                     <i class="fa fa-pencil"></i>
                     {% set opt_new_password_confirmation = {'attr': {'class': 'form-control placeholder-no-fix',
@@ -117,6 +129,8 @@
                     <i class="m-icon-swapright m-icon-white"></i>
                   </button>
                 </div>
+                <!-- Et le reste du formulaire ... :) -->
+                {{ form_widget(form) }}
               </form>
             </div>
         <!-- END RESETTNG PASSWORD FORM -->
@@ -132,46 +146,112 @@
 
           <div>
             <!-- BEGIN REGISTRATION FORM -->
-            <form class="register-form" action="{{ path('fos_user_registration_register') }}" method="post" novalidate="novalidate">
+            <form class="register-form" action="{{ path('fos_user_registration_register') }}" method="post" {{ form_enctype(form) }} >
+                
+                {% if form_errors(form) %}
+                  <div class="error_message">
+                    <span class="warning_word">
+                      {{ 'user.warning.warning'|trans }}
+                    </span>
+                    <span class="warning_message">
+                      {{ form_errors(form) }}
+                    </span>
+                  </div>
+                  <br/>
+                {% endif %}
+
               <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">
-                  {{ 'registerUser.titles.username'|trans }}
-                </label>
+                {% set username_input = 'registerUser.titles.username' | trans %}
+                {% if form_errors(form.username) %}
+                  <div class="error_message">
+                    <span class="warning_word">
+                      {{ 'user.warning.warning'|trans }}
+                    </span>
+                    <span class="warning_message">
+                      {{ form_errors(form.username) }}
+                    </span>
+                  </div>
+                  <br/>
+                {% endif %}
+                {{ form_label(form.username) }}
                 <div class="input-icon">
                   <i class="fa fa-user"></i>
-                  <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{{ 'registerUser.titles.username'|trans }}" name="username" required="required"/>
+                  {% set opt_username_input = {'attr': {'class': 'form-control placeholder-no-fix',
+                    'type':'text', 'placeholder': username_input, 'id':'username', 
+                    'name':'username', 'required':'required', 'autofocus':''}} %}
+                  {{ form_widget(form.username, opt_username_input) }}
                 </div>
               </div>
+
               <div class="form-group">
-                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                <label class="control-label visible-ie8 visible-ie9">
-                  {{ 'registerUser.titles.email'|trans }}
-                </label>
+                {% set email_input = 'registerUser.titles.email' | trans %}
+                {% if form_errors(form.email) %}
+                  <div class="error_message">
+                    <span class="warning_word">
+                      {{ 'user.warning.warning'|trans }}
+                    </span>
+                    <span class="warning_message">
+                      {{ form_errors(form.email) }}
+                    </span>
+                  </div>
+                  <br/>
+                {% endif %}
+                {{ email_input }}
                 <div class="input-icon">
                   <i class="fa fa-envelope"></i>
-                  <input class="form-control placeholder-no-fix" type="text" placeholder="{{ 'registerUser.titles.email'|trans }}" name="email" required="required"/>
+                  {% set opt_email_input = {'attr': {'class': 'form-control placeholder-no-fix',
+                    'type':'text', 'placeholder': email_input, 'id':'email',
+                    'name':'email', 'required':'required'}} %}
+                  {{ form_widget(form.email, opt_email_input) }}
                 </div>
               </div>
-              <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">
-                  {{ 'registerUser.titles.password'|trans }}
-                </label>
+
+               <div class="form-group">
+                {% set password_input = 'registerUser.titles.password' | trans %}
+                {% if form_errors(form.plainPassword.first) %}
+                  <div class="error_message">
+                    <span class="warning_word">
+                      {{ 'user.warning.warning'|trans }}
+                    </span>
+                    <span class="warning_message">
+                      {{ form_errors(form.plainPassword.first) }}
+                    </span>
+                  </div>
+                  <br/>
+                {% endif %}
+                {{ password_input }}
                 <div class="input-icon">
                   <i class="fa fa-lock"></i>
-                  <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="{{ 'registerUser.titles.password'|trans }}" name="password" required="required"/>
+                  {% set opt_password_input = {'attr': {'class': 'form-control placeholder-no-fix',
+                    'type':'password', 'placeholder': password_input, 'id':'password', 'autocomplete':'off',
+                    'name':'password', 'required':'required'}} %}
+                  {{ form_widget(form.plainPassword.first, opt_password_input) }}
                 </div>
               </div>
+
               <div class="form-group">
-                <label class="control-label visible-ie8 visible-ie9">
-                  {{ 'registerUser.titles.rePassword'|trans }}
-                </label>
-                <div class="controls">
-                  <div class="input-icon">
-                    <i class="fa fa-check"></i>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{ 'registerUser.titles.rePassword'|trans }}" name="rpassword" required="required"/>
+                {% set rePassword_input = 'registerUser.titles.rePassword' | trans %}
+                {% if form_errors(form.plainPassword.second) %}
+                  <div class="error_message">
+                    <span class="warning_word">
+                      {{ 'user.warning.warning'|trans }}
+                    </span>
+                    <span class="warning_message">
+                      {{ form_errors(form.plainPassword.second) }}
+                    </span>
                   </div>
+                  <br/>
+                {% endif %}
+                {{ rePassword_input }}
+                <div class="input-icon">
+                  <i class="fa fa-lock"></i>
+                  {% set opt_rePassword_input = {'attr': {'class': 'form-control placeholder-no-fix',
+                    'type':'password', 'placeholder': rePassword_input, 'id':'rpassword', 'autocomplete':'off',
+                    'name':'rpassword', 'required':'required'}} %}
+                  {{ form_widget(form.plainPassword.second, opt_rePassword_input) }}
                 </div>
               </div>
+
               <div class="form-group">
                 <label for="conditions" class="checkbox">
                   <div class="checker">
@@ -195,15 +275,14 @@
                   <i class="m-icon-swapright m-icon-white"></i>
                 </button>
               </div>
+
+              <!-- Ce qu'il reste du formulaire ... ;) -->
+              {{ form_widget(form) }}
             </form>
             <!-- END REGISTRATION FORM -->
           </div>
 
-          {% block fos_user_content %}
-          {% endblock fos_user_content %}
-
-
-        {% else %}
+        {% elseif route == 'fos_user_security_login' %}
           <h2>
             {{ 'login.titles.loginTitle'|trans }}
           </h2>
@@ -212,16 +291,28 @@
           <div>
             <!-- BEGIN LOGIN FORM -->
               <form class="login-form" action="{{ path("fos_user_security_check") }}" method="post">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                
+                  {% if error %}
+                      <div class="error_message">
+                        <span class="warning_word">
+                          {{ 'user.warning.warning'|trans }}
+                        </span>
+                        <span class="warning_message">
+                          {{ error|trans }}
+                        </span>
+                      </div>
+                      <br/>
+                  {% endif %}
 
                 <div class="form-group">
                   <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                   <label class="control-label visible-ie8 visible-ie9" for="username">
-                    {{ 'login.titles.username'|trans }}
+                    {{ 'login.titles.email'|trans }}
                   </label>
                   <div class="input-icon">
                     <i class="fa fa-user"></i>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="{{ 'login.titles.username'|trans }}" value="{{ last_username }}" id="username" name="_username" required="required" autofocus>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="{{ 'login.titles.email'|trans }}" value="{{ last_username }}" id="username" name="_username" required="required" autofocus>
                   </div>
                 </div>
                 <div class="form-group">
@@ -277,6 +368,102 @@
               </form>
           </div>
           <!-- END LOGIN FORM -->
+
+        {% elseif route == 'fos_user_registration_check_email' %}
+          <h2>
+            {{ 'check.actions.checkEmail'|trans }}
+          </h2>
+          <hr/>
+
+          <br/><br/><br/><br/><br/><br/><br/>
+
+          <div class="center">
+            {{ 'check.titles.welcome'|trans }}
+            <br/>
+            <strong>
+              {{ 'team.signature.team'|trans }}
+            </strong>
+          </div>
+
+        {% elseif route == 'fos_user_registration_confirm' %}
+          <h2>
+            {{ 'check.actions.pleaseConfirm'|trans }}
+          </h2>
+          <hr/>
+
+          <br/><br/><br/><br/><br/><br/><br/>
+
+          <div class="center">
+            {{ 'check.titles.confirm'|trans }}
+            <br/>
+            <strong>
+              {{ 'team.signature.team'|trans }}
+            </strong>
+          </div>
+
+        {% elseif route == 'fos_user_resetting_send_email' 
+                or route == 'fos_user_resetting_check_email' %}
+          <h2>
+            {{ 'check.actions.checkEmail'|trans }}
+          </h2>
+          <hr/>
+
+          <br/><br/><br/><br/><br/><br/><br/>
+
+          <div class="center">
+            {{ 'check.titles.confirmEmailForPassword'|trans }}
+            <br/>
+            <strong>
+              {{ 'team.signature.team'|trans }}
+            </strong>
+          </div>
+
+        {% elseif route == 'fos_user_registration_confirmed' %}
+          <h2>
+            Done!
+          </h2>
+          <hr/>
+
+          <br/><br/><br/><br/><br/><br/><br/>
+
+          <div class="center">
+            {{ 'check.titles.allGood'|trans }}
+            <br/>
+            {{ 'check.titles.participate'|trans }}
+            <strong>
+              {{ 'team.signature.team'|trans }}
+            </strong>
+            <br/><br/>
+            <a href="{{ path('gbe_presentation_route') }}" class="center btn-perso no_style_a">
+              {{ 'check.link.route'|trans }}
+            </a>
+          </div>
+
+        {% else %}
+          <h2>
+            {{ 'check.actions.done'|trans }}
+          </h2>
+          <hr/>
+
+          <br/><br/><br/><br/><br/>
+
+          <div class="center">
+            {{ 'check.titles.allGood'|trans }}
+            <br/>
+            <strong>
+              {{ 'team.signature.team'|trans }}
+            </strong>
+          </div>
+
+          <br/><br/>
+
+          <div class="center italic">
+            {{ 'check.titles.anyProblem'|trans }}
+            <br/><br/>
+            <a href="{{ path('gbe_presentation_contact') }}" class="center btn-perso no_style_a">
+              {{ 'check.link.contact'|trans }}
+            </a>
+          </div>
         {% endif %}
       
     </div>

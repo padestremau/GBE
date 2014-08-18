@@ -2,7 +2,7 @@
 
 {% block subject %}
 {% autoescape false %}
-[GBE] Bienvenu dans l'équipe !
+[GBE] Mot de passe oublié
 {% endautoescape %}
 {% endblock %}
 
@@ -11,7 +11,7 @@
 
 Salut {% if user.firstName %}{{ user.firstName }}{% else %}{{ user.email }}{% endif %},
 
-Peux-tu confirmer que c'est bien ton adresse email en cliquant sur le lient suivant ?
+Peux-tu confirmer que c'est bien toi en cliquant sur le lient suivant ?
 {{ confirmationUrl }}
 
 Cordialement,
@@ -38,7 +38,7 @@ background-color: rgba(150,150,150, 0.1);">
 
 	<div style="text-align:center; ">
 		<h2 style="color:rgba(77,137,39,0.8);">
-			Bienvenu dans l'équipe !
+			Mot de passe oublié ?
 		</h2>	
 		<hr/>
 	</div>
@@ -46,7 +46,7 @@ background-color: rgba(150,150,150, 0.1);">
 	<div style="text-align:left; padding:10px;">
 		Salut <strong>{% if user.firstName %}{{ user.firstName }}{% else %}{{ user.email }}{% endif %}</strong>,
 		<br/><br/>
-		Peux-tu confirmer que c'est bien ton adresse email en cliquant sur le lient suivant ?
+		Peux-tu confirmer que c'est bien toi en cliquant sur le lient suivant ?
 		<br/><br/>
 
 		<div style="text-align:center;">
@@ -58,7 +58,7 @@ background-color: rgba(150,150,150, 0.1);">
 												border: 1px solid white;
 												border-radius: 0;
 												color: white;">
-				Lien de confirmation
+				Mot de passe oublié
 			</a>
 		</div>
 		

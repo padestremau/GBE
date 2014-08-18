@@ -31,42 +31,20 @@
 
     <br/><br/><br/><br/><br/><br/><br/>
 
-    {# if app.user.routes != null %}
       {% if (route != 'gbe_presentation_route') and
-            (route != 'gbe_user_selectRoute') #}
+            (route != 'gbe_user_selectRoute') %}
 
-      <a href="#" class="btn btn-perso participate_button">
+      <a href="
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          {{ path('gbe_presentation_route') }}
+        {% else %}
+          {{ path('fos_user_security_login') }}
+        {% endif %}
+        " class="btn btn-perso participate_button">
       	{{ 'index.actions.participate'|trans }}
        	<i class="fa fa-sign-in"></i>
       </a>
 
-      {# endif %}
-    {% endif #}
-
-
-    <!-- BEGIN LOGIN ADD-ON -->
-      {# include 'includes/loginAddOn.html.twig' #}
-    <!-- END LOGIN ADD-ON -->
-
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
+      {% endif %}
 
 </div>

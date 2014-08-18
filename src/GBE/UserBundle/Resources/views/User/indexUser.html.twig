@@ -48,9 +48,6 @@
 						<div class="col-md-4 right">
 							<ul class="list_no_style_li">
 								<li class="bold">
-									{{ 'user.details.username'|trans }}
-								</li>
-								<li class="bold">
 									{{ 'user.details.firstName'|trans }}
 								</li>
 								<li class="bold">
@@ -82,13 +79,6 @@
 						<div class="col-md-8 left">
 							<ul class="list_no_style_li">
 								<li>
-									{% if user.username|length > 0 %}
-										{{ user.username }}
-									{% else %}
-										<br/>
-									{% endif %}
-								</li>
-								<li>
 									{% if user.firstName|length > 0 %}
 										{{ user.firstName }}
 									{% else %}
@@ -104,7 +94,11 @@
 								</li>
 								<li>
 									{% if user.gender|length > 0 %}
-										{{ user.gender }}
+										{% if user.gender == 1 %}
+											{{ 'user.details.male'|trans }}
+										{% else %}
+											{{ 'user.details.female'|trans }}
+										{% endif %}
 									{% else %}
 										<br/>
 									{% endif %}
@@ -192,7 +186,7 @@
 			{% if user.routes %}
 
 				<h2>
-					{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ user.routes.id }}
+					{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ user.routes.routeNumber }}
 				</h2>
 				<hr/>
 

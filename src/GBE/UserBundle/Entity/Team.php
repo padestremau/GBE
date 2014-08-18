@@ -1,6 +1,10 @@
 <?php
 
 namespace GBE\UserBundle\Entity;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +26,13 @@ class Team
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="teamNumber", type="integer")
+     */
+    private $teamNumber;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -31,14 +42,14 @@ class Team
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -47,6 +58,14 @@ class Team
      * @ORM\JoinColumn(nullable=true)
      */
     private $leader;
+
+    /*   *********      construct  *************  */
+
+    public function __construct()
+    {
+        // $this->createdAt         = new \Datetime;
+        // $this->updatedAt         = new \Datetime;
+    }
 
 
     /**
@@ -149,5 +168,28 @@ class Team
     public function getLeader()
     {
         return $this->leader;
+    }
+
+    /**
+     * Set teamNumber
+     *
+     * @param integer $teamNumber
+     * @return Team
+     */
+    public function setTeamNumber($teamNumber)
+    {
+        $this->teamNumber = $teamNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get teamNumber
+     *
+     * @return integer 
+     */
+    public function getTeamNumber()
+    {
+        return $this->teamNumber;
     }
 }

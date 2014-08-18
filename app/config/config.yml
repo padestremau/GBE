@@ -78,8 +78,8 @@ fos_user:
             enabled:    true
             from_email:
                 address:        noreply@gbe.com
-                sender_name:    GBE Welcome
-            template: UserBundle:Register:registration.email.html.twig
+                sender_name:    GBE Team
+            template:           GBEUserBundle:Register:registration.email.html.twig
         # form:
         #     type: GBE_userbundle_user
     service:
@@ -87,6 +87,6 @@ fos_user:
     resetting:
         email:
             from_email:
-                address:        resetting@gbe.com
-                sender_name:    GBE Resetting
-            template: UserBundle:Template:resetting.email.html.twig
+                address:        noreply@gbe.com
+                sender_name:    GBE Team
+            template:           GBEUserBundle:Register:resetting.email.html.twig

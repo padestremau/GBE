@@ -62,13 +62,13 @@
         <!-- BEGIN ERROR DISPLAY -->
         <div class="clearfix">
           <!-- Erreurs -->    
-            {% if (app.session.flashbag.get('info')|length > 0) %}
+            {# if (app.session.flashbag.get('info')|length > 0) %}
               <div class="row center btn-info">
                 {% for flashMessage in app.session.flashbag.get('info') %}
                   {{ flashMessage }}
                 {% endfor %}
               </div>
-            {% endif %}
+            {% endif #}
         </div>
         <!-- END ERROR DISPLAY -->
         

@@ -81,11 +81,25 @@ class UserController extends Controller
                             ->getManager()
                             ->getRepository('GBEPresentationBundle:Routes')
                             ->find($routeId);
+        $teamId = $routeId;
 
-        $currentUser->setRoute($route);
+        $team = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEUserBundle:Team')
+                            ->find($teamId);
 
-        // Pas besoin de faire un flush avec l'EntityManager, cette méthode le fait toute seule !
-        $userManager->updateUser($currentUser); 
+        $currentUser->setRoutes($route);
+        $currentUser->setTeam($team);
+
+        if ($team->getLeader() == null) {
+            $team->setLeader($currentUser);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($team);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($currentUser);
+        $em->flush();
 
         // On définit un message flash
         $this->get('session')->getFlashBag()->add('info', 'Route choisie');
@@ -107,9 +121,9 @@ class UserController extends Controller
 
         // On vérifie que les valeurs entrées sont correctes
         if ($formEditUser->isValid()) {
-            // Pas besoin de faire un flush avec l'EntityManager, cette méthode le fait toute seule !
-            $userManager = $this->getDoctrine()->getManager();
-            $userManager->updateUser($currentUser); 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($currentUser);
+            $em->flush();
 
             // On définit un message flash
             $this->get('session')->getFlashBag()->add('info', 'Informations bien modifiées');
@@ -158,6 +172,10 @@ class UserController extends Controller
         $currentUser = $this->getUser();
 
         $avatar = $currentUser->getAvatar();
+        if ($avatar) {}
+        else {
+            $avatar = new Avatar();
+        }
 
         // On utiliser le NoteEditType
         $formEditAvatar = $this->createForm(new EditAvatarType(), $avatar);
@@ -167,12 +185,12 @@ class UserController extends Controller
 
         // On vérifie que les valeurs entrées sont correctes
         if ($formEditAvatar->isValid()) {
-            // $em = $this->getDoctrine()->getManager();
-            // $em->persist($currentUser);
-            // $em->flush();
-            // Pas besoin de faire un flush avec l'EntityManager, cette méthode le fait toute seule !
-            $userManager = $this->getDoctrine()->getManager();
-            $userManager->updateUser($currentUser); 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($avatar);
+            $currentUser->setAvatar($avatar);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($currentUser);
+            $em->flush();
 
             // On définit un message flash
             $this->get('session')->getFlashBag()->add('info', 'Informations bien modifiées');

@@ -18,10 +18,10 @@
 		<div class="content">
 
 			<div>
-				<button class="btn btn-perso float-right">
+				<a href="{{ path('gbe_presentation_contact') }}" class="btn btn-perso float-right">
 			    	{{ 'index.actions.askForMore'|trans }}
 			     	<i class="fa fa-sign-in"></i>
-			    </button>
+			    </a>
 			</div>
 
 			<h2>
@@ -32,7 +32,12 @@
 			<div class="center">
 
 				{{ 'index.content.numberOfParticipants'|trans }}
-				{% set number_of_participants = members|length %}
+				{% set number_of_participants = 0 %}
+				{% for member in members %}
+					{% if member.routes %}
+						{% set number_of_participants = number_of_participants + 1 %}
+					{% endif %}
+				{% endfor %}
 				<strong>
 					{{ number_of_participants }}
 				</strong>
@@ -82,15 +87,37 @@
 
 			<div class="row margin0">
 				<h3>
-					Event's official images
+					Documents
 				</h3>
 
-				<div class="row">
-					<div class="col-md-5 right">
+				<div class="row margin_bottom_10">
+					<div class="col-md-6 right">
 						Affiche principale
 					</div>
-					<div class="col-md-7">
-						file link
+					<div class="col-md-6">
+						<a href="{{ asset('img/system/affiche.jpg') }}" class="btn-perso no_style_a font10">
+							{{ 'media.actions.download'|trans }}
+						</a>
+					</div>
+				</div>
+				<div class="row margin_bottom_10">
+					<div class="col-md-6 right">
+						Bannière
+					</div>
+					<div class="col-md-6">
+						<a href="{{ asset('img/system/banniere.jpg') }}" class="btn-perso no_style_a font10">
+							{{ 'media.actions.download'|trans }}
+						</a>
+					</div>
+				</div>
+				<div class="row margin_bottom_10">
+					<div class="col-md-6 right">
+						Logo <strong> Défi du mékong</strong>
+					</div>
+					<div class="col-md-6">
+						<a href="{{ asset('img/system/defi_mekong.png') }}" class="btn-perso no_style_a font10">
+							{{ 'media.actions.download'|trans }}
+						</a>
 					</div>
 				</div>
 			</div>

@@ -11,6 +11,7 @@ user:
         save:               Save
         cancel:             Cancel
         changePassword:     Change password
+        home:               Home
     details: 
         username :          Username:
         firstName:          First name:
@@ -31,6 +32,7 @@ user:
         under1Mo:           "< 1Mb"
         square:             Square if possible ...
         face:               Contain your face
+        warning:            Warning!
 
 # Team
 team:
@@ -44,10 +46,12 @@ team:
         cancel:             Cancel
     details:
         name:               Name of the team
+        leader:             Leader of my team:
     default: 
         noName:             No name so far...
         noTeamYetMessage:   You haven't joined any team yet. Do you want to participate ?
-
+    signature:
+        team:               The Team
 
 
 # Register and forgotten password
@@ -83,6 +87,22 @@ resetPassword:
     actions:
         back:               Back
         changePassword:     Change password
+check:
+    titles: 
+        welcome:            "Thank you for joining us. Please check your emails to confirm your email before using the website."
+        confirm:            Can you please confirm ?
+        confirmEmailForPassword:    Please check your emails to confirm your email before renewing your password. 
+        allGood:            All good ! Thank you for your that. 
+        participate:        Feel free to check what route you wish to participate on:
+        anyProblem:         "If you have any problem, please contact our administrations."
+    actions:
+        checkEmail:         Check your emails
+        pleaseConfirm:      Please confirm
+        done:
+    link: 
+        route:              See the routes
+        contact:            Contact the administration
+
 
 # Login
 login:
@@ -90,6 +110,7 @@ login:
         loginTitle:     Login to your account
         enterUsernameAndPassword:   Enter a username and a password. 
         username:       Username
+        email:          Email
         password:       Password
         orLoginWith:    Or login with
         forgetPassword: Forgot your password?

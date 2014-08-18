@@ -142,6 +142,7 @@ class RoutesFixtures implements FixtureInterface
     // Combining
     for ($i=1; $i < 12; $i++) { 
         $route = new Routes();
+        $route->setRouteNumber($i);
         $route->setName($names_routes[$i]);
         $route->setLength($lengths[$i]);
         $route->setHeightPos($height_pos[$i]);

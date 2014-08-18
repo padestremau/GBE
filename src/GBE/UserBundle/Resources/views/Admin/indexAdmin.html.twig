@@ -41,7 +41,7 @@
 						</div>
 
 						<h3>
-							{{ 'admin.content.step'|trans }} {{ route.id }}. {{ route.name }}
+							{{ 'admin.content.step'|trans }} {{ route.routeNumber }}. {{ route.name }}
 						</h3>
 
 						<div class="row team_admin">
@@ -52,7 +52,7 @@
 								{% set index_route = 0 %}
 								{% for team in members %}
 									{% for member in team %}
-										{% if member.route == route %}
+										{% if member.routes == route %}
 											<div class="row single_admin_member">
 												<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
 														{% if member.team %}
@@ -79,7 +79,7 @@
 														and member.address1|length > 0
 														and member.address2|length > 0
 														and member.gender
-														and member.route
+														and member.routes
 														and member.team %}
 														<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
 													{% else %}
@@ -166,7 +166,7 @@
 										and member.address1|length > 0
 										and member.address2|length > 0
 										and member.gender
-										and member.route
+										and member.routes
 										and member.team %}
 										<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
 									{% else %}

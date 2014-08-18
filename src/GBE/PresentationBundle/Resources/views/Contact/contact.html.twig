@@ -23,15 +23,46 @@
 			<hr/>
 
 			<form action="{{ path('gbe_presentation_send') }}" method="post" {{ form_enctype(formEmail) }}>
+				{% if form_errors(formEmail) %}
+                    <div class="error_message">
+                      	<span class="warning_word">
+                        	{{ 'user.warning.warning'|trans }}
+                      	</span>
+                      	<span class="warning_message">
+                        	{{ form_errors(formEmail) }}
+                      	</span>
+                    </div>
+                    <br/>
+                {% endif %}
 				
 				<h3>
 					{{ 'contact.content.sender'|trans }}
 				</h3>
+					{% if form_errors(formEmail.senderName) %}
+	                    <div class="error_message">
+	                      	<span class="warning_word">
+	                        	{{ 'user.warning.warning'|trans }}
+	                      	</span>
+	                      	<span class="warning_message">
+	                        	{{ form_errors(formEmail.senderName) }}
+	                      	</span>
+	                    </div>
+	                    <br/>
+	                {% elseif form_errors(formEmail.sender) %}
+	                    <div class="error_message">
+	                      	<span class="warning_word">
+	                        	{{ 'user.warning.warning'|trans }}
+	                      	</span>
+	                      	<span class="warning_message">
+	                        	{{ form_errors(formEmail.sender) }}
+	                      	</span>
+	                    </div>
+	                    <br/>
+	                {% endif %}
 					<div class="col-md-6">
 						{% set senderName_title = 'contact.content.name' | trans %}
 						{{ form_label(formEmail.senderName, senderName_title, 
 							{'label_attr': {'class': ''}}) }}
-						{{ form_errors(formEmail.senderName) }}
 						<div class="input">
 				        	<i class="fa fa-pencil"></i>
 				        	{% set opt_senderName = {'attr': {'class': 'form-control placeholder-no-fix',
@@ -44,7 +75,6 @@
 						{% set sender_title = 'contact.content.email' | trans %}
 						{{ form_label(formEmail.sender, sender_title, 
 							{'label_attr': {'class': ''}}) }}
-						{{ form_errors(formEmail.sender) }}
 						<div class="input">
 				        	<i class="fa fa-pencil"></i>
 				        	{% set opt_sender = {'attr': {'class': 'form-control placeholder-no-fix',
@@ -60,9 +90,18 @@
 				</h3>
 					<div class="form-group row">
 						{% set object_title = 'contact.content.object' | trans %}
-						{{ form_label(formEmail.object, object_title, 
-							{'label_attr': {'class': ''}}) }}
-						{{ form_errors(formEmail.object) }}
+						{{ object_title }}
+						{% if form_errors(formEmail.object) %}
+		                    <div class="error_message">
+		                      	<span class="warning_word">
+		                        	{{ 'user.warning.warning'|trans }}
+		                      	</span>
+		                      	<span class="warning_message">
+		                        	{{ form_errors(formEmail.object) }}
+		                      	</span>
+		                    </div>
+		                    <br/>
+		                {% endif %}
 						<div class="input">
 				        	<i class="fa fa-pencil"></i>
 				        	{% set opt_object = {'attr': {'class': 'form-control placeholder-no-fix',
@@ -73,9 +112,18 @@
 
 					<div class="form-group row">
 						{% set content_title = 'contact.content.content' | trans %}
-						{{ form_label(formEmail.content, content_title, 
-							{'label_attr': {'class': ''}}) }}
-						{{ form_errors(formEmail.content) }}
+						{{ content_title }}
+						{% if form_errors(formEmail.content) %}
+		                    <div class="error_message">
+		                      	<span class="warning_word">
+		                        	{{ 'user.warning.warning'|trans }}
+		                      	</span>
+		                      	<span class="warning_message">
+		                        	{{ form_errors(formEmail.content) }}
+		                      	</span>
+		                    </div>
+		                    <br/>
+		                {% endif %}
 						<div class="input">
 				        	<i class="fa fa-pencil"></i>
 				        	{% set opt_content = {'attr': {'class': 'form-control placeholder-no-fix',

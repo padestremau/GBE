@@ -1,12 +1,12 @@
-{# src/GBE/UserBundle/Resources/User/indexTeam.html.twig #}
+{# src/GBE/PresentationBundle/Resources/Photos/addPhotos.html.twig #}
 
-{% extends "GBEUserBundle::user_general.html.twig" %}
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
 
 {% block title %}
-  {{ parent() }} - {{ 'team.titles.team' | trans }}
+  {{ parent() }} - {{ 'index.actions.addPhotos' | trans }}
 {% endblock %}
 
-{% block GBE_User_body %}
+{% block GBE_Presentation_body %}
 
 	<!-- BEGIN leftbar -->
       {% include 'includes/leftbar.html.twig' %}
@@ -18,91 +18,98 @@
 		<div class="content">
 
 			<div>
-				<a href="{{ path('gbe_user_team') }}" class="btn btn-perso float-right">
-			    	{{ 'team.actions.cancel'|trans }}
-			     	<i class="fa fa-sign-in"></i>
-			    </a>
+				<a href="{{ path('gbe_presentation_homepage') }}" class="btn btn-perso float-right">
+	              	{{ 'user.actions.home'|trans }}
+	              	<i class="fa fa-sign-in"></i>
+	            </a>
 			</div>
 
 			<h2>
-				{{ 'team.titles.team'|trans }}
+				{{ 'index.actions.addPhotos'|trans }}
 			</h2>
 			<hr/>
 
-
-        	<form method="post" {{ form_enctype(formEditTeam) }}>
-        		{% if form_errors(formEditTeam) %}
+			<form method="post" {{ form_enctype(formNewPhoto) }}>
+				{% if form_errors(formNewPhoto) %}
                     <div class="error_message">
                       	<span class="warning_word">
                         	{{ 'user.warning.warning'|trans }}
                       	</span>
                       	<span class="warning_message">
-                        	{{ form_errors(formEditTeam) }}
+                        	{{ form_errors(formNewPhoto) }}
                       	</span>
                     </div>
                     <br/>
                 {% endif %}
 				<div class="edit_profile">
 					<div class="form-group row">
-						{% set name_title = 'team.details.name' | trans %}
-						{{ form_label(formEditTeam.name, name_title, 
-							{'label_attr': {'class': 'control-label'}}) }}
-						{% if form_errors(formEditTeam.name) %}
+						{% if form_errors(formNewPhoto.route) %}
 		                    <div class="error_message">
 		                      	<span class="warning_word">
 		                        	{{ 'user.warning.warning'|trans }}
 		                      	</span>
 		                      	<span class="warning_message">
-		                        	{{ form_errors(formEditTeam.name) }}
+		                        	{{ form_errors(formNewPhoto.route) }}
 		                      	</span>
 		                    </div>
 		                    <br/>
 		                {% endif %}
+						{% set select_title = 'photos.titles.selectRoute' | trans %}
+						{{ form_label(formNewPhoto.route, select_title, 
+							{'label_attr': {'class': 'control-label'}}) }}
 						<div class="input-icon">
-				        	<i class="fa fa-pencil"></i>
-				        	{% set opt_name = {'attr': {'class': 'form-control placeholder-no-fix',
-				        		'type':'text', 'placeholder':'j.doe', 'value':app.user.team.name, 'id':'name', 
-				        		'name':'_name', 'required':'required', 'autofocus':''}} %}
-				        	{{ form_widget(formEditTeam.name, opt_name) }}
+				        	{{ form_widget(formNewPhoto.route) }}
 				        </div>
 					</div>
+
 					<div class="form-group row">
-						{% set name_leader = 'team.details.leader' | trans %}
-						{{ form_label(formEditTeam.leader, name_leader, 
-							{'label_attr': {'class': 'control-label'}}) }}
-						{% if form_errors(formEditTeam.leader) %}
+						{% if form_errors(formNewPhoto.file) %}
 		                    <div class="error_message">
 		                      	<span class="warning_word">
 		                        	{{ 'user.warning.warning'|trans }}
 		                      	</span>
 		                      	<span class="warning_message">
-		                        	{{ form_errors(formEditTeam.leader) }}
+		                        	{{ form_errors(formNewPhoto.file) }}
 		                      	</span>
 		                    </div>
 		                    <br/>
 		                {% endif %}
+						{% set name_title = 'photos.titles.selectPhoto' | trans %}
+						{{ form_label(formNewPhoto.file, name_title, 
+							{'label_attr': {'class': 'control-label'}}) }}
 						<div class="input-icon">
-				        	<i class="fa fa-pencil"></i>
-				        	{% set opt_leader = {'attr': {'class': 'form-control placeholder-no-fix',
-				        		'type':'text', 'value':app.user.team.leader, 'id':'leader', 
-				        		'leader':'_leader', 'required':'required'}} %}
-				        	{{ form_widget(formEditTeam.leader, opt_leader) }}
+				        	{{ form_widget(formNewPhoto.file) }}
 				        </div>
 					</div>
+
+					<div class="row">
+						<div class="col-md-3">
+						</div>
+						<div class="col-md-6">
+							{{ 'user.warning.fileMustBe' | trans }}
+							<ul>
+								<li>{{ 'user.warning.under1Mo' | trans }}</li>
+								<li>{{ 'user.warning.square' | trans }}</li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+						</div>
+					</div>
+
 
 					<div>
 						<br/><br/>
 					</div>
 
 					<a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-left cancel_button">
-						{{ 'team.actions.back' | trans }}
+						{{ 'user.actions.back' | trans }}
 					</a>
 					<input type="submit" class="btn btn-perso  float-right validate_button"  
-						value="{{'team.actions.save' | trans }}"/>
-
-					<!-- Et la fin du formulaire ... ;) -->
-					{{ form_widget(formEditTeam) }}
+						value="{{'user.actions.save' | trans }}"/>
 				</div>
+
+				<!-- Le reste du formulaire :) -->
+				{{ form_widget(formNewPhoto) }}
 			</form>
 			
 		</div>
@@ -114,4 +121,4 @@
       {% include 'includes/rightbar.html.twig' %}
     <!-- END rightbar -->
 
-{% endblock GBE_User_body %}
+{% endblock GBE_Presentation_body %}

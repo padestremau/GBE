@@ -43,6 +43,12 @@ body
 .margin_right_10 {
 	margin-right: 10px;
 }
+.margin_top_10 {
+	margin-top: 10px;
+}
+.margin_bottom_10 {
+	margin-bottom: 10px;
+}
 .col-md-1 {
 	width: 8%;
 }
@@ -320,16 +326,35 @@ button {
 	background-color: rgba(176, 42, 44, 0.8);
 }
 
+.error_message {
+	margin-left: 15%;
+	width: 70%;
+	padding: 3px;
+	border :1px solid white;
+	background-color: rgba(161, 42, 40, 0.5);
+	color: white;
+}
+
+.warning_word {
+	text-align: left;
+	width: 20%;
+	font-weight: 800;
+}
+
+.warning_message {
+	padding-left: 20px;
+	text-align: left;
+	width: 80%;
+	overflow: scroll;
+}
+
 
 /* Accueil */
 
 .main_map {
-	width: 100%;
+	margin-left: 5%;
+	width: 90%;
 	height: 100%;
-	background-image: url('../img/route/map.png');
-	background-size: 90%;
-	background-position: center;
-	background-repeat: no-repeat;
 }
 
 .participate_button {
@@ -513,6 +538,20 @@ button {
 {
 	height : 10px;
 }
+
+.calendar_img {
+	width: 74%;
+	margin-left: 13%;
+	border : 1px solid white;
+}
+
+
+/* Photos */
+.photo_souvenir {
+	width: 80%;
+	border: 1px solid white;
+}
+
 
 
 /* Contact */

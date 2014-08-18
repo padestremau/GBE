@@ -18,16 +18,45 @@
 		<div class="content">
 
 			<div>
-				<button class="btn btn-perso float-right">
+				<a href="{{ path('gbe_presentation_add_photos') }}" class="btn btn-perso float-right">
 			    	{{ 'index.actions.addPhotos'|trans }}
 			     	<i class="fa fa-sign-in"></i>
-			    </button>
+			    </a>
 			</div>
 
 			<h2>
 				{{ 'photos.titles.photos'|trans }}
 			</h2>
 			<hr/>
+
+			{% set index_route = 0 %}
+			{% for route in routes %}
+			<div class="row margin0">
+				<h3>
+					{{ 'route.content.step'|trans }} {{ route.routeNumber }}
+				</h3>
+				<hr style="width:70%;"/>
+				
+				{% set index_photo = 1 %}
+				{% for photo in photos[index_route] %}
+					{% if index_photo%4 == 1 %}
+					<div class="row">
+					{% endif %}
+
+						<div class="col-md-3">
+							<img src="{{ asset(photo.webPath) }}" alt="{{ photo.alt }}" class="photo_souvenir"/>
+						</div>
+
+					{% if index_photo%4 == 0 
+						or index_photo  == photos[index_route]|length %}
+					</div>
+					{% endif %}
+
+					{% set index_photo = index_photo + 1 %}
+				{% endfor %}
+				{% set index_route = index_route + 1 %}
+			</div>
+			{% endfor %}
 			
 		</div>
 		<!-- END CONTENT -->

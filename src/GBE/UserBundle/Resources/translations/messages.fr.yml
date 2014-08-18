@@ -11,6 +11,7 @@ user:
         save:               Enregistrer
         cancel:             Annuler
         changePassword:     Changer de mot de passe
+        home:               Accueil
     details: 
         username :          Pseudo :
         firstName:          Prénom :
@@ -31,6 +32,7 @@ user:
         under1Mo:           "< 1Mo"
         square:             Carré si possible ...
         face:               Contenir ton visage
+        warning:            Attention !
 
 # Team
 team:
@@ -44,10 +46,12 @@ team:
         cancel:             Annuler
     details:
         name:               "Nom de l'équipe"
+        leader:             Leader de mon équipe :
     default: 
         noName:             Aucun nom ...
         noTeamYetMessage:   Vous n'avez pas encore rejoint d'équipe. Désirez-vous prendre part à la course ?
-
+    signature:
+        team:               La Team
 
 
 
@@ -84,12 +88,29 @@ resetPassword:
     actions:
         back:               Retour
         changePassword:     Changer le mot de passe
+check:
+    titles: 
+        welcome:            "Merci de nous avoir rejoint(e). Peux-tu vérifier tes emails pour nous confirmer que c'est ton adresse s'il te plaît ?"
+        confirm:            Peux-tu vérifier s'il te plaît ?
+        confirmEmailForPassword:    Peux-tu nous confirmer que c'est bien toi avant de renouveler ton mot de passe ?
+        allGood:            Parfait ! Merci encore et à bientôt.
+        participate:        N'hésite pas à aller voir quelle parcours tu préfères effectuer :
+        anyProblem:         "Si tu as un quelconque problème, n'hésite pas à contacter l'administration."
+    actions:
+        checkEmail:         Vérifier vos emails
+        pleaseConfirm:      A vérifier
+        done:               Bravo !
+    link: 
+        route:              Voir les parcours
+        contact:            Contacter l'administration
+
 
 # Login
 login:
     titles:
         loginTitle:     Se connecter à son compte
         enterUsernameAndPassword:   Enter a username and a password. 
+        email:          Email
         username:       "Nom d'utilisateur"
         password:       Mot de passe
         orLoginWith:    Ou se connecter avec

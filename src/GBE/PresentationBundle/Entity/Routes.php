@@ -22,6 +22,13 @@ class Routes
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="routeNumber", type="integer")
+     */
+    private $routeNumber;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
@@ -402,5 +409,28 @@ class Routes
     public function getLength()
     {
         return $this->length;
+    }
+
+    /**
+     * Set routeNumber
+     *
+     * @param integer $routeNumber
+     * @return Routes
+     */
+    public function setRouteNumber($routeNumber)
+    {
+        $this->routeNumber = $routeNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get routeNumber
+     *
+     * @return integer 
+     */
+    public function getRouteNumber()
+    {
+        return $this->routeNumber;
     }
 }

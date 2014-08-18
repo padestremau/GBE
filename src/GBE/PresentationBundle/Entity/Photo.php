@@ -1,6 +1,6 @@
 <?php
 
-namespace GBE\UserBundle\Entity;
+namespace GBE\PresentationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,13 +9,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Avatar
+ * Photo
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="GBE\UserBundle\Entity\AvatarRepository")
+ * @ORM\Entity(repositoryClass="GBE\PresentationBundle\Entity\PhotoRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Avatar
+class Photo
 {
     /**
      * @var integer
@@ -27,6 +27,18 @@ class Avatar
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="GBE\PresentationBundle\Entity\Routes")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $route;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="GBE\UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $loadedBy;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
@@ -36,13 +48,39 @@ class Avatar
     /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
 
     private $file;
 
     private $tempFilename;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+
+    /*   *********      construct  *************  */
+
+    public function __construct()
+    {
+        // $this->createdAt         = new \Datetime;
+        // $this->updatedAt         = new \Datetime;
+    }
+
+
+    /*   *********     Setter and getter Functions  *************  */
 
 
     /**
@@ -53,6 +91,52 @@ class Avatar
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Photo
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Photo
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /*   *********     File  *************  */
@@ -124,8 +208,9 @@ class Avatar
 
     public function getUploadDir()
     {
+        $route = $this->getRoute();
         // On retourne le chemin relatif vers l'image pour un navigateur
-        return 'img/profile';
+        return 'img/photos/etape_'.$route->getRouteNumber();
     }
 
     protected function getUploadRootDir()
@@ -197,4 +282,73 @@ class Avatar
 
     /*   *********   End  File  *************  */
 
+
+    /**
+     * Set loadedBy
+     *
+     * @param \GBE\UserBundle\Entity\User $loadedBy
+     * @return Photo
+     */
+    public function setLoadedBy(\GBE\UserBundle\Entity\User $loadedBy = null)
+    {
+        $this->loadedBy = $loadedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get loadedBy
+     *
+     * @return \GBE\UserBundle\Entity\User 
+     */
+    public function getLoadedBy()
+    {
+        return $this->loadedBy;
+    }
+
+    /**
+     * Set route
+     *
+     * @param \GBE\PresentationBundle\Entity\Route $route
+     * @return Photo
+     */
+    public function setRoutes(\GBE\PresentationBundle\Entity\Routes $route = null)
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
+    /**
+     * Get route
+     *
+     * @return \GBE\PresentationBundle\Entity\Route 
+     */
+    public function getRoutes()
+    {
+        return $this->route;
+    }
+
+    /**
+     * Set route
+     *
+     * @param \GBE\PresentationBundle\Entity\Routes $route
+     * @return Photo
+     */
+    public function setRoute(\GBE\PresentationBundle\Entity\Routes $route = null)
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
+    /**
+     * Get route
+     *
+     * @return \GBE\PresentationBundle\Entity\Routes 
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
 }

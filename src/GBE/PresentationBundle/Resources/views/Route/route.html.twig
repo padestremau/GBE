@@ -27,7 +27,7 @@
 				{% for route in routes %}
 					<div class="single_route">
 						<h3>
-							{{ 'route.content.step'|trans }} {{ route.id }}. {{ route.name }}
+							{{ 'route.content.step'|trans }} {{ route.routeNumber }}. {{ route.name }}
 						</h3>
 
 						<div class="row">
@@ -74,23 +74,17 @@
 											{% set number_participants = 0 %}
 											{% for member in members %}
 												{% if member.team %}
-													{% if member.team.id == route.id %}
+													{% if member.team.teamNumber == route.routeNumber %}
 														{% set number_participants = number_participants + 1 %}
 													{% endif %}
 												{% endif %}
 											{% endfor %}
 
-											{# EXAMPLE ... TO BE DELETED !!!! #}
-											{% if route.id == 3 or route.id == 8 %}
-												{% set number_participants = 4 %}
-											{% endif %}
-											{# END OF EXAMPLE #}
-
 											{% if number_participants < 4 %}
-												{% if app.user.team %}
+												{% if app.user.routes %}
 													<a href="
 														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-															{{ path('gbe_user_selectRoute', {'routeId' : route.id}) }}
+															{{ path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) }}
 														{% else %}
 															{{ path('fos_user_registration_register') }}
 														{% endif %}
@@ -105,7 +99,7 @@
 														function areYouSureChange()
 														{
 															if (confirm('{{ 'route.content.areYouSureChange'|trans }}')) {
-																window.location = "{{ path('gbe_user_selectRoute', {'routeId' : route.id}) }}";
+																window.location = "{{ path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) }}";
 															}
 															else {
 																
@@ -115,7 +109,7 @@
 												{% else %}
 													<a href="
 														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-															{{ path('gbe_user_selectRoute', {'routeId' : route.id}) }}
+															{{ path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) }}
 														{% else %}
 															{{ path('fos_user_registration_register') }}
 														{% endif %}

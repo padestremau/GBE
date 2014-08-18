@@ -20,20 +20,25 @@ class ContactController extends Controller
 
         // On vérifie que les valeurs entrées sont correctes
         if ($formEmail->isValid()) {
-            $object = $formEmail->get('Email[object]')->getData();
-            $sender = $formEmail->get('Email[sender]')->getData();
-            $senderName = $formEmail->get('Email[senderName]')->getData();
-            $content = $formEmail->get('Email[content]')->getData();
+            // $object = $formEmail->get('Email[object]')->getData();
+            // $sender = $formEmail->get('Email[sender]')->getData();
+            // $senderName = $formEmail->get('Email[senderName]')->getData();
+            // $content = $formEmail->get('Email[content]')->getData();
 
+            $object = 'Ceci est un objet';
             $content = 'Ceci est un message';
+            $sender = 'email@gmail.com';
+            $senderName = 'nom';
             $message = \Swift_Message::newInstance()
                 ->setSubject($object)
                 ->setFrom(array($sender => $senderName))
-                ->setTo(array('p.a.destremau@gmail.com',
-                                'augustin.dst@hotmail.fr'))
+                ->setTo(array('p.a.destremau@gmail.com'))
                 ->setBody(
                     $this->renderView('GBEPresentationBundle:Contact:email.html.twig',
-                        array('content' => $content)
+                        array('content' => $content,
+                                'sender' => $sender,
+                                'senderName' => $senderName,
+                                'object' => $object)
                     )
                 )
             ;
@@ -54,6 +59,5 @@ class ContactController extends Controller
     {
         return $this->render('GBEPresentationBundle:Contact:sent.html.twig');
     }
-
 
 }

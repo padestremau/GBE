@@ -3,7 +3,7 @@
 {% extends "GBEUserBundle::user_general.html.twig" %}
 
 {% block title %}
-  {{ parent() }} - {{ 'route.content.step'|trans }} {{ routeSelected.id }}
+  {{ parent() }} - {{ 'route.content.step'|trans }} {{ routeSelected.routeNumber }}
 {% endblock %}
 
 {% block GBE_User_body %}
@@ -25,7 +25,7 @@
 			</div>
 
 			<h2>
-				{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ routeSelected.id }}
+				{{ 'route.titles.chosenStep'|trans }} : {{ 'route.content.step'|trans }} {{ routeSelected.routeNumber }}
 			</h2>
 			<hr/>
 
@@ -79,7 +79,7 @@
 									{% set number_participants = 0 %}
 									{% for member in members %}
 										{% if member.team %}
-											{% if member.team.id == routeSelected.id %}
+											{% if member.team.teamNumber == routeSelected.routeNumber %}
 												{% set number_participants = number_participants + 1 %}
 											{% endif %}
 										{% endif %}
@@ -131,7 +131,7 @@
 		     	<i class="fa fa-sign-in"></i>
 		    </a>
 
-		    <a href="{{ path('gbe_user_confirmRoute', {'routeId':routeSelected.id}) }}" class="btn btn-perso float-right validate_button">
+		    <a href="{{ path('gbe_user_confirmRoute', {'routeId':routeSelected.routeNumber}) }}" class="btn btn-perso float-right validate_button">
 		    	{{ 'route.actions.confirm'|trans }}
 		     	<i class="fa fa-sign-in"></i>
 		    </a>
