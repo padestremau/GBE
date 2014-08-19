@@ -22,7 +22,7 @@
 			</h2>
 			<hr/>
 
-			<form action="{{ path('gbe_presentation_send') }}" method="post" {{ form_enctype(formEmail) }}>
+			<form action="{{ path('gbe_presentation_contact') }}" method="post" {{ form_enctype(formEmail) }}>
 				{% if form_errors(formEmail) %}
                     <div class="error_message">
                       	<span class="warning_word">
@@ -34,6 +34,9 @@
                     </div>
                     <br/>
                 {% endif %}
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% else %}
 				
 				<h3>
 					{{ 'contact.content.sender'|trans }}
@@ -78,12 +81,14 @@
 						<div class="input">
 				        	<i class="fa fa-pencil"></i>
 				        	{% set opt_sender = {'attr': {'class': 'form-control placeholder-no-fix',
-				        		'type':'text', 'placeholder':'jean.dupont@email.zone', 'name':'_sender' }} %}
+				        		'type':'email', 'placeholder':'jean.dupont@email.zone', 'name':'_sender' }} %}
 				        	{{ form_widget(formEmail.sender, opt_sender) }}
 				        </div>
 					</div>
 
 					<br/><br/><br/>
+
+				{% endif %}
 				
 				<h3>
 					{{ 'contact.content.message'|trans }}
@@ -134,6 +139,9 @@
 					</div>
 
 				<input id="send_email" type="submit" value="{{ 'contact.actions.send'|trans }}" class="btn btn-perso float-right"/>
+
+				<!-- Et le reste du formulaire :) -->
+				{{ form_widget(formEmail) }}
 			</form>
 			
 		</div>

@@ -12,6 +12,7 @@ user:
         cancel:             Cancel
         changePassword:     Change password
         home:               Home
+        remove:             Remove
     details: 
         username :          Username:
         firstName:          First name:

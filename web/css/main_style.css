@@ -348,6 +348,14 @@ button {
 	overflow: scroll;
 }
 
+.warning_background {
+	background-color: rgba(161, 42, 40, 0.6);
+}
+
+.width80 {
+	width: 80px;
+}
+
 
 /* Accueil */
 

@@ -18,6 +18,10 @@ gbe_presentation_route:
     pattern:  /route
     defaults: { _controller: GBEPresentationBundle:Route:route }
 
+gbe_presentation_route_delete:
+    pattern:  /route/delete
+    defaults: { _controller: GBEPresentationBundle:Route:removeRoute }
+
 gbe_presentation_calendar:
     pattern:  /calendar
     defaults: { _controller: GBEPresentationBundle:Route:calendar }

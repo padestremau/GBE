@@ -5,34 +5,48 @@ namespace GBE\PresentationBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use GBE\PresentationBundle\Entity\Email;
 use GBE\PresentationBundle\Form\NewEmailType;
+use GBE\PresentationBundle\Form\LogEmailType;
 
 class ContactController extends Controller
 {
     public function contactAction()
     {
+        /* Current User */
+        $currentUser = $this->getUser();
         $email = new Email;
 
-        // On utiliser le NoteEditType
-        $formEmail = $this->createForm(new NewEmailType(), $email);
+        if ($currentUser) {
+            // On utiliser le NoteEditType
+            $formEmail = $this->createForm(new LogEmailType(), $email);
+            $email->setSender($currentUser->getFirstName());
+            $email->setSenderName($currentUser->getEmail());
+        }
+        else {
+            // On utiliser le NoteEditType
+            $formEmail = $this->createForm(new NewEmailType(), $email);
+        }
 
         // On récupère la requête
         $formEmail->handleRequest($this->getRequest());
 
         // On vérifie que les valeurs entrées sont correctes
         if ($formEmail->isValid()) {
-            // $object = $formEmail->get('Email[object]')->getData();
-            // $sender = $formEmail->get('Email[sender]')->getData();
-            // $senderName = $formEmail->get('Email[senderName]')->getData();
-            // $content = $formEmail->get('Email[content]')->getData();
+            if ($currentUser) {
+                $senderName = $currentUser->getFirstName();
+                $sender = $currentUser->getEmail();
+            }
+            else {
+                $senderName = $formEmail->get('senderName')->getData();
+                $sender = $formEmail->get('sender')->getData();
+            }
+            $object = $formEmail->get('object')->getData();
+            $content = $formEmail->get('content')->getData();
 
-            $object = 'Ceci est un objet';
-            $content = 'Ceci est un message';
-            $sender = 'email@gmail.com';
-            $senderName = 'nom';
             $message = \Swift_Message::newInstance()
+                ->setContentType('text/html')
                 ->setSubject($object)
                 ->setFrom(array($sender => $senderName))
-                ->setTo(array('p.a.destremau@gmail.com'))
+                ->setTo(array('p.a.destremau@gmail.com')) //,'Joseph.de.chateauvieux@gmail.com'
                 ->setBody(
                     $this->renderView('GBEPresentationBundle:Contact:email.html.twig',
                         array('content' => $content,

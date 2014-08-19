@@ -24,6 +24,21 @@ class RouteController extends Controller
             ));
     }
 
+    public function removeRouteAction()
+    {
+        /* Current User */
+        $currentUser = $this->getUser();
+
+        $currentUser->setRoutes();
+        $currentUser->setTeam();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($currentUser);
+        $em->flush();
+        
+        return $this->redirect($this->generateUrl('gbe_user_homepage'));
+    }
+
     public function calendarAction()
     {
         return $this->render('GBEPresentationBundle:Route:calendar.html.twig');

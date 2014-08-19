@@ -54,7 +54,8 @@
 									{% for member in team %}
 										{% if member.routes == route %}
 											<div class="row single_admin_member">
-												<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
+												<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" class="no_style_a">
+													<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
 														{% if member.team %}
 															{% for team in teams %}
 																{% if member.team == team %}
@@ -67,6 +68,7 @@
 															{% endfor %}
 														{% endif %}
 														"/> 
+												</a>
 												<span class="bold">
 													{{ member.firstName }} {{ member.lastName }}
 												</span> - {{ member.age }}

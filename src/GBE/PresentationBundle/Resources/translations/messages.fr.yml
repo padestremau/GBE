@@ -99,6 +99,7 @@ route:
         areYouSure:             Es-tu certain de vouloir participer à ce tronçon ?
         noRouteYetMessage:      Toujours pas enrôlé dans un tronçon ? Fonce !
         areYouSureChange:       Es-tu certain de vouloir changer de tronçon ?
+        areYouSureDelete:       Es-tu certain de vouloir supprimer ton tronçon ?
     actions:
         cancel:                 Annuler
         back:                   Retour

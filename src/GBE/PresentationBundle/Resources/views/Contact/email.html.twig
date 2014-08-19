@@ -11,7 +11,7 @@
 
 Hello !
 
-Nouveau message depuis l'onglet Contact du site. Bonne lecture.
+Nouveau message de {{ senderName }}. Bonne lecture.
 
 Cordialement,
 La Team de la Grande Boucle Etudiante
@@ -50,11 +50,10 @@ background-color: rgba(150,150,150, 0.1);">
 	</div>
 
 	<div style="text-align:left; padding:10px;">
-		Hello !
-
-		Nouveau message depuis l'onglet Contact du site. Bonne lecture.
-
-		<br/>
+		Hello ! 
+		<br/><br/>
+		Nouveau message de <strong>{{ senderName }}</strong>. Bonne lecture.
+		<br/><br/>
 		Cordialement,<br/>
 		<strong>
 			La Team de la Grande Boucle Etudiante
@@ -67,26 +66,28 @@ background-color: rgba(150,150,150, 0.1);">
 		<br/><br/>
 
 		<div style="background-color:white; padding:10px;">
-			<strong>De :</strong> {{ senderName }} ({{ sender }})
-
+			<strong>De :</strong> <a href="mailto:{{ sender }}">{{ senderName }}</a>
+			<br/><br/>
 			<strong>Contenu du message : </strong> <br/>
 			{{ content }}
 		</div>
 
 		<br/><br/>
 
-		<div style="text-align:center;">
-			<a href="{{ path('gbe_user_member', {'memberId': app.user.id}) }}" style="
-												font-size:12px;
-												text-decoration:none;
-												padding: 5px;
-												background-color: rgba(77,137,39,0.8);
-												border: 1px solid white;
-												border-radius: 0;
-												color: white;">
-				Accès à son profil
-			</a>
-		</div>
+		{% if app.user %} <!-- Bouton d'affichage du profil du gars -->
+			<div style="text-align:center;">
+				<a href="{{ path('gbe_user_member', {'memberId': app.user.id}) }}" style="
+													font-size:12px;
+													text-decoration:none;
+													padding: 5px;
+													background-color: rgba(77,137,39,0.8);
+													border: 1px solid white;
+													border-radius: 0;
+													color: white;">
+					Accès à son profil
+				</a>
+			</div>
+		{% endif %}
 		
 		
 		

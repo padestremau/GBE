@@ -12,6 +12,7 @@ user:
         cancel:             Annuler
         changePassword:     Changer de mot de passe
         home:               Accueil
+        remove:             Retirer
     details: 
         username :          Pseudo :
         firstName:          Prénom :

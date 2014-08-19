@@ -82,27 +82,23 @@
 
 											{% if number_participants < 4 %}
 												{% if app.user.routes %}
-													<a href="
-														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-															{{ path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) }}
-														{% else %}
-															{{ path('fos_user_registration_register') }}
-														{% endif %}
-														" onClick="
+													<button onClick="
 															{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 																areYouSureChange()
 															{% endif %}
 															" class="btn btn-perso float-right warning_btn">
 														{{ 'route.actions.change'|trans }}
-													</a>
+													</button>
+													{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+														{% set route_change = path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) %}
+													{% else %}
+														{% set route_change = path('fos_user_registration_register') %}
+													{% endif %}
 													<script type="text/javascript">
 														function areYouSureChange()
 														{
 															if (confirm('{{ 'route.content.areYouSureChange'|trans }}')) {
-																window.location = "{{ path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) }}";
-															}
-															else {
-																
+																window.location = "{{ route_change }}";
 															}
 														}
 													</script>

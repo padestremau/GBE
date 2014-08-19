@@ -99,6 +99,7 @@ route:
         areYouSure:             Are you really sure you want to  participate to this step?
         noRouteYetMessage:      Still not part of one of the steps? Hurry up and sign-up asap!
         areYouSureChange:       Are you sure you wish to change?
+        areYouSureDelete:       Are you sure you wish to delete it?
     actions:
         cancel:                 Cancel
         back:                   Back
