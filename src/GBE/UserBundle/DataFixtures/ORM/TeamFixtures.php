@@ -30,6 +30,7 @@ class TeamFixtures implements FixtureInterface
     for ($i=1; $i < 12; $i++) { 
         $team = new Team();
         $team->setName($names_team[$i]);
+        $team->setTeamNumber($i);
         $manager->persist($team);
     }    
     

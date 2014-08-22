@@ -63,8 +63,8 @@ class Team
 
     public function __construct()
     {
-        // $this->createdAt         = new \Datetime;
-        // $this->updatedAt         = new \Datetime;
+        $this->createdAt         = new \Datetime;
+        $this->updatedAt         = new \Datetime;
     }
 
 
