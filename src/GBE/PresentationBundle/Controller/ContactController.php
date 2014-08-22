@@ -46,7 +46,7 @@ class ContactController extends Controller
                 ->setContentType('text/html')
                 ->setSubject($object)
                 ->setFrom(array($sender => $senderName))
-                ->setTo(array('p.a.destremau@gmail.com')) //,'Joseph.de.chateauvieux@gmail.com'
+                ->setTo(array('p.a.destremau@gmail.com', 'grandeboucleetudiante@gmail.com'))
                 ->setBody(
                     $this->renderView('GBEPresentationBundle:Contact:email.html.twig',
                         array('content' => $content,
