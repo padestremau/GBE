@@ -138,9 +138,10 @@ admin:
     titles:
         admin:          Administration
     actions:
-        edit:           Edit
+        emailToAll:     Email à tous
         sendEmail:      Mail à toute l'équipe
         sendEmailOther: Mail à tous les autres
+        deleteMember:   Supprimer
     content:
         step:           Etape
         others:         Autres membres

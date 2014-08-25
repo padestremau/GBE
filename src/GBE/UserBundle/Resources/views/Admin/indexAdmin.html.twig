@@ -17,12 +17,10 @@
 		<!-- BEGIN CONTENT -->
 		<div class="content">
 
-			<div>
-				<button class="btn btn-perso float-right">
-			    	{{ 'admin.actions.edit'|trans }}
-			     	<i class="fa fa-sign-in"></i>
-			    </button>
-			</div>
+			<a href="{{ path('gbe_user_email_all') }}" class="btn btn-perso float-right">
+		    	{{ 'admin.actions.emailToAll'|trans }}
+		     	<i class="fa fa-sign-in"></i>
+		    </a>
 
 			<h2>
 				{{ 'admin.titles.admin'|trans }}
@@ -34,7 +32,7 @@
 				{% for route in routes %}
 					<div class="single_route">
 						<div>
-							<a href="#" class="btn btn-perso font10 float-right email_button">
+							<a href="{{ path('gbe_user_email_team', {'routeId':route.routeNumber }) }}" class="btn btn-perso font10 float-right email_button">
 						    	{{ 'admin.actions.sendEmail'|trans }}
 						     	<i class="fa fa-sign-in"></i>
 						    </a>
@@ -85,7 +83,7 @@
 														and member.team %}
 														<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
 													{% else %}
-														<a href="#" style="z-index : 200;">
+														<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" style="z-index : 200;">
 															<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" title="Membre n'ayant pas rempli les éléments suivants: 
 																			{% if member.firstName|length == 0 %}
 																				{{ 'user.details.firstName'|trans }}
@@ -111,6 +109,18 @@
 																			"/>
 														</a>
 													{% endif %}
+													<button onClick="areYouSureDeleteMember()" style="z-index : 200;" class="btn-perso no_style_a margin_left_10">
+														{{ 'admin.actions.deleteMember'|trans }}
+													</button>
+													{% set route_delete = path('gbe_user_member_delete', {'memberId':member.id}) %}
+													<script type="text/javascript">
+														function areYouSureDeleteMember()
+														{
+															if (confirm('{{ 'Etes-vous certain de vouloir supprimer ce user ?'|trans }}')) {
+																window.location = "{{ route_delete }}";
+															}
+														}
+													</script>
 												</span>
 											</div>
 											<br/>
@@ -128,7 +138,7 @@
 			{% endif %}
 
 			<div>
-				<a href="#" class="btn btn-perso font10 float-right email_button">
+				<a href="{{ path('gbe_user_email_others') }}" class="btn btn-perso font10 float-right email_button">
 			    	{{ 'admin.actions.sendEmailOther'|trans }}
 			     	<i class="fa fa-sign-in"></i>
 			    </a>
