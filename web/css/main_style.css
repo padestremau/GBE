@@ -503,6 +503,7 @@ button {
 }
 
 .paragraph_bio {
+	text-indent: 0 !important;
 	font-size: 11px;
 }
 
