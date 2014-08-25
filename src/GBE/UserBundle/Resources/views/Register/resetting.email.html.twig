@@ -9,7 +9,7 @@
 {% block body_text %}
 {% autoescape false %}
 
-Salut {% if user.firstName %}{{ user.firstName }}{% else %}{{ user.email }}{% endif %},
+Salut {% if user.firstName %}{{ user.lastName }}{% else %}{{ user.username }}{% endif %},
 
 Peux-tu confirmer que c'est bien toi en cliquant sur le lient suivant ?
 {{ confirmationUrl }}
@@ -44,7 +44,7 @@ background-color: rgba(150,150,150, 0.1);">
 	</div>
 
 	<div style="text-align:left; padding:10px;">
-		Salut <strong>{% if user.firstName %}{{ user.firstName }}{% else %}{{ user.email }}{% endif %}</strong>,
+		Salut <strong>{% if user.firstName %}{{ user.lastName }}{% else %}{{ user.username }}{% endif %}</strong>,
 		<br/><br/>
 		Peux-tu confirmer que c'est bien toi en cliquant sur le lient suivant ?
 		<br/><br/>
