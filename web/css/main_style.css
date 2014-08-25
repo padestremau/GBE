@@ -505,6 +505,9 @@ button {
 .paragraph_bio {
 	text-indent: 0 !important;
 	font-size: 11px;
+	margin-left : 5px; 
+	margin-right : 5px; 
+	text-align : justify;
 }
 
 .member_org {
