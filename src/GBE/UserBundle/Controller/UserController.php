@@ -54,7 +54,7 @@ class UserController extends Controller
         	));
     }
 
-    public function selectRouteAction($routeId = null)
+    public function selectRouteAction($routeId)
     {
         $route = $this ->getDoctrine()
                             ->getManager()
