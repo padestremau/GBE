@@ -23,7 +23,7 @@ body
 .website_content {
 
 	background-color: rgba(220,220,220,0.85) !important;
-	width: 96%;
+	width: 94%;
 	min-width: 300px;
 	margin: auto;
 	max-width: 1240px;
@@ -689,6 +689,8 @@ button {
 	text-align: center;
 	width : 100%;
 	height: 38px;
+	position: relative;
+	left: 15px;
 }
 
 .separator_footer {

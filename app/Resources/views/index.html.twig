@@ -52,22 +52,10 @@
       {% include 'includes/nav.html.twig' %}
     <!-- END HEADER -->
     <div class="website_content">
-      <div class="row">
-        <!-- BEGIN ERROR DISPLAY -->
-        <div class="clearfix">
-          <!-- Erreurs -->    
-            {# if (app.session.flashbag.get('info')|length > 0) %}
-              <div class="row center btn-info">
-                {% for flashMessage in app.session.flashbag.get('info') %}
-                  {{ flashMessage }}
-                {% endfor %}
-              </div>
-            {% endif #}
-        </div>
-        <!-- END ERROR DISPLAY -->
+      <div class="row margin0">
         
         <!-- BEGIN CONTAINER -->
-        <div class="page-container">
+        <div class="page-container row margin0">
             {% block body %}
             {% endblock body %}  
         </div>
@@ -83,13 +71,16 @@
         {% endjavascripts %}
 
         <!-- END JAVASCRIPTS -->
+        
+        <div class="row margin0">
+          <!-- BEGIN FOOTER -->
+          {% if route != 'gbe_presentation_live' %}
+            {% include 'includes/footer.html.twig' %}
+          {% endif %}
+          <!-- END FOOTER -->
+        </div>
       </div>
     </div>
-    <!-- BEGIN FOOTER -->
-    {% if route != 'gbe_presentation_live' %}
-      {% include 'includes/footer.html.twig' %}
-    {% endif %}
-    <!-- END FOOTER -->
   </body>
   <!-- END BODY -->
 </html>
