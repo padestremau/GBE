@@ -3,6 +3,9 @@
 namespace GBE\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use GBE\PresentationBundle\Entity\Email;
+use GBE\PresentationBundle\Form\LogEmailType;
+
 
 class AdminController extends Controller
 {
@@ -23,19 +26,42 @@ class AdminController extends Controller
                         	->getRepository('GBEUserBundle:User')
                         	->findWithRouteOrder($routes);
 
+        $otherMembers = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEUserBundle:User')
+                            ->findWithoutTeam();
+
         return $this->render('GBEUserBundle:Admin:indexAdmin.html.twig', array(
         	'routes' => $routes,
         	'teams' => $teams,
-        	'members' => $members
+        	'members' => $members,
+            'otherMembers' => $otherMembers
         	));
     }
 
-    public function sendEmailToAllAction()
+    public function sendEmailAction($toWho)
     {
-        $members = $this ->getDoctrine()
-                            ->getManager()
-                            ->getRepository('GBEUserBundle:User')
-                            ->findAll();
+        if ($toWho == 'all') {
+            $members = $this ->getDoctrine()
+                                ->getManager()
+                                ->getRepository('GBEUserBundle:User')
+                                ->findAllUser();
+        }
+        elseif ($toWho == 'others') {
+            $members = $this ->getDoctrine()
+                                ->getManager()
+                                ->getRepository('GBEUserBundle:User')
+                                ->findWithoutTeam();
+        }
+        elseif (is_numeric($toWho)) {
+            $members = $this ->getDoctrine()
+                                ->getManager()
+                                ->getRepository('GBEUserBundle:User')
+                                ->findByRoute($toWho);
+        }
+        else {
+            $members = array();
+        }
 
         /* Current User */
         $currentUser = $this->getUser();
@@ -53,21 +79,22 @@ class AdminController extends Controller
         if ($formEmail->isValid()) {
             $senderName = 'Administration du website';
             $sender = 'contact@grande-boucle-etudiante.fr';
-            $object = $formEmail->get('object')->getData();
-            $content = $formEmail->get('content')->getData();
+            $object = '[GBE Administration] '.$formEmail->get('object')->getData();
+            $content = stripcslashes($formEmail->get('content')->getData());
 
             for ($i=0; $i < sizeof($members); $i++) { 
                 $message = \Swift_Message::newInstance()
                     ->setContentType('text/html')
                     ->setSubject($object)
                     ->setFrom(array($sender => $senderName))
-                    ->setTo($members[$i])
+                    ->setTo($members[$i]->getEmail())
                     ->setBody(
-                        $this->renderView('GBEPresentationBundle:Contact:email.html.twig',
+                        $this->renderView('GBEUserBundle:Admin:emailAdmin.html.twig',
                             array('content' => $content,
                                     'sender' => $sender,
                                     'senderName' => $senderName,
-                                    'object' => $object)
+                                    'object' => $object,
+                                    'member' => $members[$i])
                         )
                     )
                 ;
@@ -78,22 +105,19 @@ class AdminController extends Controller
             $this->get('session')->getFlashBag()->add('info', 'Message bien envoyé');
 
             // On redirige vers la page de visualisation de le document nouvellement créé
-            return $this->redirect($this->generateUrl('gbe_presentation_send'));
+            return $this->redirect($this->generateUrl('gbe_user_admin_email_sent'));
         }
 
-        return $this->render('GBEUserBundle:Admin:emailAdmin.html.twig', array(
-            'members' => $members
+        return $this->render('GBEUserBundle:Admin:emailToAllAdmin.html.twig', array(
+            'formEmail' => $formEmail->createView(),
+            'members' => $members,
+            'toWho' => $toWho
             ));
     }
 
-    public function sendEmailToTeamAction($routeId)
+    public function sentAction()
     {
-
-    }
-
-    public function sendEmailToOthersAction()
-    {
-
+        return $this->render('GBEUserBundle:Admin:sentAdmin.html.twig');
     }
 
     public function deleteMemberAction($memberId)

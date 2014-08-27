@@ -36,6 +36,16 @@
 
 			{% else %}
 
+				<!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+	        	{% if is_granted("ROLE_ADMIN") %}
+	        		<div>
+						<a href="{{ path('gbe_user_admin') }}" class="btn btn-perso float-right">
+					    	{{ 'user.actions.back'|trans }}
+					     	<i class="fa fa-sign-in"></i>
+					    </a>
+					</div>
+	        	{% endif %}
+
 			<h2>
 				{{ 'user.titles.member'|trans }} #{{ user.id }}
 			</h2>
@@ -171,7 +181,11 @@
 						    <strong>
 						    	{{ 'user.details.team'|trans }}	
 						    </strong> 
-						    {{ user.team.name }}
+						    {% if user.team %}
+						    	{{ user.team.name }}
+						    {% else %}
+						    	{{ 'user.details.empty'|trans }}	
+						    {% endif %}
 					    </button>
 					</div>
 					{% endif %}

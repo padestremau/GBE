@@ -28,6 +28,7 @@ user:
         female:             Female
         avatar:             Profile picture
         changeAvatar:       Please select a new profile picture:
+        empty:              (Empty)
     warning:
         fileMustBe:         File must be:
         under1Mo:           "< 1Mb"
@@ -138,6 +139,7 @@ login:
 admin:
     titles:
         admin:          Administration
+        thankYou:       Thank you
     actions:
         emailToAll:     Email all
         sendEmail:      Send email to team
@@ -146,3 +148,4 @@ admin:
     content:
         step:           Step
         others:         Other members
+        messageSent:    Your message is sent.

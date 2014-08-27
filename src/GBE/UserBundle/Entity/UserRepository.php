@@ -53,6 +53,16 @@ class UserRepository extends EntityRepository
 					->getResult();
 	}
 
+	public function findWithoutTeam ()
+	{
+		return $this->createQueryBuilder('u')
+					->where ('u.routes is null')
+					->orderBy('u.lastName', 'ASC')
+					->getQuery()
+					->getResult();
+	}
+
+
 	public function findAllUser() {
 		return $members = $this->createQueryBuilder('u')
 								->orderBy('u.team', 'ASC')

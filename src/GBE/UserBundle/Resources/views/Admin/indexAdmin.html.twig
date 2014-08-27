@@ -17,7 +17,7 @@
 		<!-- BEGIN CONTENT -->
 		<div class="content">
 
-			<a href="{{ path('gbe_user_email_all') }}" class="btn btn-perso float-right">
+			<a href="{{ path('gbe_user_admin_email', {'toWho':'all'}) }}" class="btn btn-perso float-right">
 		    	{{ 'admin.actions.emailToAll'|trans }}
 		     	<i class="fa fa-sign-in"></i>
 		    </a>
@@ -32,7 +32,7 @@
 				{% for route in routes %}
 					<div class="single_route">
 						<div>
-							<a href="{{ path('gbe_user_email_team', {'routeId':route.routeNumber }) }}" class="btn btn-perso font10 float-right email_button">
+							<a href="{{ path('gbe_user_admin_email', {'toWho':route.routeNumber}) }}" class="btn btn-perso font10 float-right email_button">
 						    	{{ 'admin.actions.sendEmail'|trans }}
 						     	<i class="fa fa-sign-in"></i>
 						    </a>
@@ -138,7 +138,7 @@
 			{% endif %}
 
 			<div>
-				<a href="{{ path('gbe_user_email_others') }}" class="btn btn-perso font10 float-right email_button">
+				<a href="{{ path('gbe_user_admin_email', {'toWho':'others'}) }}" class="btn btn-perso font10 float-right email_button">
 			    	{{ 'admin.actions.sendEmailOther'|trans }}
 			     	<i class="fa fa-sign-in"></i>
 			    </a>
@@ -149,23 +149,24 @@
 			</h3>
 
 			<div class="row team_admin">
-				{% for team in members %}
-					{% for member in team %}
-						{% if member.team == null %}
+					{% for member in otherMembers %}
+						{% if member.routes == null %}
 							<div class="row single_admin_member">
-								<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
-										{% if member.team %}
-											{% for team in teams %}
-												{% if member.team == team %}
-													{% if team.leader %}
-														{% if team.leader == member %}
-															teamleader_avatar
+								<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" style="z-index : 200;">
+									<img src="{{ asset('img/profile/profil_defaut.png') }}" alt="Default" class="avatar_admin
+											{% if member.team %}
+												{% for team in teams %}
+													{% if member.team == team %}
+														{% if team.leader %}
+															{% if team.leader == member %}
+																teamleader_avatar
+															{% endif %}
 														{% endif %}
 													{% endif %}
-												{% endif %}
-											{% endfor %}
-										{% endif %}
-										"/> 
+												{% endfor %}
+											{% endif %}
+											"/> 
+								</a>
 								<span class="bold">
 									{{ member.firstName }} {{ member.lastName }}
 								</span> - {{ member.age }}
@@ -208,12 +209,23 @@
 
 															"/>
 										</a>
+										<button onClick="areYouSureDeleteMember()" style="z-index : 200;" class="btn-perso no_style_a margin_left_10">
+											{{ 'admin.actions.deleteMember'|trans }}
+										</button>
+										{% set route_delete = path('gbe_user_member_delete', {'memberId':member.id}) %}
+										<script type="text/javascript">
+											function areYouSureDeleteMember()
+											{
+												if (confirm('{{ 'Etes-vous certain de vouloir supprimer ce user ?'|trans }}')) {
+													window.location = "{{ route_delete }}";
+												}
+											}
+										</script>
 									{% endif %}
 								</span>
 							</div>
 						{% endif %}
 					{% endfor %}
-				{% endfor %}
 			</div>
 			
 			

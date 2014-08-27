@@ -1,0 +1,40 @@
+{# src/GBE/UserBundle/Resources/Presentation/sent.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'admin.titles.admin' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<h2>
+				{{ 'admin.titles.thankYou' | trans }}
+			</h2>
+			<hr/>
+
+			<br/><br/><br/><br/><br/><br/><br/>
+
+			<div class="center">
+				{{ 'admin.content.messageSent'|trans }}
+			</div>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

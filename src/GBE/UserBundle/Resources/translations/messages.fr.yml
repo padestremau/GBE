@@ -28,6 +28,7 @@ user:
         female:             Femme
         avatar:             Mon avatar
         changeAvatar:       Sélectionner une nouvelle photo :
+        empty:              (Vide)
     warning:
         fileMustBe:         Le fichier doit :
         under1Mo:           "< 1Mo"
@@ -137,6 +138,7 @@ login:
 admin:
     titles:
         admin:          Administration
+        thankYou:       Merci
     actions:
         emailToAll:     Email à tous
         sendEmail:      Mail à toute l'équipe
@@ -145,3 +147,4 @@ admin:
     content:
         step:           Etape
         others:         Autres membres
+        messageSent:    Votre message a bient été transmis.

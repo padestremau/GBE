@@ -157,7 +157,10 @@
     <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
     {% if is_granted("ROLE_ADMIN") %}
     <li class="menu_administration_li
-          {% if (route == 'gbe_user_admin') %}
+          {% if (route == 'gbe_user_admin')
+              or (route == 'gbe_user_admin_email')
+              or (route == 'gbe_user_admin_email_sent')
+              or (route == 'gbe_user_member_delete') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_user_admin') }}"> 

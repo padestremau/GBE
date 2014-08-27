@@ -1,0 +1,176 @@
+{# src/GBE/UserBundle/Resources/Admin/contact.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'admin.titles.admin' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<a href="{{ path('gbe_user_admin') }}" class="btn btn-perso float-right">
+			    	{{ 'user.actions.cancel'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			</div>
+
+			<h2>
+				{{ 'admin.titles.admin' | trans }}
+			</h2>
+			<hr/>
+
+			<p>
+				Message pour : 
+				{% if toWho == 'all' %}
+					Tous
+				{% elseif toWho == 'others' %}
+					Autres
+				{% elseif toWho in range(0, 12) %}
+					Equipe {{ toWho }}
+				{% endif %}
+
+				({{ members|length }} personnes)
+			</p>
+
+			<form action="{{ path('gbe_user_admin_email', {'toWho': toWho}) }}" method="post" {{ form_enctype(formEmail) }}>
+				{% if form_errors(formEmail) %}
+                    <div class="error_message">
+                      	<span class="warning_word">
+                        	{{ 'user.warning.warning'|trans }}
+                      	</span>
+                      	<span class="warning_message">
+                        	{{ form_errors(formEmail) }}
+                      	</span>
+                    </div>
+                    <br/>
+                {% endif %}
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% else %}
+				
+				<h3>
+					{{ 'contact.content.sender'|trans }}
+				</h3>
+					{% if form_errors(formEmail.senderName) %}
+	                    <div class="error_message">
+	                      	<span class="warning_word">
+	                        	{{ 'user.warning.warning'|trans }}
+	                      	</span>
+	                      	<span class="warning_message">
+	                        	{{ form_errors(formEmail.senderName) }}
+	                      	</span>
+	                    </div>
+	                    <br/>
+	                {% elseif form_errors(formEmail.sender) %}
+	                    <div class="error_message">
+	                      	<span class="warning_word">
+	                        	{{ 'user.warning.warning'|trans }}
+	                      	</span>
+	                      	<span class="warning_message">
+	                        	{{ form_errors(formEmail.sender) }}
+	                      	</span>
+	                    </div>
+	                    <br/>
+	                {% endif %}
+					<div class="col-md-6">
+						{% set senderName_title = 'contact.content.name' | trans %}
+						{{ form_label(formEmail.senderName, senderName_title, 
+							{'label_attr': {'class': ''}}) }}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_senderName = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':'Jean Dupont', 'name':'_senderName' }} %}
+				        	{{ form_widget(formEmail.senderName, opt_senderName) }}
+				        </div>
+					</div>
+
+					<div class="col-md-6">
+						{% set sender_title = 'contact.content.email' | trans %}
+						{{ form_label(formEmail.sender, sender_title, 
+							{'label_attr': {'class': ''}}) }}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_sender = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'email', 'placeholder':'jean.dupont@email.zone', 'name':'_sender' }} %}
+				        	{{ form_widget(formEmail.sender, opt_sender) }}
+				        </div>
+					</div>
+
+					<br/><br/><br/>
+
+				{% endif %}
+				
+				<h3>
+					{{ 'contact.content.message'|trans }}
+				</h3>
+					<div class="form-group row">
+						{% set object_title = 'contact.content.object' | trans %}
+						{{ object_title }}
+						{% if form_errors(formEmail.object) %}
+		                    <div class="error_message">
+		                      	<span class="warning_word">
+		                        	{{ 'user.warning.warning'|trans }}
+		                      	</span>
+		                      	<span class="warning_message">
+		                        	{{ form_errors(formEmail.object) }}
+		                      	</span>
+		                    </div>
+		                    <br/>
+		                {% endif %}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_object = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'text', 'placeholder':object_title, 'name':'_object' }} %}
+				        	{{ form_widget(formEmail.object, opt_object) }}
+				        </div>
+					</div>
+
+					<div class="form-group row">
+						{% set content_title = 'contact.content.content' | trans %}
+						{{ content_title }}
+						{% if form_errors(formEmail.content) %}
+		                    <div class="error_message">
+		                      	<span class="warning_word">
+		                        	{{ 'user.warning.warning'|trans }}
+		                      	</span>
+		                      	<span class="warning_message">
+		                        	{{ form_errors(formEmail.content) }}
+		                      	</span>
+		                    </div>
+		                    <br/>
+		                {% endif %}
+						<div class="input">
+				        	<i class="fa fa-pencil"></i>
+				        	{% set opt_content = {'attr': {'class': 'form-control placeholder-no-fix',
+				        		'type':'textarea', 'placeholder':content_title, 'name':'_content',
+				        		'rows':'10' }} %}
+				        	{{ form_widget(formEmail.content, opt_content) }}
+				        </div>
+					</div>
+
+				<input id="send_email" type="submit" value="{{ 'contact.actions.send'|trans }}" class="btn btn-perso float-right"/>
+
+				<!-- Et le reste du formulaire :) -->
+				{{ form_widget(formEmail) }}
+			</form>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

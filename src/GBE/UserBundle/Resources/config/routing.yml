@@ -38,18 +38,17 @@ gbe_user_admin:
     pattern:  /admin
     defaults: { _controller: GBEUserBundle:Admin:admin }
 
-gbe_user_email_all:
-    pattern:  /admin/email_all
-    defaults: { _controller: GBEUserBundle:Admin:sendEmailToAll }
+gbe_user_admin_email:
+    pattern:  /admin/email/{toWho}
+    defaults: { _controller: GBEUserBundle:Admin:sendEmail }
 
-gbe_user_email_team:
-    pattern:  /admin/email_team/{routeId}
-    defaults: { _controller: GBEUserBundle:Admin:sendEmailToTeam }
-
-gbe_user_email_others:
-    pattern:  /admin/email_others
-    defaults: { _controller: GBEUserBundle:Admin:sendEmailToOthers }
+gbe_user_admin_email_sent:
+    pattern:  /admin/sent
+    defaults: { _controller: GBEUserBundle:Admin:sent }
 
 gbe_user_member_delete:
     pattern:  /admin/member/delete/{memberId}
     defaults: { _controller: GBEUserBundle:Admin:deleteMember }
+
+
+

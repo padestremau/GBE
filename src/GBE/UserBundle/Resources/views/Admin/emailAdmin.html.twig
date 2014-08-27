@@ -1,0 +1,85 @@
+{# src/GBE/PresentationBundle/Resources/views/Contact/emailAdmin.html.twig #}
+
+{% block body_html %}
+{#
+    You can of course render the html directly here.
+    Including a template as done here allows keeping things DRY by using
+    the template inheritance in it
+#}
+
+<div style="
+color: rgb(50,50,50);
+width:94%;
+margin-left:3%;
+margin-top:5px;
+border:1px solid white;
+padding:10px;
+background-color: rgba(150,150,150, 0.1);">
+
+	<div style="text-align:center; ">
+		<h2 style="color:rgba(77,137,39,0.8);">
+			Nouveau message
+		</h2>	
+		<hr/>
+	</div>
+
+	<div style="text-align:left; padding:10px;">
+		Hello ! 
+		<br/><br/>
+		De la part de <strong><a href="mailto:{{ sender }}" style="text-decoration:none; color:rgba(77,137,39,0.8);">{{ senderName }}</a></strong> :
+		<br/><br/>
+		{{ content }}
+		<br/><br/>
+		Cordialement,<br/>
+		<strong>
+			La Team de la Grande Boucle Etudiante
+		</strong>
+
+		<br/><br/>
+
+		<hr/>
+
+		{% if app.user %} <!-- Bouton d'affichage du profil du gars -->
+			<div style="text-align:center;">
+				<a href="http://www.grande-boucle-etudiante.fr" style="
+													font-size:12px;
+													text-decoration:none;
+													padding: 5px;
+													background-color: rgba(77,137,39,0.8);
+													border: 1px solid white;
+													border-radius: 0;
+													color: white;">
+					Accès au site
+				</a>
+			</div>
+		{% endif %}
+		
+		
+		
+	</div>
+</div>
+
+<!-- <img src="{# asset('img/system/banniere.jpg') #}" style="width:90%; margin-left:5%;"/> -->
+
+{% endblock %}
+
+
+{# block subject %}
+{% autoescape false %}
+[GBE Administration] Message : {{ object }}
+{% endautoescape %}
+{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+
+Hello !
+
+De la part de l'administration:
+{{ content }}
+
+Cordialement,
+La Team de la Grande Boucle Etudiante
+
+{% endautoescape %}
+{% endblock #}

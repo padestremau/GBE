@@ -40,7 +40,7 @@ class ContactController extends Controller
                 $sender = $formEmail->get('sender')->getData();
             }
             $object = $formEmail->get('object')->getData();
-            $content = $formEmail->get('content')->getData();
+            $content = stripcslashes($formEmail->get('content')->getData());
 
             $message = \Swift_Message::newInstance()
                 ->setContentType('text/html')
