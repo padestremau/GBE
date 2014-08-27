@@ -14,10 +14,16 @@
 		<div class="content_live">
 
 			<div>
-				<button class="btn btn-perso float-right">
+				<button onClick="closeOutlet()" class="btn btn-perso float-right">
 			    	{{ 'index.actions.close'|trans }}
 			     	<i class="fa fa-sign-in"></i>
 			    </button>
+			    <script type="text/javascript">
+					function closeOutlet()
+					{
+						window.close();
+					}
+				</script>
 			</div>
 
 			<h2 class="title_live">
