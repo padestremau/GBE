@@ -1,7 +1,7 @@
 <?php
-// src/GBE/UserBundle/Form/EditUserType.php
+// src/Spex/UserBundle/Form/EditUserType.php
 
-namespace GBE\UserBundle\Form;
+namespace Spex\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

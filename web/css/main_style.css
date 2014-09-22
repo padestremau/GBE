@@ -580,6 +580,21 @@ button {
 	text-align: center;
 }
 
+/* Media */
+.media_img {
+	margin-left: 30%;
+	width: 40%;
+}
+
+.media_img_main {
+	width: 100%;
+}
+
+.media_solustop  {
+
+}
+
+
 
 
 
