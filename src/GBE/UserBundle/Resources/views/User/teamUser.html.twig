@@ -23,7 +23,7 @@
 		<div class="content">
 
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				{% if teamCurrent and teamCurrent == app.user.routes %}
+				{% if teamCurrent %}
 					<div>
 						<a href="{{ path('gbe_user_editTeamName') }}" class="btn btn-perso float-right">
 					    	{{ 'team.actions.edit'|trans }}
