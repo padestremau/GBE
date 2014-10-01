@@ -167,30 +167,32 @@
 													</div>
 												{% endif %}
 											{% else %}
-												<button class="btn float-right btn_full">
-													{{ 'route.titles.full'|trans }}
-													<span>
-														{% if number_participants > 0 %}
-															{% for member in members %}
-																{% if member.team %}
-																	{% if member.team.teamNumber == route.routeNumber %}
-																		{% if member.firstName|length > 0 %}
-																			{{ member.firstName }}
-																			{% if member.lastName|length > 0 %}
-																				{{ member.lastName }}
+												<div>
+													<a href="{{ path('gbe_user_team_see', {'teamId':route.routeNumber}) }}" class="btn btn-perso float-right btn_route">
+												    	{{ 'team.actions.see'|trans }}
+														<span>
+															{% if number_participants > 0 %}
+																{% for member in members %}
+																	{% if member.team %}
+																		{% if member.team.teamNumber == route.routeNumber %}
+																			{% if member.firstName|length > 0 %}
+																				{{ member.firstName }}
+																				{% if member.lastName|length > 0 %}
+																					{{ member.lastName }}
+																				{% endif %}
+																			{% else %}
+																				{{ member.email }}
 																			{% endif %}
-																		{% else %}
-																			{{ member.email }}
+																			<br/>
 																		{% endif %}
-																		<br/>
 																	{% endif %}
-																{% endif %}
-															{% endfor %}
-														{% else %}
-															(Vide)
-														{% endif %}
-													</span>
-												</button>
+																{% endfor %}
+															{% else %}
+																(Vide)
+															{% endif %}
+														</span>
+												    </a>
+												</div>
 												<div>
 													<a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso float-right warning_btn">
 												    	{{ 'team.actions.help'|trans }}
