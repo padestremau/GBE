@@ -539,6 +539,7 @@ button {
     transform:scale(0) rotate(-12deg);
     transition:all .25s;
     opacity:0;
+    z-index: 10000;
 }
 
 .btn_route:hover span, .btn_route:focus span, .btn_full:hover span, .btn_full:focus span{
