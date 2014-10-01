@@ -89,9 +89,10 @@
 													{% else %}
 														<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" style="z-index : 200;" class="btn_route">
 															<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" />
-															<span>
-																
+															<span>	
 															<strong>Membre n'ayant pas rempli les éléments suivants: </strong>
+															<br/>
+															{{ member.email }}
 															<br/>
 																{% if member.firstName|length == 0 %}
 																	{{ 'user.details.firstName'|trans }}
@@ -191,31 +192,35 @@
 										and member.team %}
 										<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
 									{% else %}
-										<a href="#" style="z-index : 200;">
-											<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" title="Membre n'ayant pas rempli les éléments suivants: 
-															{% if member.firstName|length == 0 %}
-																{{ 'user.details.firstName'|trans }}
-															{% endif %}
-															{% if member.lastName|length == 0 %}
-																{{ 'user.details.lastName'|trans }}
-															{% endif %}
-															{% if member.age|length == 0 %}
-																{{ 'user.details.age'|trans }}
-															{% endif %}
-															{% if member.tel|length == 0 %}
-																{{ 'user.details.tel'|trans }}
-															{% endif %}
-															{% if member.address1|length == 0 %}
-																{{ 'user.details.address'|trans }}
-															{% endif %}
-															{% if member.gender|length == 0 %}
-																{{ 'user.details.gender'|trans }}
-															{% endif %}
-															{% if member.team|length == 0 %}
-																{{ 'user.details.team'|trans }}
-															{% endif %}
-
-															"/>
+										<a href="#" style="z-index : 200;" class="btn_route">
+											<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" />
+											<span>	
+												<strong>Membre n'ayant pas rempli les éléments suivants: </strong>
+												<br/>
+												{{ member.email }}
+												<br/>
+													{% if member.firstName|length == 0 %}
+														{{ 'user.details.firstName'|trans }}
+													{% endif %}
+													{% if member.lastName|length == 0 %}
+														{{ 'user.details.lastName'|trans }}
+													{% endif %}
+													{% if member.age|length == 0 %}
+														{{ 'user.details.age'|trans }}
+													{% endif %}
+													{% if member.tel|length == 0 %}
+														{{ 'user.details.tel'|trans }}
+													{% endif %}
+													{% if member.address1|length == 0 %}
+														{{ 'user.details.address'|trans }}
+													{% endif %}
+													{% if member.gender|length == 0 %}
+														{{ 'user.details.gender'|trans }}
+													{% endif %}
+													{% if member.team|length == 0 %}
+														{{ 'user.details.team'|trans }}
+													{% endif %}
+												</span>
 										</a>
 										<button onClick="areYouSureDeleteMember()" style="z-index : 200;" class="btn-perso no_style_a margin_left_10">
 											{{ 'admin.actions.deleteMember'|trans }}
