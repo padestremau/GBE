@@ -30,7 +30,7 @@
 					     	<i class="fa fa-sign-in"></i>
 					    </a>
 					</div>
-				{% else %}
+				{% endif %}
 					<button onClick="
 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 								areYouSureChange()
@@ -70,7 +70,6 @@
 							}
 						}
 					</script>
-				{% endif %}
 			{% endif %}
 
 			<h2>
