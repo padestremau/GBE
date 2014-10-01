@@ -30,6 +30,7 @@
             </a>
           </div>
         {% else %}
+          {#
           <a href="{{ path('fos_user_security_login') }}" class="btn btn-login">
             {{ 'login.actions.login'|trans }}
             <i class="fa fa-sign-in"></i>
@@ -38,6 +39,13 @@
             {{ 'login.actions.signup'|trans }}
             <i class="fa fa-sign-in"></i>
           </a>
+          #}
+          <div class="user_box">
+            <form action="{{ path('gbe_presentation_newsletter') }}" class="newsletter_form"  method="post">
+                <input type="email" name="newsletterEmail" placeholder="S'abonner à la newsletter" id="newsletterEmail" size="24"/>
+                <input type="submit" value="Go!" class="btn-newsletter"/>
+            </form>
+          </div>
         {% endif %}
 
         <!-- BEGIN LANGUAGE SELECTION DROPDOWN -->

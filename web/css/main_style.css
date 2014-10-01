@@ -22,8 +22,7 @@ body
 
 .website_content {
 
-	background-color: rgba(220,220,220,0.85) !important;
-	width: 94%;
+	background-color: rgba(220,220,220,0.7) !important;
 	min-width: 300px;
 	margin: auto;
 	max-width: 1240px;
@@ -366,7 +365,7 @@ button {
 }
 
 .participate_button {
-	font-size: 32px !important;
+	font-size: 28px !important;
 	text-align: center;
 }
 
@@ -376,16 +375,13 @@ button {
 #menu, #rightside
 {	
 	margin: 0;
-	font-size: 14px;
+	font-size: 13px;
 	/*background-color: rgba(180,180,180,0.8);*/
-	padding: 3px 10px 3px 10px;
+	padding: 3px 5px 3px 5px;
 
 	min-height : 660px;
 }
 
-#rightside {
-	width: 17.5%;
-}
 
 #menu ul {
 	margin: 30px 0 0 0;
@@ -461,7 +457,7 @@ button {
 /* Contenu des pages */
 .page-content {
 	min-height: 660px;
-	background-color: rgba(230,230,230,0.94);
+	background-color: rgba(230,230,230,0.64);
 }
 
 .content
@@ -528,6 +524,27 @@ button {
 	border : 1px solid white;
 }
 
+.btn_full:hover, .btn_full:focus{
+     background:rgba(0,0,0,0.3);
+     box-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+.btn_full span, .btn_route span {
+    position:absolute;
+    margin-top:30px;
+    margin-left:-135px;
+    color: white;
+    background: rgba(140,140,140, 1);
+    padding:10px;
+    border-radius:3px;
+    transform:scale(0) rotate(-12deg);
+    transition:all .25s;
+    opacity:0;
+}
+
+.btn_route:hover span, .btn_route:focus span, .btn_full:hover span, .btn_full:focus span{
+    transform:scale(1) rotate(0);
+    opacity:1;
+}
 
 /* Calendar */
 #calendar_table {
@@ -661,15 +678,32 @@ button {
 .edit_profile .control-label {
 	float: left;
 	text-align: right;
-	width : 30%;
+	width : 50%;
 	margin-top: 8px;
 }
 
 .edit_profile .input-icon {
-	width : 60%;
+	width : 40%;
 	float: right;
 }
 
+#newsletterEmail {
+	color: black;
+}
+#newsletterEmail input {
+	display: inline-block;
+}
+.btn-newsletter {
+	color: white;
+	background-color: rgba(77,137,39,0.8);
+	padding: 2px 5px;
+	border: none;
+}
+
+.btn-newsletter:hover {
+	color: rgba(77,137,39,0.8);
+	background-color: white;
+}
 
 /* Admin */
 .single_admin_member {
@@ -695,7 +729,9 @@ button {
 	opacity: 0.7;
 }
 
-
+.btn_admin {
+	margin-left: 5px;
+}
 
 /* Footer */
 .footer

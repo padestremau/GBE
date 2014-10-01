@@ -1,0 +1,48 @@
+{# src/GBE/PresentationBundle/Resources/Presentation/emailAdded.html.twig #}
+
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'index.titles.presentation' | trans }}
+{% endblock %}
+
+{% block GBE_Presentation_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<h2>
+				{{ 'index.titles.thankYou' | trans }}
+			</h2>
+			<hr/>
+
+	        <br/><br/><br/><br/><br/>
+
+	        <div class="center">
+	        	{{ 'index.titles.thankYou' | trans }}
+	            Your email was effectively added to our mailing list. You should receive our newsletters shortly.
+	            <br/>
+				<br/>
+	            {{ 'index.titles.regards' | trans }}
+	            <br/>
+	            <strong>
+	            	L'équipe Grande Boucle Etudiante
+	            </strong>
+	        </div>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_Presentation_body %}

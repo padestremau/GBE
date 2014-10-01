@@ -1,0 +1,90 @@
+{# src/GBE/UserBundle/Resources/Admin/seeAllEmails.html.twig #}
+
+{% extends "GBEUserBundle::user_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'admin.titles.admin' | trans }}
+{% endblock %}
+
+{% block GBE_User_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<a href="{{ path('gbe_user_admin') }}" class="btn btn-perso float-right">
+			    	{{ 'user.actions.cancel'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			</div>
+
+			<h2>
+				{{ 'admin.titles.admin' | trans }}
+			</h2>
+			<hr/>
+
+			Membres:
+			<div class="input">
+	        	<textarea name="members_emails" cols="100" rows="10">
+					{% if members|length > 0 %}
+						{% set members_emails = '' %}
+						{% set index_member_email = 0 %}
+						{% for member in members %}
+							{% if index_member_email == 0 %}
+								{% set members_emails = member.email %}
+							{% else %}
+								{% set members_emails = members_emails ~ ', ' ~ member.email %}
+							{% endif %}
+		        			{% set index_member_email = index_member_email + 1 %}
+		        		{% endfor %}
+		        		{% spaceless %}
+		        			{{ members_emails }}
+		        		{% endspaceless %}
+		        	{% else %}
+		        		Vide
+		        	{% endif %}
+	        	</textarea>
+	        </div>
+
+	        <br/><br/>
+
+	        Newsletter:
+			<div class="input">
+	        	<textarea name="members_emails" cols="100" rows="10">
+					{% if newsletterEmails|length > 0 %}
+						{% set newsletterEmails_list = '' %}
+						{% set index_newsletter_email = 0 %}
+						{% for single_email in newsletterEmails %}
+							{% if index_newsletter_email == 0 %}
+								{% set newsletterEmails_list = single_email.email %}
+							{% else %}
+								{% set newsletterEmails_list = newsletterEmails_list ~ ', ' ~ single_email.email %}
+							{% endif %}
+		        			{% set index_newsletter_email = index_newsletter_email + 1 %}
+		        		{% endfor %}
+		        		{% spaceless %}
+		        			{{ newsletterEmails_list }}
+		        		{% endspaceless %}
+		        	{% else %}
+		        		Vide
+		        	{% endif %}
+	        	</textarea>
+	        </div>
+
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_User_body %}

@@ -4,9 +4,12 @@ index:
     titles:
         title:                  La Grande Boucle Etudiante
         presentation:           Accueil
+        thankYou:               Merci !
+        regards:                "Bien cordialement,"
     actions:
         live:                   Nous suivre en live
         giveDonation:           Faire un don
+        contribute:             Contribuer
         participate:            Participer
         join:                   Rejoindre
         addPhotos:              Ajouter des photos
@@ -19,6 +22,7 @@ index:
         rightWelcomeSentence:   "Viens soutenir les Enfants du Mékong avec ton école !"
         date1:                  du 24 Octobre
         date2:                  au 2 Novembre
+        helpThem:               "Les étudiants participent à la course pour venir en soutien à l'éducation des enfants d'Asie Sud Est. Viens les aider !"
 
 # Menu
 

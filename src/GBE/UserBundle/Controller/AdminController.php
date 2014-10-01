@@ -134,4 +134,22 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('gbe_user_admin'));
     }
 
+    public function seeAllEmailsAction()
+    {
+        $members = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEUserBundle:User')
+                            ->findAll();
+
+        $newsletterEmails = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEPresentationBundle:NewsletterEmail')
+                            ->findAll();
+
+        return $this->render('GBEUserBundle:Admin:seeAllEmails.html.twig', array(
+            'members' => $members,
+            'newsletterEmails' => $newsletterEmails
+            ));
+    }
+
 }

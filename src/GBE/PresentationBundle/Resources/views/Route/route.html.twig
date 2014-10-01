@@ -83,26 +83,18 @@
 											{% if number_participants < 4 %}
 												{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 													{% if app.user.routes %}
-														<button onClick="
-																{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-																	areYouSureChange()
-																{% endif %}
-																" class="btn btn-perso float-right warning_btn">
-															{{ 'route.actions.change'|trans }}
-														</button>
-														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-															{% set route_change = path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) %}
-														{% else %}
-															{% set route_change = path('fos_user_registration_register') %}
-														{% endif %}
-														<script type="text/javascript">
-															function areYouSureChange()
-															{
-																if (confirm('{{ 'route.content.areYouSureChange'|trans }}')) {
-																	window.location = "{{ route_change }}";
-																}
-															}
-														</script>
+														<div>
+															<a href="{{ path('gbe_user_team_see', {'teamId':route.routeNumber}) }}" class="btn btn-perso float-right">
+														    	{{ 'team.actions.see'|trans }}
+														     	<i class="fa fa-sign-in"></i>
+														    </a>
+														</div>
+														<div>
+															<a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso float-right warning_btn">
+														    	{{ 'team.actions.help'|trans }}
+														     	<i class="fa fa-sign-in"></i>
+														    </a>
+														</div>
 													{% else %}
 														<a href="
 															{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -110,12 +102,46 @@
 															{% else %}
 																{{ path('fos_user_registration_register') }}
 															{% endif %}
-																" class="btn btn-perso float-right">
+																" class="btn btn-perso float-right btn_route">
 													    	{{ 'index.actions.join'|trans }}
 													     	<i class="fa fa-sign-in"></i>
+													     	<span>
+																{% if number_participants > 0 %}
+																	{% for member in members %}
+																		{% if member.team %}
+																			{% if member.team.teamNumber == route.routeNumber %}
+																				{% if member.firstName|length > 0 %}
+																					{{ member.firstName }}
+																					{% if member.lastName|length > 0 %}
+																						{{ member.lastName }}
+																					{% endif %}
+																				{% else %}
+																					{{ member.email }}
+																				{% endif %}
+																				<br/>
+																			{% endif %}
+																		{% endif %}
+																	{% endfor %}
+																{% else %}
+																	(Vide)
+																{% endif %}
+															</span>
 													    </a>
+													    <div>
+															<a href="{{ path('gbe_user_team_see', {'teamId':route.routeNumber}) }}" class="btn btn-perso float-right">
+														    	{{ 'team.actions.see'|trans }}
+														     	<i class="fa fa-sign-in"></i>
+														    </a>
+														</div>
+														<div>
+															<a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso float-right warning_btn">
+														    	{{ 'team.actions.help'|trans }}
+														     	<i class="fa fa-sign-in"></i>
+														    </a>
+														</div>
 													{% endif %}
 												{% else %}
+													{# Participate button
 													<a href="
 														{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 															{{ path('gbe_user_selectRoute', {'routeId' : route.routeNumber}) }}
@@ -126,11 +152,51 @@
 												    	{{ 'index.actions.join'|trans }}
 												     	<i class="fa fa-sign-in"></i>
 												    </a>
+												    #}
+												    <div>
+														<a href="{{ path('gbe_user_team_see', {'teamId':route.routeNumber}) }}" class="btn btn-perso float-right">
+													    	{{ 'team.actions.see'|trans }}
+													     	<i class="fa fa-sign-in"></i>
+													    </a>
+													</div>
+													<div>
+														<a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso float-right warning_btn">
+													    	{{ 'team.actions.help'|trans }}
+													     	<i class="fa fa-sign-in"></i>
+													    </a>
+													</div>
 												{% endif %}
 											{% else %}
-												<button class="btn float-right">
+												<button class="btn float-right btn_full">
 													{{ 'route.titles.full'|trans }}
+													<span>
+														{% if number_participants > 0 %}
+															{% for member in members %}
+																{% if member.team %}
+																	{% if member.team.teamNumber == route.routeNumber %}
+																		{% if member.firstName|length > 0 %}
+																			{{ member.firstName }}
+																			{% if member.lastName|length > 0 %}
+																				{{ member.lastName }}
+																			{% endif %}
+																		{% else %}
+																			{{ member.email }}
+																		{% endif %}
+																		<br/>
+																	{% endif %}
+																{% endif %}
+															{% endfor %}
+														{% else %}
+															(Vide)
+														{% endif %}
+													</span>
 												</button>
+												<div>
+													<a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso float-right warning_btn">
+												    	{{ 'team.actions.help'|trans }}
+												     	<i class="fa fa-sign-in"></i>
+												    </a>
+												</div>
 											{% endif %}
 											<br/>
 											<br/>
@@ -148,7 +214,7 @@
 										{{ 'route.content.startDate'|trans }}
 									</div>
 									<div class="col-md-7 left">
-										{{ route.startDate|date('d M Y') }} - {{ route.startDate|date('h:i') }}
+										{{ route.startDate|date('d M Y') }} - {{ route.startDate|date('H:i') }}
 									</div>
 								</div>
 								<div class="row">
@@ -156,7 +222,7 @@
 										{{ 'route.content.endDate'|trans }}
 									</div>
 									<div class="col-md-7 left">
-										{{ route.endDate|date('d M Y') }} - {{ route.endDate|date('h:i') }}
+										{{ route.endDate|date('d M Y') }} - {{ route.endDate|date('H:i') }}
 									</div>
 								</div>
 								

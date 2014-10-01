@@ -54,6 +54,14 @@ gbe_presentation_live:
     pattern:  /live
     defaults: { _controller: GBEPresentationBundle:Live:live }
 
+gbe_presentation_newsletter:
+    path:     /newsletter
+    defaults: { _controller: GBEPresentationBundle:Presentation:Newsletter }
+
+gbe_user_team_see:
+    pattern:  /team/{teamId}
+    defaults: { _controller: GBEUserBundle:User:teamSee }
+
     # "Participer"=>"pages/participer.php",
     # "Presentation"=>"pages/presentation.php",
     # "Trophees"=>"pages/trophees.php",

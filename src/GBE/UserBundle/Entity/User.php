@@ -106,6 +106,13 @@ class User extends BaseUser
      */
     private $avatar;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="poste", type="string", length=255, nullable=true)
+     */
+    private $poste;
+
 
     /*   *********      construct  *************  */
 
@@ -392,5 +399,28 @@ class User extends BaseUser
     public function getRoutes()
     {
         return $this->routes;
+    }
+
+    /**
+     * Set poste
+     *
+     * @param string $poste
+     * @return User
+     */
+    public function setPoste($poste)
+    {
+        $this->poste = $poste;
+
+        return $this;
+    }
+
+    /**
+     * Get poste
+     *
+     * @return string 
+     */
+    public function getPoste()
+    {
+        return $this->poste;
     }
 }

@@ -50,5 +50,7 @@ gbe_user_member_delete:
     pattern:  /admin/member/delete/{memberId}
     defaults: { _controller: GBEUserBundle:Admin:deleteMember }
 
-
+gbe_user_admin_see_all_email:
+    pattern:  /admin/seeEmail/all
+    defaults: { _controller: GBEUserBundle:Admin:seeAllEmails }
 

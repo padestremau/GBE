@@ -39,13 +39,16 @@ user:
 # Team
 team:
     titles:
-        team:               Mon équipe
+        team:               Equipe
+        myteam:             Mon équipe
     actions:
         edit:               Modifier
         joinATeam:          Rejoindre/Créer une équipe
         back:               Retour
         save:               Enregistrer
         cancel:             Annuler
+        see:                Voir
+        help:               Aider
     details:
         name:               "Nom de l'équipe"
         leader:             Leader de mon équipe :
@@ -144,6 +147,7 @@ admin:
         sendEmail:      Mail à toute l'équipe
         sendEmailOther: Mail à tous les autres
         deleteMember:   Supprimer
+        seeAllEmails:   Voir les emails
     content:
         step:           Etape
         others:         Autres membres

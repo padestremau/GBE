@@ -20,18 +20,30 @@
 
 	<div>
 		{{ 'index.content.rightWelcomeSentence'|trans }}
-	</div>
+	 </div>
 
-	<br/>
+	 <br/>
 	
-	<a href="http://defi.enfantsdumekong.com/projects/grande-boucle-etudiante" target="_blank" class="btn btn-perso">
+	 <a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso">
     	{{ 'index.actions.giveDonation'|trans }}
      	<i class="fa fa-sign-in"></i>
     </a>
 
-    <br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/>
 
-      {% if (route != 'gbe_presentation_route') and
+    <div>
+      {{ 'index.content.helpThem'|trans }}
+    </div>
+
+    <br/>
+    
+    <a href="http://defi.enfantsdumekong.com/events/grande-boucle-etudiante" target="_blank" class="btn btn-perso participate_button warning_btn">
+      {{ 'index.actions.contribute'|trans }}
+      <i class="fa fa-sign-in"></i>
+    </a>
+
+
+      {# if (route != 'gbe_presentation_route') and
             (route != 'gbe_user_selectRoute') %}
 
       <a href="
@@ -45,9 +57,9 @@
        	<i class="fa fa-sign-in"></i>
       </a>
 
-      {% endif %}
+      {% endif #}
 
-    <br/><br/><br/><br/>
+    <br/><br/>
 
     <h3>
       Partenaires:

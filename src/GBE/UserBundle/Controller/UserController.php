@@ -54,6 +54,31 @@ class UserController extends Controller
         	));
     }
 
+    public function teamSeeAction($teamId)
+    {
+        $team = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEUserBundle:Team')
+                            ->find($teamId);
+
+        $route = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEPresentationBundle:Routes')
+                            ->find($teamId);
+
+        $teamMembers = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEUserBundle:User')
+                            ->findByTeam($team);
+
+        return $this->render('GBEUserBundle:User:teamUser.html.twig', array(
+            'teamCurrent' => $team,
+            'routeCurrent' => $route,
+            'members' => $teamMembers
+
+            ));
+    }
+
     public function selectRouteAction($routeId)
     {
         $route = $this ->getDoctrine()
@@ -136,8 +161,8 @@ class UserController extends Controller
             'formEditUser' => $formEditUser->createView()));
     }
 
-    public function editTeamNameAction() {
-
+    public function editTeamNameAction() 
+    {
         /* Current User */
         $currentUser = $this->getUser();
 
@@ -151,7 +176,10 @@ class UserController extends Controller
 
         // On vérifie que les valeurs entrées sont correctes
         if ($formEditTeam->isValid()) {
+            $memberRole = stripslashes($_POST['memberRole']);
+            $currentUser->setPoste($memberRole);
             $em = $this->getDoctrine()->getManager();
+            $em->persist($currentUser);
             $em->persist($team);
             $em->flush();
 
@@ -163,7 +191,8 @@ class UserController extends Controller
         }
 
         return $this->render('GBEUserBundle:User:editTeam.html.twig', array(
-            'formEditTeam' => $formEditTeam->createView()));
+            'formEditTeam' => $formEditTeam->createView()
+            ));
     }
 
     public function editAvatarAction()

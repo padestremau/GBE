@@ -90,11 +90,26 @@
 				        </div>
 					</div>
 
+					<hr/>
+
+					<div class="form-group row">
+						<label for="memberRole" class="control-label">
+							Mon poste au sein de l'équipe
+						</label>
+						<div class="input-icon">
+							<select name="memberRole" id="memberRole" class="form-control placeholder-no-fix">
+					        	<option value="CYCLE">Cycliste principal</option>
+								<option value="EXTRA">Remplaçant</option>
+								<option value="SUPPORT">Support</option>
+							</select>
+				        </div>
+					</div>
+
 					<div>
 						<br/><br/>
 					</div>
 
-					<a href="{{ path('gbe_user_homepage') }}" class="btn btn-perso float-left cancel_button">
+					<a href="{{ path('gbe_user_team') }}" class="btn btn-perso float-left cancel_button">
 						{{ 'team.actions.back' | trans }}
 					</a>
 					<input type="submit" class="btn btn-perso  float-right validate_button"  

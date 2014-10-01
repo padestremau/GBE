@@ -4,9 +4,12 @@ index:
     titles:
         title:                  La Grande Boucle Etudiante
         presentation:           Home
+        thankYou:               Thank you !
+        regards:                "Best regards,"
     actions:
         live:                   Follow live
         giveDonation:           Give donation
+        contribute:             Contribute
         participate:            Participate
         join:                   Join
         addPhotos:              Add photos
@@ -19,6 +22,7 @@ index:
         rightWelcomeSentence:   "Come and help Mekong Children with your school!"
         date1:                  24 of October
         date2:                  to 2nd of November
+        helpThem:               "The students participate to the challenge in order to help the education of the poor children in South East Asia. Come and help them as well!"
 
 # Menu
 
