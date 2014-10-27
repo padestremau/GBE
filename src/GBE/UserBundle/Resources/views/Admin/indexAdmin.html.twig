@@ -87,7 +87,7 @@
 														and member.team %}
 														<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
 													{% else %}
-														<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" style="z-index : 200;" class="btn_route">
+														<a href="{{ path('gbe_user_member', {'memberId':member.id}) }}" style="z-index : 200;" class="btn_route btn_admin">
 															<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" />
 															<span>	
 															<strong>Membre n'ayant pas rempli les éléments suivants: </strong>
@@ -118,6 +118,8 @@
 															</span>
 														</a>
 													{% endif %}
+												</span>
+												<span class="float-right">
 													<button onClick="areYouSureDeleteMember()" style="z-index : 200;" class="btn-perso no_style_a margin_left_10">
 														{{ 'admin.actions.deleteMember'|trans }}
 													</button>
@@ -192,7 +194,7 @@
 										and member.team %}
 										<img src="{{ asset('img/system/ok.png') }}" alt="ok" class="admin_ok" />
 									{% else %}
-										<a href="#" style="z-index : 200;" class="btn_route">
+										<a href="#" style="z-index : 200;" class="btn_route btn_admin">
 											<img src="{{ asset('img/system/not_ok.png') }}" alt="not_ok" class="admin_ok" />
 											<span>	
 												<strong>Membre n'ayant pas rempli les éléments suivants: </strong>
@@ -222,6 +224,8 @@
 													{% endif %}
 												</span>
 										</a>
+								</span>
+								<span class="float-right">
 										<button onClick="areYouSureDeleteMember()" style="z-index : 200;" class="btn-perso no_style_a margin_left_10">
 											{{ 'admin.actions.deleteMember'|trans }}
 										</button>

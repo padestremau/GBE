@@ -19,11 +19,28 @@ class PhotosController extends Controller
     	$photos = $this ->getDoctrine()
                         ->getManager()
                         ->getRepository('GBEPresentationBundle:Photo')
-                        ->findAllPhotosByStep($routes);
+                        ->findOnePhotosByStep($routes);
 
         return $this->render('GBEPresentationBundle:Photos:photos.html.twig', array(
         	'photos' => $photos,
         	'routes' => $routes));
+    }
+
+    public function photosRoutesAction($routesId)
+    {
+        $routeChosen = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEPresentationBundle:Routes')
+                        ->find($routesId);
+
+        $photos = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEPresentationBundle:Photo')
+                        ->findAllPhotosByStep($routeChosen);
+
+        return $this->render('GBEPresentationBundle:Photos:photosRoutes.html.twig', array(
+            'photos' => $photos,
+            'routeChosen' => $routeChosen));
     }
 
     public function addAction()

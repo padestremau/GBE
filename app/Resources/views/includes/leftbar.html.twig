@@ -97,7 +97,12 @@
       </a> 
     </li>
     <li class="
-          {% if (route == 'gbe_presentation_photos') %}
+          {% if (route == 'gbe_presentation_photos')
+            or (route == 'gbe_presentation_photos')
+            or (route == 'gbe_presentation_photos_routes')
+            or (route == 'gbe_presentation_add_photos')
+            or (route == 'gbe_user_admin_delete_photos')
+            or (route == 'gbe_user_admin_delete_photo_single') %}
             active
           {% endif %}"> 
       <a href="{{ path('gbe_presentation_photos') }}"> 

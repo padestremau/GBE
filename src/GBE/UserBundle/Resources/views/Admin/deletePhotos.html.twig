@@ -1,0 +1,90 @@
+{# src/GBE/PresentationBundle/Resources/Photos/photos.html.twig #}
+
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'photos.titles.photos' | trans }}
+{% endblock %}
+
+{% block GBE_Presentation_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+		    <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
+			{% if is_granted("ROLE_ADMIN") %}
+				<div>
+	    			<a href="{{ path('gbe_presentation_photos') }}" class="btn btn-perso float-right menu_administration_li black">
+				    	Retour
+				    </a>
+				</div>
+
+				<a href="{{ path('gbe_presentation_photos') }}" class="no_style_a">
+					<h2 class="inline">
+						Supprimer depuis
+					</h2>
+					<h3 class="inline">
+						l' {{ 'route.content.step'|trans }} {{ routeChosen.routeNumber }}
+					</h3>
+					<hr/>
+				</a>
+
+				<div class="row margin0">
+					
+					{% set index_photo = 1 %}
+					{% for photo in photos %}
+						{% if index_photo%4 == 1 %}
+						<div class="row">
+						{% endif %}
+							<div class="col-md-3">
+								<div class="photo_souvenir center"
+									style="width: 100%; background-image: url('{{ asset(photo.webPath) }}'); background-size: cover; background-position: 50%;">
+									<script type="text/javascript">
+										var cw = $('.photo_souvenir').width();
+										$('.photo_souvenir').css({'height':cw+'px'});
+									</script>
+									<button onClick="areYouSureDelete('{{ photo.id }}')" class="btn btn-perso">
+										Supprimer
+									</button>
+									<script type="text/javascript">
+										function areYouSureDelete(photoId) {
+											if (confirm('Etes-vous certain de vouloir supprimer cette photo ?')) {
+												var routeToGo = "{{ path('gbe_user_admin_delete_photo_single', {'photoId':'0000'}) }}";
+												window.location = routeToGo.replace('0000', photoId);
+											}
+										}
+									</script>
+								</div>
+							</div>
+
+						{% if index_photo%4 == 0 
+							or index_photo  == photos|length %}
+						</div>
+						{% endif %}
+
+						{% set index_photo = index_photo + 1 %}
+					{% endfor %}
+				</div>
+			{% else %}
+				<p class="center">
+					Oups, sorry you're not allowed to access this part of the website. <br/>
+					Please contact the <strong>Webmaster</strong>.
+				</p>
+			{% endif %}
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_Presentation_body %}

@@ -12,8 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class PhotoRepository extends EntityRepository
 {
-	
-	public function findAllPhotosByStep ($routes)
+	public function findOnePhotosByStep ($routes)
 	{
 		$photos = array();
 		for ($i=0; $i < sizeof($routes); $i++) { 
@@ -21,6 +20,7 @@ class PhotoRepository extends EntityRepository
 									->where ('u.route = :route')
 										->setParameter('route', $routes[$i])
 									->orderBy('u.id', 'ASC')
+									->setMaxResults(1)
 									->getQuery()
 									->getResult();
 
@@ -31,6 +31,18 @@ class PhotoRepository extends EntityRepository
 				$photos[$i] = '';	
 			}
 		}
+		return $photos;
+	}
+
+	public function findAllPhotosByStep ($route)
+	{
+		$photos = $this->createQueryBuilder('u')
+						->where ('u.route = :route')
+							->setParameter('route', $route)
+						->orderBy('u.id', 'ASC')
+						->getQuery()
+						->getResult();
+
 		return $photos;
 	}
 }

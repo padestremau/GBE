@@ -54,3 +54,14 @@ gbe_user_admin_see_all_email:
     pattern:  /admin/seeEmail/all
     defaults: { _controller: GBEUserBundle:Admin:seeAllEmails }
 
+gbe_user_admin_delete_photos:
+    pattern:  /photos/delete/{routesId}
+    defaults: { _controller: GBEUserBundle:Admin:deletePhoto }
+    requirements:
+        routesId: \d*
+
+gbe_user_admin_delete_photo_single:
+    pattern:  /photos/delete/photoNumber/{photoId}
+    defaults: { _controller: GBEUserBundle:Admin:deletePhotoSingle }
+    requirements:
+        photoId: \d*

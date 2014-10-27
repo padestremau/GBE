@@ -15,12 +15,11 @@
 	<!-- BEGIN CONTENT -->
 	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
 		<!-- BEGIN CONTENT -->
-		<div class="content">
+		<div class="content center">
 
 			<div>
 				<a href="{{ path('gbe_presentation_add_photos') }}" class="btn btn-perso float-right">
 			    	{{ 'index.actions.addPhotos'|trans }}
-			     	<i class="fa fa-sign-in"></i>
 			    </a>
 			</div>
 
@@ -31,32 +30,44 @@
 
 			{% set index_route = 0 %}
 			{% for route in routes %}
-			<div class="row margin0">
-				<h3>
-					{{ 'route.content.step'|trans }} {{ route.routeNumber }}
-				</h3>
-				<hr style="width:70%;"/>
-				
-				{% set index_photo = 1 %}
-				{% for photo in photos[index_route] %}
-					{% if index_photo%4 == 1 %}
-					<div class="row">
-					{% endif %}
+				<div class="col-md-3 routes_selection center" onClick="goToRoutes('{{route.id}}')">
+					<h3>
+						{{ 'route.content.step'|trans }} {{ route.routeNumber }}
+					</h3>
+					<hr style="width:70%;"/>
 
-						<div class="col-md-3">
-							<img src="{{ asset(photo.webPath) }}" alt="{{ photo.alt }}" class="photo_souvenir"/>
+					{{ route.startCity }} - {{ route.endCity }}
+					
+					{% if photos[index_route]|length > 0 %}
+						{% set photo_array = photos[index_route] %}
+						{% set photo = photo_array[0] %}
+						<div class="col-md-12 photo_souvenir"
+							style="width: 100%; background-image: url('{{ asset(photo.webPath) }}'); background-size: cover; background-position: 50%;">
+							<script type="text/javascript">
+								var cw = $('.photo_souvenir').width();
+								$('.photo_souvenir').css({'height':cw+'px'});
+							</script>
 						</div>
-
-					{% if index_photo%4 == 0 
-						or index_photo  == photos[index_route]|length %}
-					</div>
+					{% else %}
+						<div class="col-md-12 photo_souvenir"
+							style="width: 100%; background-image: url('{{ asset('img/photos/default_img.png') }}'); background-size: cover; background-position: 50%; opacity:0.5;">
+							<script type="text/javascript">
+								var cw = $('.photo_souvenir').width();
+								$('.photo_souvenir').css({'height':cw+'px'});
+							</script>
+						</div>
 					{% endif %}
-
-					{% set index_photo = index_photo + 1 %}
-				{% endfor %}
+				</div>
 				{% set index_route = index_route + 1 %}
-			</div>
 			{% endfor %}
+
+			<script type="text/javascript">
+				function goToRoutes(routeId)
+				{
+					var routeToGo =  "{{ path('gbe_presentation_photos_routes', {'routesId':'00000'}) }}";
+					window.location = routeToGo.replace('00000',routeId);
+				}
+			</script>
 			
 		</div>
 		<!-- END CONTENT -->

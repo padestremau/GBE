@@ -1,0 +1,78 @@
+{# src/GBE/PresentationBundle/Resources/Photos/photos.html.twig #}
+
+{% extends "GBEPresentationBundle::Presentation_general.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - {{ 'photos.titles.photos' | trans }}
+{% endblock %}
+
+{% block GBE_Presentation_body %}
+
+	<!-- BEGIN leftbar -->
+      {% include 'includes/leftbar.html.twig' %}
+    <!-- END leftbar -->
+
+	<!-- BEGIN CONTENT -->
+	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+		<!-- BEGIN CONTENT -->
+		<div class="content">
+
+			<div>
+				<a href="{{ path('gbe_presentation_add_photos') }}" class="btn btn-perso float-right">
+			    	{{ 'index.actions.addPhotos'|trans }}
+			     	<i class="fa fa-sign-in"></i>
+			    </a>
+			    <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
+    			{% if is_granted("ROLE_ADMIN") %}
+    			<a href="{{ path('gbe_user_admin_delete_photos', {'routesId':routeChosen.id}) }}" class="btn btn-perso float-right menu_administration_li margin_right_10 black">
+			    	Supprimer des photos
+			    </a>
+    			{% endif %}
+			</div>
+
+			<a href="{{ path('gbe_presentation_photos') }}" class="no_style_a">
+				<h2 class="inline">
+					{{ 'photos.titles.photos'|trans }}
+				</h2>
+				<h3 class="inline">
+					- {{ 'route.content.step'|trans }} {{ routeChosen.routeNumber }}
+				</h3>
+				<hr/>
+			</a>
+
+			<div class="row margin0">
+				
+				{% set index_photo = 1 %}
+				{% for photo in photos %}
+					{% if index_photo%4 == 1 %}
+					<div class="row">
+					{% endif %}
+						<div class="col-md-3">
+							<div class="photo_souvenir"
+								style="width: 100%; background-image: url('{{ asset(photo.webPath) }}'); background-size: cover; background-position: 50%;">
+								<script type="text/javascript">
+									var cw = $('.photo_souvenir').width();
+									$('.photo_souvenir').css({'height':cw+'px'});
+								</script>
+							</div>
+						</div>
+
+					{% if index_photo%4 == 0 
+						or index_photo  == photos|length %}
+					</div>
+					{% endif %}
+
+					{% set index_photo = index_photo + 1 %}
+				{% endfor %}
+			</div>
+			
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTENT -->
+
+	<!-- BEGIN rightbar -->
+      {% include 'includes/rightbar.html.twig' %}
+    <!-- END rightbar -->
+
+{% endblock GBE_Presentation_body %}

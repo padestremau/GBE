@@ -127,6 +127,10 @@ class AdminController extends Controller
                             ->getRepository('GBEUserBundle:User')
                             ->find($memberId);
 
+        if (!$member) {
+            throw $this->createNotFoundException('No guest found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($member);
         $em->flush();
@@ -150,6 +154,40 @@ class AdminController extends Controller
             'members' => $members,
             'newsletterEmails' => $newsletterEmails
             ));
+    }
+    
+    public function deletePhotoAction($routesId)
+    {
+        $routeChosen = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEPresentationBundle:Routes')
+                        ->find($routesId);
+
+        $photos = $this ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('GBEPresentationBundle:Photo')
+                        ->findAllPhotosByStep($routeChosen);
+
+        return $this->render('GBEUserBundle:Admin:deletePhotos.html.twig', array(
+            'photos' => $photos,
+            'routeChosen' => $routeChosen));
+    }
+    public function deletePhotoSingleAction($photoId)
+    {
+        $photo = $this ->getDoctrine()
+                            ->getManager()
+                            ->getRepository('GBEPresentationBundle:Photo')
+                            ->find($photoId);
+
+        if (!$photo) {
+            throw $this->createNotFoundException('No guest found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($photo);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('gbe_presentation_photos'));
     }
 
 }
