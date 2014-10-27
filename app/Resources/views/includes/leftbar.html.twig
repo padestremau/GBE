@@ -1,201 +1,183 @@
 {# Pour tout faciliter #}
 {% set route = app.request.attributes.get( '_route' ) %}
 
-<div class="col-md-2" id="menu">
-  <!-- BEGIN SIDEBAR MENU -->
-  <ul class="page-sidebar-menu" data-auto-scroll="false" data-auto-speed="300">
-    <li class="
-          {% if (route == 'gbe_presentation_homepage') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_homepage') }}">
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.home' | trans }}
-        </span>
-        <span class="arrow"></span>
-        <span class="selected"></span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_presentation') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_presentation') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.presentation' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_history') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_history') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.history' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_bio') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_bio') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.whoAreWe' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_route') 
-              or (route == 'gbe_user_selectRoute')
-              or (route == 'gbe_user_confirmRoute') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_route') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.route' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_calendar') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_calendar') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.calendar' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_partners') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_partners') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.partnerships' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_media') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_media') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.media' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_photos')
-            or (route == 'gbe_presentation_photos')
-            or (route == 'gbe_presentation_photos_routes')
-            or (route == 'gbe_presentation_add_photos')
-            or (route == 'gbe_user_admin_delete_photos')
-            or (route == 'gbe_user_admin_delete_photo_single') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_photos') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.photos' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_presentation_contact')
-              or (route == 'gbe_presentation_send') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_presentation_contact') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.contact' | trans }}
-        </span>
-      </a> 
-    </li>
-
-    <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-    <hr/>
-
-    <li class="
-          {% if (route == 'gbe_user_homepage')
-            or (route == 'gbe_user_editAvatar')
-            or (route == 'gbe_user_editPassword')
-            or (route == 'gbe_user_edit') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_user_homepage') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.profile' | trans }}
-        </span>
-      </a> 
-    </li>
-    <li class="
-          {% if (route == 'gbe_user_team')
-              or (route == 'gbe_user_editTeamName') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_user_team') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.myTeam' | trans }}
-        </span>
-      </a> 
-    </li>
-
-    {% endif %}
-
-    <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
-    {% if is_granted("ROLE_ADMIN") %}
-    <li class="menu_administration_li
-          {% if (route == 'gbe_user_admin')
-              or (route == 'gbe_user_admin_email')
-              or (route == 'gbe_user_admin_email_sent')
-              or (route == 'gbe_user_member_delete') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('gbe_user_admin') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.administration' | trans }}
-        </span>
-      </a> 
-    </li>
-    {% endif %}
-
-    <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-    <hr/>
-
-    <li class="menu_logout_li
-          {% if (route == 'fos_user_security_logout') %}
-            active
-          {% endif %}"> 
-      <a href="{{ path('fos_user_security_logout') }}"> 
-        <i class="fa fa-camera-retro"></i> 
-        <span class="title">
-          {{ 'menu.mainTitles.logout' | trans }}
-        </span>
-      </a> 
-    </li>
-
-    {% endif %}
+<div class="col-md-2 padding0" id="menu_container">
     
-  </ul>
-  <!-- END SIDEBAR MENU -->
+  <div id="menu">
+    <!-- BEGIN SIDEBAR MENU -->
+    <ul>
+      <li class="
+            {% if (route == 'gbe_presentation_homepage') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_homepage') }}')">
+          <!-- onClick="ajaxShowContentMain('{# path('gbe_presentation_homepage') #}')"> -->
+          <span class="title">
+            {{ 'menu.mainTitles.home' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_presentation') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_presentation') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.presentation' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_history') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_history') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.history' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_bio') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_bio') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.whoAreWe' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_route') 
+                or (route == 'gbe_user_selectRoute')
+                or (route == 'gbe_user_confirmRoute') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_route') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.route' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_calendar') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_calendar') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.calendar' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_partners') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_partners') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.partnerships' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_media') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_media') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.media' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_photos')
+              or (route == 'gbe_presentation_photos')
+              or (route == 'gbe_presentation_photos_routes')
+              or (route == 'gbe_presentation_add_photos')
+              or (route == 'gbe_user_admin_delete_photos')
+              or (route == 'gbe_user_admin_delete_photo_single') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_photos') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.photos' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_presentation_contact')
+                or (route == 'gbe_presentation_send') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_presentation_contact') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.contact' | trans }}
+          </span>
+      </li>
+
+      <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+      <hr/>
+
+      <li class="
+            {% if (route == 'gbe_user_homepage')
+              or (route == 'gbe_user_editAvatar')
+              or (route == 'gbe_user_editPassword')
+              or (route == 'gbe_user_edit') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_user_homepage') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.profile' | trans }}
+          </span>
+      </li>
+      <li class="
+            {% if (route == 'gbe_user_team')
+                or (route == 'gbe_user_editTeamName') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_user_team') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.myTeam' | trans }}
+          </span>
+      </li>
+
+      {% endif %}
+
+      <!--  ///// ///// ///// ///// /////  ADMIN  ///// ///// ///// ///// ///// --> 
+      {% if is_granted("ROLE_ADMIN") %}
+      <li class="menu_administration_li
+            {% if (route == 'gbe_user_admin')
+                or (route == 'gbe_user_admin_email')
+                or (route == 'gbe_user_admin_email_sent')
+                or (route == 'gbe_user_member_delete') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('gbe_user_admin') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.administration' | trans }}
+          </span>
+      </li>
+      {% endif %}
+
+      <!--  ///// ///// ///// ///// /////  AUTHORISED  ///// ///// ///// ///// ///// --> 
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+      <hr/>
+
+      <li class="menu_logout_li
+            {% if (route == 'fos_user_security_logout') %}
+              active
+            {% endif %}" 
+          onClick="goToRoute('{{ path('fos_user_security_logout') }}')">
+          <span class="title">
+            {{ 'menu.mainTitles.logout' | trans }}
+          </span>
+      </li>
+
+      {% endif %}
+      
+    </ul>
+    <!-- END SIDEBAR MENU -->
+
+    <script type="text/javascript">
+      function goToRoute(routeChosen)
+      {
+        window.location = routeChosen;
+      }
+    </script>
+
+  </div>
 </div>

@@ -33,6 +33,12 @@ body
 .row {
 	width: 100%;
 }
+.padding0 {
+	padding: 0;
+}
+.margin_auto {
+	margin: auto;
+}
 .margin0 {
 	margin:0;
 }
@@ -238,6 +244,12 @@ a:hover {
 	font-style: normal;
 }
 
+.no_style_button {
+	color: inherit;
+	background-color: inherit;
+	border: none;
+}
+
 p {	
 	margin: 5px 10px 5px 10px;
 	text-align: justify;
@@ -366,6 +378,19 @@ button {
 	color: black;
 }
 
+/* Header loader */
+#loader {
+	width: 30px;
+	height: 30px;
+	margin-top: 5px;
+}
+.opacity0 {
+	opacity: 0;
+}
+.opacity1 {
+	opacity: 1;
+}
+
 /* Accueil */
 
 .main_map {
@@ -405,10 +430,6 @@ button {
 
 	border: 1px solid white;
 
-}
-
-#menu li a
-{	
 	text-decoration: none;
 	color: #000000;
 	padding: 7px;
@@ -419,16 +440,10 @@ button {
 {	
 	color: rgb(70,70,70) !important;
 	background-color: white !important;
+	cursor: pointer;
 }
 
-#menu li:hover a
-{	
-	color: rgb(70,70,70) !important;
-	background-color: white !important;
-	width: 100%;
-}
-
-#menu li, #menu li a, #menu li:hover, #menu li:hover a, #menu li:active, #menu li.active, #menu li:active a, #menu li.active a {
+#menu li, #menu li:hover, #menu li:active, #menu li.active {
 	-webkit-transition: 0.3s;
 	-moz-transition: 0.3s;
 	-o-transition: 0.3s;
@@ -438,10 +453,6 @@ button {
 #menu li:active, #menu li.active
 {	
 	background-color: rgba(70,70,70,0.92);
-}
-
-#menu li:active a, #menu li.active a
-{	
 	text-decoration: none;
 	color: #ffffff;
 	padding: 7px;
@@ -567,6 +578,7 @@ button {
 }
 .routes_selection:hover {
 	background-color: rgba(20,20,20,0.3);
+	cursor: pointer;
 }
 
 /* Calendar */
@@ -606,7 +618,28 @@ button {
 	margin-top: 5px;
 }
 
+.photo_souvenir:hover {
+	cursor: pointer;
+}
 
+.photos_routes {
+	margin: 0;
+	padding: 0;
+}
+
+.carousel_photo {
+	max-width: 100%;
+	max-height: 800px;
+	margin: auto;
+}
+
+.modal_carousel, .modal-content {
+	background-color: rgba(220,220,220,1) !important;
+}
+
+.carousel-control {
+	background-color: transparent;
+}
 
 /* Contact */
 .checkbox_case input {
@@ -654,7 +687,7 @@ button {
 	margin-top: 4px;
 }
 
-.user_box, .language_box {
+.user_box, .language_box, #loader {
 	display: inline-block;
 }
 

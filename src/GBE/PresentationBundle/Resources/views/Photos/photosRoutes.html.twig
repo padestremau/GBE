@@ -13,9 +13,9 @@
     <!-- END leftbar -->
 
 	<!-- BEGIN CONTENT -->
-	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+	<div class="col-md-8 page-content" id="page-content">  <!-- Must have a col-md-8 -->
 		<!-- BEGIN CONTENT -->
-		<div class="content">
+		<div id="content" class="content">
 
 			<div>
 				<a href="{{ path('gbe_presentation_add_photos') }}" class="btn btn-perso float-right">
@@ -30,7 +30,7 @@
     			{% endif %}
 			</div>
 
-			<a href="{{ path('gbe_presentation_photos') }}" class="no_style_a">
+			<a href="{{ path('gbe_presentation_photos') }}" class="no_style_a photos_routes">
 				<h2 class="inline">
 					{{ 'photos.titles.photos'|trans }}
 				</h2>
@@ -42,29 +42,74 @@
 
 			<div class="row margin0">
 				
-				{% set index_photo = 1 %}
+				{% set index_photo = 0 %}
 				{% for photo in photos %}
-					{% if index_photo%4 == 1 %}
-					<div class="row">
-					{% endif %}
-						<div class="col-md-3">
-							<div class="photo_souvenir"
-								style="width: 100%; background-image: url('{{ asset(photo.webPath) }}'); background-size: cover; background-position: 50%;">
-								<script type="text/javascript">
-									var cw = $('.photo_souvenir').width();
-									$('.photo_souvenir').css({'height':cw+'px'});
-								</script>
-							</div>
+					<div class="col-md-3">
+						<div class="photo_souvenir"
+							style="width: 100%; background-image: url('{{ asset(photo.webPath) }}'); background-size: cover; background-position: 50%;"
+							onClick="showPhoto('{{ photo.id }}')"
+							>
+							<script type="text/javascript">
+								var cw = $('.photo_souvenir').width();
+								$('.photo_souvenir').css({'height':cw+'px'});
+							</script>
 						</div>
-
-					{% if index_photo%4 == 0 
-						or index_photo  == photos|length %}
 					</div>
-					{% endif %}
 
 					{% set index_photo = index_photo + 1 %}
 				{% endfor %}
 			</div>
+
+		    <div class="modal fade" id="modal_carousel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        <h2 class="modal-title" id="myModalLabel">
+						{{ 'photos.titles.photos'|trans }}
+						- {{ 'route.content.step'|trans }} {{ routeChosen.routeNumber }}
+			        </h2>
+			      </div>
+			      <div class="modal-body">
+			        <div id="photos_carousel" class="carousel slide" data-ride="carousel">
+				      <!-- Indicators -->
+				      <div class="carousel-inner">
+				      	{% set index_photo = 0 %}
+						{% for photo in photos %}
+							<div class="item carousel_parent
+								{% if index_photo == 0 %} active {% endif %}">
+					        	<img src="{{ asset(photo.webPath) }}" alt="Slide {{ photo.id }}" 
+					        		class="carousel_photo"/>
+					        </div>
+
+							{% set index_photo = index_photo + 1 %}
+						{% endfor %}
+
+				        
+				      </div>
+
+				      <a class="left carousel-control" href="#photos_carousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				      <a class="right carousel-control" href="#photos_carousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				    </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<script type="text/javascript">
+				function showPhoto(photoId) {
+		        	if ($('.carousel_photo').width() < $('.carousel_photo').height()) {
+						var cw = $(window).height() * 0.6 ;
+						$('.carousel_photo').css({'height':cw+'px'});
+		        	}
+		        	else {
+		        		var cw = $(window).height() * 0.8 ;
+						$('.carousel_photo').css({'height':cw+'px'});
+		        	};
+		        	
+					$('#modal_carousel').modal('show');
+				}
+			</script>
 			
 		</div>
 		<!-- END CONTENT -->

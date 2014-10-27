@@ -68,18 +68,26 @@
           {% endif %}
         </div>
         <!-- END LANGUAGE SELECTION DROPDOWN -->
+
       </div>
     </div>
-
+    <div class="col-md-1" id="loader_container">
+      <!-- BEGIN AJAX LOADER GIF -->
+      <div id="loader" class="opacity0">
+        <img src="{{ asset('img/system/loader.gif') }}" alt="Load" class="ajax_loader_gif"/>
+      </div>
+      <!-- END AJAX LOADER GIF -->
+    </div>
+    
     <!-- BEGIN TITLE -->
-    <div class="col-md-6 center">
+    <div class="col-md-4 center">
       <h1>
         {{ 'index.titles.title'|trans }}
       </h1>
     </div>
     <!-- END TITLE -->
 
-    <div class="col-md-3 right">
+    <div class="col-md-4 right">
       <a href="https://www.facebook.com/pages/La-Grande-Boucle-Etudiante/652612188166071" target="_blank">
         <img alt="FB" src="{{ asset('img/system/fb.png') }}" title="Page Facebook" class="social"/>
       </a>

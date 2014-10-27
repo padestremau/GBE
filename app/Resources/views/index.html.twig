@@ -40,7 +40,7 @@
       filter='cssrewrite' %}
       <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen"/>
     {% endstylesheets %}
-        
+
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
     <link rel="icon" type="image/ico" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -66,8 +66,8 @@
         {% javascripts 
           'bootstrap/js/bootstrap.js'
           'bootstrap/js/bootstrap.min.js'
-          'js/ajax_load.js'
           %}
+          <!-- 'js/ajax_load.js' -->
           <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
 

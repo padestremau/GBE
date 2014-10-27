@@ -13,9 +13,9 @@
     <!-- END leftbar -->
 
 	<!-- BEGIN CONTENT -->
-	<div class="col-md-8 page-content">  <!-- Must have a col-md-8 -->
+	<div class="col-md-8 page-content" id="page-content">  <!-- Must have a col-md-8 -->
 		<!-- BEGIN CONTENT -->
-		<div class="content center">
+		<div id="content" class="content center">
 
 			<div>
 				<a href="{{ path('gbe_presentation_add_photos') }}" class="btn btn-perso float-right">
@@ -30,7 +30,7 @@
 
 			{% set index_route = 0 %}
 			{% for route in routes %}
-				<div class="col-md-3 routes_selection center" onClick="goToRoutes('{{route.id}}')">
+				<div class="col-md-3 routes_selection center" onClick="goToPhotosFromRoutes('{{route.id}}')">
 					<h3>
 						{{ 'route.content.step'|trans }} {{ route.routeNumber }}
 					</h3>
@@ -62,13 +62,14 @@
 			{% endfor %}
 
 			<script type="text/javascript">
-				function goToRoutes(routeId)
+				function goToPhotosFromRoutes(routeId)
 				{
-					var routeToGo =  "{{ path('gbe_presentation_photos_routes', {'routesId':'00000'}) }}";
-					window.location = routeToGo.replace('00000',routeId);
+					route_chosen = "{{ path('gbe_presentation_photos_routes', {'routesId':'00000'}) }}";
+					window.location = route_chosen.replace('00000',routeId);  //  00000 because has to be integer
 				}
 			</script>
-			
+
+
 		</div>
 		<!-- END CONTENT -->
 	</div>
