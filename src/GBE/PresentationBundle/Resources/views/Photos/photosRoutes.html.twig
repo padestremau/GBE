@@ -98,14 +98,8 @@
 
 			<script type="text/javascript">
 				function showPhoto(photoId) {
-		        	if ($('.carousel_photo').width() < $('.carousel_photo').height()) {
-						var cw = $(window).height() * 0.6 ;
-						$('.carousel_photo').css({'height':cw+'px'});
-		        	}
-		        	else {
-		        		var cw = $(window).height() * 0.8 ;
-						$('.carousel_photo').css({'height':cw+'px'});
-		        	};
+					var cw = $(window).height() * 0.7 ;
+					$('.carousel_photo').css({'height':cw+'px'});
 		        	
 					$('#modal_carousel').modal('show');
 				}
